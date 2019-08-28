@@ -6,7 +6,8 @@ target 'MovieApp' do
   use_frameworks!
 
   # Pods for MovieApp
-  
+  pod 'RxSwift', '~> 4.5'
+  pod 'RxCocoa', '~> 4.5'  
 
 
   target 'MovieAppTests' do

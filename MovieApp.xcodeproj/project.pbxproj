@@ -24,6 +24,29 @@
 		BECEECA423166B5B00C89786 /* MovieListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BECEEC9E23166B5B00C89786 /* MovieListViewController.xib */; };
 		BECEECA623166BB500C89786 /* RouterAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECA523166BB500C89786 /* RouterAppDelegate.swift */; };
 		BECEECA923166C1600C89786 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECA823166C1600C89786 /* MainRouter.swift */; };
+		BECEECAE23166CDE00C89786 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECAD23166CDE00C89786 /* Repository.swift */; };
+		BECEECB323166D0700C89786 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECB223166D0700C89786 /* UseCase.swift */; };
+		BECEECB523166D8500C89786 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECB423166D8500C89786 /* BaseService.swift */; };
+		BECEECBA2316719D00C89786 /* ServiceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECB92316719D00C89786 /* ServiceConstants.swift */; };
+		BECEECBC2316723300C89786 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECBB2316723300C89786 /* Movie.swift */; };
+		BECEECBF2316724C00C89786 /* CodableEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECBE2316724C00C89786 /* CodableEntity.swift */; };
+		BECEECC22316760A00C89786 /* MovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECC12316760A00C89786 /* MovieRepository.swift */; };
+		BECEECC52316779200C89786 /* MovieDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECC42316779200C89786 /* MovieDataController.swift */; };
+		BECEECC923167A3C00C89786 /* MovieListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECC823167A3C00C89786 /* MovieListService.swift */; };
+		BECEECCC23167B1F00C89786 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECCB23167B1F00C89786 /* Entity.swift */; };
+		BECEECCE23167D2B00C89786 /* GetMovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECCD23167D2B00C89786 /* GetMovieList.swift */; };
+		BECEECD02316803800C89786 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECCF2316803800C89786 /* Result.swift */; };
+		BECEECD32316812F00C89786 /* BaseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECD22316812F00C89786 /* BaseParser.swift */; };
+		BECEECD6231684A700C89786 /* MovieListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECD5231684A700C89786 /* MovieListResponse.swift */; };
+		BECEECD8231685F100C89786 /* EndpointProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECD7231685F100C89786 /* EndpointProvider.swift */; };
+		BECEECDA2316863F00C89786 /* ServicesAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECD92316863F00C89786 /* ServicesAppDelegate.swift */; };
+		BECEECDD231721AC00C89786 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECDC231721AC00C89786 /* Theme.swift */; };
+		BECEECE0231722FC00C89786 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECDF231722FC00C89786 /* UIColor.swift */; };
+		BECEECE2231725EE00C89786 /* ThemeAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECE1231725EE00C89786 /* ThemeAppDelegate.swift */; };
+		BECEECE82317271E00C89786 /* ThemeViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECE72317271E00C89786 /* ThemeViews.swift */; };
+		BECEECEB23172D3700C89786 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECEA23172D3700C89786 /* BaseViewController.swift */; };
+		BECEECEF2317319000C89786 /* ThemeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECEE2317319000C89786 /* ThemeProvider.swift */; };
+		BECEECF2231731A900C89786 /* AppDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECF1231731A900C89786 /* AppDefaults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +84,29 @@
 		BECEEC9E23166B5B00C89786 /* MovieListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieListViewController.xib; sourceTree = "<group>"; };
 		BECEECA523166BB500C89786 /* RouterAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterAppDelegate.swift; sourceTree = "<group>"; };
 		BECEECA823166C1600C89786 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		BECEECAD23166CDE00C89786 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		BECEECB223166D0700C89786 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
+		BECEECB423166D8500C89786 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
+		BECEECB92316719D00C89786 /* ServiceConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceConstants.swift; sourceTree = "<group>"; };
+		BECEECBB2316723300C89786 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		BECEECBE2316724C00C89786 /* CodableEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableEntity.swift; sourceTree = "<group>"; };
+		BECEECC12316760A00C89786 /* MovieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepository.swift; sourceTree = "<group>"; };
+		BECEECC42316779200C89786 /* MovieDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDataController.swift; sourceTree = "<group>"; };
+		BECEECC823167A3C00C89786 /* MovieListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListService.swift; sourceTree = "<group>"; };
+		BECEECCB23167B1F00C89786 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		BECEECCD23167D2B00C89786 /* GetMovieList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMovieList.swift; sourceTree = "<group>"; };
+		BECEECCF2316803800C89786 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		BECEECD22316812F00C89786 /* BaseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseParser.swift; sourceTree = "<group>"; };
+		BECEECD5231684A700C89786 /* MovieListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListResponse.swift; sourceTree = "<group>"; };
+		BECEECD7231685F100C89786 /* EndpointProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointProvider.swift; sourceTree = "<group>"; };
+		BECEECD92316863F00C89786 /* ServicesAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesAppDelegate.swift; sourceTree = "<group>"; };
+		BECEECDC231721AC00C89786 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		BECEECDF231722FC00C89786 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		BECEECE1231725EE00C89786 /* ThemeAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeAppDelegate.swift; sourceTree = "<group>"; };
+		BECEECE72317271E00C89786 /* ThemeViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViews.swift; sourceTree = "<group>"; };
+		BECEECEA23172D3700C89786 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		BECEECEE2317319000C89786 /* ThemeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProvider.swift; sourceTree = "<group>"; };
+		BECEECF1231731A900C89786 /* AppDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefaults.swift; sourceTree = "<group>"; };
 		F034BAAD8979BD4CA1FD3EB3 /* Pods-MovieApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MovieApp/Pods-MovieApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,6 +187,10 @@
 		BECEEC892316683C00C89786 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				BECEECF02317319E00C89786 /* Utils */,
+				BECEECE3231726EF00C89786 /* View */,
+				BECEECDE231722ED00C89786 /* Extensions */,
+				BECEECAB23166CCE00C89786 /* Entity */,
 				BECEECA723166C0D00C89786 /* Router */,
 				BECEEC8B2316684900C89786 /* Assets */,
 			);
@@ -159,6 +209,7 @@
 		BECEEC8B2316684900C89786 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				BECEECDB231721A300C89786 /* Theme */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -170,6 +221,8 @@
 				BECEEC662316681F00C89786 /* AppDelegate.swift */,
 				BECEEC8F23166A7F00C89786 /* CoreDataAppDelegate.swift */,
 				BECEECA523166BB500C89786 /* RouterAppDelegate.swift */,
+				BECEECD92316863F00C89786 /* ServicesAppDelegate.swift */,
+				BECEECE1231725EE00C89786 /* ThemeAppDelegate.swift */,
 			);
 			path = Delegate;
 			sourceTree = "<group>";
@@ -205,6 +258,10 @@
 		BECEEC9423166B3800C89786 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				BECEECD42316849300C89786 /* Model */,
+				BECEECC623167A2500C89786 /* UseCase */,
+				BECEECC723167A2A00C89786 /* Service */,
+				BECEECC0231675FD00C89786 /* Repository */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -228,8 +285,8 @@
 		BECEEC9723166B4700C89786 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				BECEEC9E23166B5B00C89786 /* MovieListViewController.xib */,
 				BECEEC9C23166B5B00C89786 /* MovieListViewController.swift */,
+				BECEEC9E23166B5B00C89786 /* MovieListViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -248,6 +305,154 @@
 				BECEECA823166C1600C89786 /* MainRouter.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		BECEECAA23166CC600C89786 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				BECEECD12316812700C89786 /* Parser */,
+				BECEECB423166D8500C89786 /* BaseService.swift */,
+				BECEECB92316719D00C89786 /* ServiceConstants.swift */,
+				BECEECD7231685F100C89786 /* EndpointProvider.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		BECEECAB23166CCE00C89786 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				BECEECBD2316724200C89786 /* Cache */,
+				BECEECB123166CFD00C89786 /* UseCase */,
+				BECEECAC23166CD400C89786 /* Repository */,
+				BECEECAA23166CC600C89786 /* Service */,
+				BECEECCB23167B1F00C89786 /* Entity.swift */,
+				BECEECCF2316803800C89786 /* Result.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		BECEECAC23166CD400C89786 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				BECEECAD23166CDE00C89786 /* Repository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		BECEECB123166CFD00C89786 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				BECEECB223166D0700C89786 /* UseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		BECEECBD2316724200C89786 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				BECEECBE2316724C00C89786 /* CodableEntity.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		BECEECC0231675FD00C89786 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				BECEECC32316778000C89786 /* CoreData */,
+				BECEECC12316760A00C89786 /* MovieRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		BECEECC32316778000C89786 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				BECEECC42316779200C89786 /* MovieDataController.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		BECEECC623167A2500C89786 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				BECEECCD23167D2B00C89786 /* GetMovieList.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		BECEECC723167A2A00C89786 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				BECEECC823167A3C00C89786 /* MovieListService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		BECEECD12316812700C89786 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				BECEECD22316812F00C89786 /* BaseParser.swift */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		BECEECD42316849300C89786 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BECEECBB2316723300C89786 /* Movie.swift */,
+				BECEECD5231684A700C89786 /* MovieListResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BECEECDB231721A300C89786 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				BECEECDC231721AC00C89786 /* Theme.swift */,
+				BECEECEE2317319000C89786 /* ThemeProvider.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		BECEECDE231722ED00C89786 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BECEECDF231722FC00C89786 /* UIColor.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BECEECE3231726EF00C89786 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BECEECE923172D2B00C89786 /* Controller */,
+				BECEECE4231726F400C89786 /* ThemeViews */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BECEECE4231726F400C89786 /* ThemeViews */ = {
+			isa = PBXGroup;
+			children = (
+				BECEECE72317271E00C89786 /* ThemeViews.swift */,
+			);
+			path = ThemeViews;
+			sourceTree = "<group>";
+		};
+		BECEECE923172D2B00C89786 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BECEECEA23172D3700C89786 /* BaseViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BECEECF02317319E00C89786 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				BECEECF1231731A900C89786 /* AppDefaults.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		F556E7CCA504BFAE038720F8 /* Frameworks */ = {
@@ -417,11 +622,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MovieApp/Pods-MovieApp-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/PluggableApplicationDelegate/PluggableApplicationDelegate.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PluggableApplicationDelegate.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -470,15 +677,38 @@
 			files = (
 				BECEEC672316681F00C89786 /* AppDelegate.swift in Sources */,
 				BECEECA323166B5B00C89786 /* MovieListInteractor.swift in Sources */,
+				BECEECDA2316863F00C89786 /* ServicesAppDelegate.swift in Sources */,
+				BECEECCC23167B1F00C89786 /* Entity.swift in Sources */,
+				BECEECE0231722FC00C89786 /* UIColor.swift in Sources */,
+				BECEECD8231685F100C89786 /* EndpointProvider.swift in Sources */,
+				BECEECC923167A3C00C89786 /* MovieListService.swift in Sources */,
+				BECEECF2231731A900C89786 /* AppDefaults.swift in Sources */,
+				BECEECC22316760A00C89786 /* MovieRepository.swift in Sources */,
 				BECEECA023166B5B00C89786 /* MovieListRouter.swift in Sources */,
+				BECEECBA2316719D00C89786 /* ServiceConstants.swift in Sources */,
 				BECEECA623166BB500C89786 /* RouterAppDelegate.swift in Sources */,
+				BECEECE82317271E00C89786 /* ThemeViews.swift in Sources */,
 				BECEEC8E2316698900C89786 /* ApplicationServicesManager.swift in Sources */,
+				BECEECEB23172D3700C89786 /* BaseViewController.swift in Sources */,
+				BECEECE2231725EE00C89786 /* ThemeAppDelegate.swift in Sources */,
+				BECEECBC2316723300C89786 /* Movie.swift in Sources */,
+				BECEECBF2316724C00C89786 /* CodableEntity.swift in Sources */,
+				BECEECDD231721AC00C89786 /* Theme.swift in Sources */,
 				BECEECA223166B5B00C89786 /* MovieListViewController.swift in Sources */,
+				BECEECEF2317319000C89786 /* ThemeProvider.swift in Sources */,
 				BECEEC6F2316681F00C89786 /* MovieApp.xcdatamodeld in Sources */,
+				BECEECD6231684A700C89786 /* MovieListResponse.swift in Sources */,
+				BECEECD02316803800C89786 /* Result.swift in Sources */,
+				BECEECB523166D8500C89786 /* BaseService.swift in Sources */,
 				BECEEC9023166A7F00C89786 /* CoreDataAppDelegate.swift in Sources */,
 				BECEEC9F23166B5B00C89786 /* MovieListPresenter.swift in Sources */,
 				BECEECA923166C1600C89786 /* MainRouter.swift in Sources */,
+				BECEECC52316779200C89786 /* MovieDataController.swift in Sources */,
+				BECEECD32316812F00C89786 /* BaseParser.swift in Sources */,
+				BECEECB323166D0700C89786 /* UseCase.swift in Sources */,
 				BECEECA123166B5B00C89786 /* MovieListContracts.swift in Sources */,
+				BECEECAE23166CDE00C89786 /* Repository.swift in Sources */,
+				BECEECCE23167D2B00C89786 /* GetMovieList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

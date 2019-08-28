@@ -13,7 +13,11 @@ class MovieListRouter: MovieListRouterProtocol {
     static func createModule() -> UIViewController {
         let view = MovieListViewController()
         
-        let interactor = MovieListInteractor()
+        let interactor = MovieListInteractor(
+            getMovieListUseCase: GetMovieListImpl(
+                service: MovieListWebService()
+            )
+        )
         let router = MovieListRouter()
         
         let presenter = MovieListPresenter(

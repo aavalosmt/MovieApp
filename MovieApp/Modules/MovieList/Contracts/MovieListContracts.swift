@@ -17,20 +17,23 @@ protocol MovieListRouterProtocol: class {
 protocol MovieListPresenterProtocol: class {
     var didMovieListChange: Driver<[MovieEntity]> { get }
     var didMovieErrorChange: Signal<Error> { get }
+    var didImageChange: Driver<(index: Int, image: UIImage?)> { get }
     
     var view: MovieListViewProtocol? { get }
     var interactor: MovieListInputInteractorProtocol { get }
     var router: MovieListRouterProtocol { get }
     
-    func bind(viewDidLoad: Signal<Void>)
+    func bind(viewDidLoad: Signal<Void>, imageNeeded: Signal<(Int, String)>)
     func getMovieList()
 }
 
 protocol MovieListInputInteractorProtocol: class {
     var presenter: MovieListOutputInteractorProtocol? { get set }
     var getMovieListUseCase: GetMovieList { get }
+    var imageProvider: ImageDownloader { get }
     
-    func getMovieList() -> Single<Result<[MovieEntity]>>
+    func getMovieList() -> Observable<Result<[MovieEntity]>>
+    func getImage(imagePath: String) -> Single<Result<UIImage?>>
 }
 
 protocol MovieListOutputInteractorProtocol: class {

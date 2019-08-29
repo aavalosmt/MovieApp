@@ -12,6 +12,26 @@ class AppLabel: UILabel {
     
 }
 
+extension UIAppearance where Self: UILabel {
+    var appearancetextColor: UIColor {
+        get {
+            return textColor
+        }
+        set(newValue) {
+            self.textColor = newValue
+        }
+    }
+    
+    var appearanceFont: UIFont {
+        get {
+            return font
+        }
+        set(newValue) {
+            self.font = newValue
+        }
+    }
+}
+
 class AppButton: UIButton {
     
 }

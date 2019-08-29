@@ -15,7 +15,25 @@ enum Environment {
     var baseUrl: String {
         switch self {
         case .development:
-            return "http://api.themoviedb.org/4"
+            return "https://api.themoviedb.org/4"
+        default:
+            return ""
+        }
+    }
+    
+    var imageBaseUrl: String {
+        switch self {
+        case .development:
+            return "https://image.tmdb.org/t/p/w300"
+        default:
+            return ""
+        }
+    }
+    
+    var thumbnailBaseUrl: String {
+        switch self {
+        case .development:
+            return "https://image.tmdb.org/t/p/w200"
         default:
             return ""
         }

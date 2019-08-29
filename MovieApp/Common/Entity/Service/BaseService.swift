@@ -196,6 +196,8 @@ class BaseService<Entity: CodableEntity>: Service {
                 }
                 
                 request(baseUrl: baseUrl, method: method, parameters: parameters, headers: headers, paginated: paginated, page: page + 1, limit: limit, completion: completion)
+                
+                completion(.success(entity: entity))
             } else {
                 completion(.success(entity: entity))
             }

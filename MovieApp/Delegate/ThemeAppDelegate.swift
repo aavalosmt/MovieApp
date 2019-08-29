@@ -31,7 +31,11 @@ class ThemeAppDelegate: NSObject, ApplicationService {
     func applyTheme(theme: Theme) {
         themeProvider.inject(theme: theme)
         
-        AppLabel.appearance().tintColor = self.theme.colors.textColor
+        
+        AppLabel.appearance().appearancetextColor = self.theme.colors.textColor
+        AppLabel.appearance().appearanceFont = self.theme.fonts.smallTitle
+
+        
         AppButton.appearance().tintColor = self.theme.colors.textColor
     }
     

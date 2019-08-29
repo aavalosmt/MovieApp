@@ -8,7 +8,7 @@ target 'MovieApp' do
   # Pods for MovieApp
   pod 'RxSwift', '~> 4.5'
   pod 'RxCocoa', '~> 4.5'  
-
+  pod 'RealmSwift'
 
   target 'MovieAppTests' do
     inherit! :search_paths

@@ -6,7 +6,7 @@
 //  Copyright © 2019 aavalosmt. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import RxSwift
 import RxCocoa
 
@@ -14,9 +14,11 @@ class MovieListPresenter: MovieListPresenterProtocol {
     
     private let movieChangeRelay: BehaviorRelay<[MovieEntity]>
     private let movieErrorChangeRelay: PublishRelay<Error>
+    private let imageChangeRelay: BehaviorRelay<(index: Int, image: UIImage?)>
     
     let didMovieListChange: Driver<[MovieEntity]>
     let didMovieErrorChange: Signal<Error>
+    let didImageChange: Driver<(index: Int, image: UIImage?)>
     
     weak var view: MovieListViewProtocol?
     var interactor: MovieListInputInteractorProtocol
@@ -36,32 +38,59 @@ class MovieListPresenter: MovieListPresenterProtocol {
         
         self.movieErrorChangeRelay = PublishRelay<Error>()
         self.didMovieErrorChange = movieErrorChangeRelay.asSignal()
+
+        let value: (Int, UIImage?) = (-1, nil)
+        self.imageChangeRelay = BehaviorRelay<(index: Int, image: UIImage?)>(value: value)
+        self.didImageChange = imageChangeRelay.asDriver()
     }
     
-    func bind(viewDidLoad: Signal<Void>) {
+    func bind(viewDidLoad: Signal<Void>, imageNeeded: Signal<(Int, String)>) {
         viewDidLoad.emit(onNext: { [weak self] text in
             guard let self = self else { return }
             self.getMovieList()
+        }).disposed(by: disposeBag)
+        
+        imageNeeded.emit(onNext: { [weak self] (index, path) in
+            guard let self = self else { return }
+            self.getImage(forPath: path, index: index)
         }).disposed(by: disposeBag)
     }
     
     func getMovieList() {
         interactor
             .getMovieList()
-            .subscribeOn(MainScheduler.instance)
-            .subscribe(onSuccess: { [weak self] result in
+            .subscribeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
+            .subscribe({ [weak self] result in
                     guard let self = self else { return }
                     switch result {
-                    case let .success(results):
-                        self.movieChangeRelay.accept(results)
+                    case .next(let moviesResult):
+                        if let movies = moviesResult.value {
+                            self.movieChangeRelay.accept(movies)
+                        } else {
+                            self.movieErrorChangeRelay.accept(ServiceError.badRequest)
+                        }
                     case let .error(error):
                         self.movieErrorChangeRelay.accept(error)
+                    case .completed:
+                        break
                     }
-                }, onError: { [weak self] error in
-                    guard let self = self else { return }
-                    self.movieErrorChangeRelay.accept(error)
-            })
-            .disposed(by: disposeBag)
+                }
+            ).disposed(by: disposeBag)
+    }
+    
+    func getImage(forPath path: String, index: Int) {
+        interactor
+            .getImage(imagePath: path)
+            .observeOn(MainScheduler.asyncInstance)
+            .subscribeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
+            .subscribe(onSuccess: { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case let .success(image):
+                    self.imageChangeRelay.accept((index: index, image: image))
+                default: break
+                }
+            }).disposed(by: disposeBag)
     }
     
 }

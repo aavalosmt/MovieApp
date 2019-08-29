@@ -13,7 +13,6 @@ class AppDelegate: PluggableApplicationDelegate {
 
     override var services: [ApplicationService] {
         return [
-            CoreDataAppDelegate.shared,
             RouterAppDelegate.shared,
             ServicesAppDelegate.shared,
             ThemeAppDelegate.shared

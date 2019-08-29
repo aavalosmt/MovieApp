@@ -15,7 +15,7 @@ protocol MovieListService {
 class MovieListWebService: BaseService<MovieListResponse>, MovieListService {
     
     func getMovieList(completion: @escaping ServiceResponseClosure) {
-        let url = String(format: endpointProvider.url(forEndpoint: .MovieList), 1)
+        let url = endpointProvider.url(forEndpoint: .MovieList)
         
         super.request(baseUrl: url,
                       method: .get,
@@ -23,7 +23,7 @@ class MovieListWebService: BaseService<MovieListResponse>, MovieListService {
                       headers: [:],
                       paginated: true,
                       page: 1,
-                      limit: 10,
+                      limit: 5,
                       completion: completion)
     }
     

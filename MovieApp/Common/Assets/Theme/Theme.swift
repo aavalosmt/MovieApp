@@ -26,6 +26,7 @@ protocol ColorPalleteProtocol {
     var light: UIColor { get }
     var dark: UIColor { get }
     var backgroundColor: UIColor { get }
+    var statusBarStyle: UIStatusBarStyle { get }
 }
 
 struct DarkTheme: ThemeProtocol {
@@ -40,11 +41,12 @@ struct DarkFonts: AppFontsProtocol {
 }
 
 struct DarkPallete: ColorPalleteProtocol {
-    var textColor: UIColor       = .white
-    var primary: UIColor         = .white
-    var light: UIColor           = UIColor(rgb: 0x484848)
-    var dark: UIColor            = .black
-    var backgroundColor: UIColor = UIColor(rgb: 0x212121)
+    var textColor: UIColor               = .white
+    var primary: UIColor                 = .white
+    var light: UIColor                   = UIColor(rgb: 0x484848)
+    var dark: UIColor                    = .black
+    var backgroundColor: UIColor         = UIColor(rgb: 0x212121)
+    var statusBarStyle: UIStatusBarStyle = UIStatusBarStyle.lightContent
 }
 
 enum Theme: String {

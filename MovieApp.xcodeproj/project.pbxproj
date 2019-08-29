@@ -9,13 +9,18 @@
 /* Begin PBXBuildFile section */
 		2E61AFF96294068A2E73F66F /* Pods_MovieApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A04EAAA430332CC4399C04AE /* Pods_MovieApp.framework */; };
 		5C6209F0238252688F8FC965 /* Pods_MovieAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEFA74C8C6802ACA6F7ED9A /* Pods_MovieAppTests.framework */; };
+		BE4401CE2317BA8900D5EE33 /* RealmHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4401CD2317BA8900D5EE33 /* RealmHandler.swift */; };
+		BE4401D22317BBDC00D5EE33 /* RealmAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4401D12317BBDC00D5EE33 /* RealmAppDelegate.swift */; };
+		BE4401D42317BC1900D5EE33 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4401D32317BC1900D5EE33 /* AppConstants.swift */; };
+		BE4401D62317BD5200D5EE33 /* ImageDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4401D52317BD5200D5EE33 /* ImageDataController.swift */; };
+		BE4401D92317BDBC00D5EE33 /* MovieDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4401D82317BDBC00D5EE33 /* MovieDataController.swift */; };
+		BE4401DB2317BE4E00D5EE33 /* RealmImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4401DA2317BE4E00D5EE33 /* RealmImage.swift */; };
+		BE4401DD2317C25700D5EE33 /* RealmMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4401DC2317C25700D5EE33 /* RealmMovie.swift */; };
 		BECEEC672316681F00C89786 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEEC662316681F00C89786 /* AppDelegate.swift */; };
-		BECEEC6F2316681F00C89786 /* MovieApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BECEEC6D2316681F00C89786 /* MovieApp.xcdatamodeld */; };
 		BECEEC712316681F00C89786 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BECEEC702316681F00C89786 /* Assets.xcassets */; };
 		BECEEC742316681F00C89786 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BECEEC722316681F00C89786 /* LaunchScreen.storyboard */; };
 		BECEEC7F2316681F00C89786 /* MovieAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEEC7E2316681F00C89786 /* MovieAppTests.swift */; };
 		BECEEC8E2316698900C89786 /* ApplicationServicesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEEC8D2316698900C89786 /* ApplicationServicesManager.swift */; };
-		BECEEC9023166A7F00C89786 /* CoreDataAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEEC8F23166A7F00C89786 /* CoreDataAppDelegate.swift */; };
 		BECEEC9F23166B5B00C89786 /* MovieListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEEC9923166B5B00C89786 /* MovieListPresenter.swift */; };
 		BECEECA023166B5B00C89786 /* MovieListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEEC9A23166B5B00C89786 /* MovieListRouter.swift */; };
 		BECEECA123166B5B00C89786 /* MovieListContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEEC9B23166B5B00C89786 /* MovieListContracts.swift */; };
@@ -31,7 +36,6 @@
 		BECEECBC2316723300C89786 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECBB2316723300C89786 /* Movie.swift */; };
 		BECEECBF2316724C00C89786 /* CodableEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECBE2316724C00C89786 /* CodableEntity.swift */; };
 		BECEECC22316760A00C89786 /* MovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECC12316760A00C89786 /* MovieRepository.swift */; };
-		BECEECC52316779200C89786 /* MovieDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECC42316779200C89786 /* MovieDataController.swift */; };
 		BECEECC923167A3C00C89786 /* MovieListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECC823167A3C00C89786 /* MovieListService.swift */; };
 		BECEECCC23167B1F00C89786 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECCB23167B1F00C89786 /* Entity.swift */; };
 		BECEECCE23167D2B00C89786 /* GetMovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECCD23167D2B00C89786 /* GetMovieList.swift */; };
@@ -47,6 +51,21 @@
 		BECEECEB23172D3700C89786 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECEA23172D3700C89786 /* BaseViewController.swift */; };
 		BECEECEF2317319000C89786 /* ThemeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECEE2317319000C89786 /* ThemeProvider.swift */; };
 		BECEECF2231731A900C89786 /* AppDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECF1231731A900C89786 /* AppDefaults.swift */; };
+		BECEECF523173A9B00C89786 /* ImageCaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECF423173A9B00C89786 /* ImageCaching.swift */; };
+		BECEECF723173AF700C89786 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECF623173AF700C89786 /* ImageDownloader.swift */; };
+		BECEECF923173BA900C89786 /* CacheAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECF823173BA900C89786 /* CacheAppDelegate.swift */; };
+		BECEECFF23174C7200C89786 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEECFD23174C7200C89786 /* ImageTableViewCell.swift */; };
+		BECEED0023174C7200C89786 /* ImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BECEECFE23174C7200C89786 /* ImageTableViewCell.xib */; };
+		BECEED0223174C8300C89786 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEED0123174C8300C89786 /* UITableViewCell.swift */; };
+		BECEED0423174CCC00C89786 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEED0323174CCC00C89786 /* UITableView.swift */; };
+		BECEED06231756E000C89786 /* ImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEED05231756E000C89786 /* ImageRepository.swift */; };
+		BECEED092317573200C89786 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEED072317573200C89786 /* MovieTableViewCell.swift */; };
+		BECEED0A2317573200C89786 /* MovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BECEED082317573200C89786 /* MovieTableViewCell.xib */; };
+		BECEED0D23175ADD00C89786 /* ImageConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEED0C23175ADD00C89786 /* ImageConstants.swift */; };
+		BECEED0F231769B300C89786 /* DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEED0E231769B300C89786 /* DateFormat.swift */; };
+		BECEED1223176B7E00C89786 /* CoreDataConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEED1123176B7E00C89786 /* CoreDataConstants.swift */; };
+		BECEED1623176BF500C89786 /* PersistanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEED1523176BF500C89786 /* PersistanceController.swift */; };
+		BECEED4A23177C4900C89786 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEED4923177C4900C89786 /* Image.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,9 +84,15 @@
 		715D7A22BE8C58A2277CC43E /* Pods-MovieAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MovieAppTests/Pods-MovieAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7DA22C15BB5DC2F03E7270B1 /* Pods-MovieApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MovieApp/Pods-MovieApp.release.xcconfig"; sourceTree = "<group>"; };
 		A04EAAA430332CC4399C04AE /* Pods_MovieApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE4401CD2317BA8900D5EE33 /* RealmHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmHandler.swift; sourceTree = "<group>"; };
+		BE4401D12317BBDC00D5EE33 /* RealmAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAppDelegate.swift; sourceTree = "<group>"; };
+		BE4401D32317BC1900D5EE33 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		BE4401D52317BD5200D5EE33 /* ImageDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataController.swift; sourceTree = "<group>"; };
+		BE4401D82317BDBC00D5EE33 /* MovieDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDataController.swift; sourceTree = "<group>"; };
+		BE4401DA2317BE4E00D5EE33 /* RealmImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmImage.swift; sourceTree = "<group>"; };
+		BE4401DC2317C25700D5EE33 /* RealmMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMovie.swift; sourceTree = "<group>"; };
 		BECEEC632316681F00C89786 /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BECEEC662316681F00C89786 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BECEEC6E2316681F00C89786 /* MovieApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MovieApp.xcdatamodel; sourceTree = "<group>"; };
 		BECEEC702316681F00C89786 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BECEEC732316681F00C89786 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BECEEC752316681F00C89786 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -75,7 +100,6 @@
 		BECEEC7E2316681F00C89786 /* MovieAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAppTests.swift; sourceTree = "<group>"; };
 		BECEEC802316681F00C89786 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BECEEC8D2316698900C89786 /* ApplicationServicesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationServicesManager.swift; sourceTree = "<group>"; };
-		BECEEC8F23166A7F00C89786 /* CoreDataAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataAppDelegate.swift; sourceTree = "<group>"; };
 		BECEEC9923166B5B00C89786 /* MovieListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListPresenter.swift; sourceTree = "<group>"; };
 		BECEEC9A23166B5B00C89786 /* MovieListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListRouter.swift; sourceTree = "<group>"; };
 		BECEEC9B23166B5B00C89786 /* MovieListContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListContracts.swift; sourceTree = "<group>"; };
@@ -91,7 +115,6 @@
 		BECEECBB2316723300C89786 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		BECEECBE2316724C00C89786 /* CodableEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableEntity.swift; sourceTree = "<group>"; };
 		BECEECC12316760A00C89786 /* MovieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepository.swift; sourceTree = "<group>"; };
-		BECEECC42316779200C89786 /* MovieDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDataController.swift; sourceTree = "<group>"; };
 		BECEECC823167A3C00C89786 /* MovieListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListService.swift; sourceTree = "<group>"; };
 		BECEECCB23167B1F00C89786 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		BECEECCD23167D2B00C89786 /* GetMovieList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMovieList.swift; sourceTree = "<group>"; };
@@ -107,6 +130,21 @@
 		BECEECEA23172D3700C89786 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		BECEECEE2317319000C89786 /* ThemeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProvider.swift; sourceTree = "<group>"; };
 		BECEECF1231731A900C89786 /* AppDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefaults.swift; sourceTree = "<group>"; };
+		BECEECF423173A9B00C89786 /* ImageCaching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCaching.swift; sourceTree = "<group>"; };
+		BECEECF623173AF700C89786 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		BECEECF823173BA900C89786 /* CacheAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheAppDelegate.swift; sourceTree = "<group>"; };
+		BECEECFD23174C7200C89786 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
+		BECEECFE23174C7200C89786 /* ImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageTableViewCell.xib; sourceTree = "<group>"; };
+		BECEED0123174C8300C89786 /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
+		BECEED0323174CCC00C89786 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		BECEED05231756E000C89786 /* ImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepository.swift; sourceTree = "<group>"; };
+		BECEED072317573200C89786 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
+		BECEED082317573200C89786 /* MovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTableViewCell.xib; sourceTree = "<group>"; };
+		BECEED0C23175ADD00C89786 /* ImageConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageConstants.swift; sourceTree = "<group>"; };
+		BECEED0E231769B300C89786 /* DateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
+		BECEED1123176B7E00C89786 /* CoreDataConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataConstants.swift; sourceTree = "<group>"; };
+		BECEED1523176BF500C89786 /* PersistanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistanceController.swift; sourceTree = "<group>"; };
+		BECEED4923177C4900C89786 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		F034BAAD8979BD4CA1FD3EB3 /* Pods-MovieApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MovieApp/Pods-MovieApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,6 +179,23 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		BE4401CC2317BA7E00D5EE33 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				BE4401CD2317BA8900D5EE33 /* RealmHandler.swift */,
+				BE4401D52317BD5200D5EE33 /* ImageDataController.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		BE4401D72317BDB000D5EE33 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				BE4401D82317BDBC00D5EE33 /* MovieDataController.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
 		BECEEC5A2316681F00C89786 = {
 			isa = PBXGroup;
 			children = (
@@ -170,7 +225,6 @@
 				BECEEC702316681F00C89786 /* Assets.xcassets */,
 				BECEEC722316681F00C89786 /* LaunchScreen.storyboard */,
 				BECEEC752316681F00C89786 /* Info.plist */,
-				BECEEC6D2316681F00C89786 /* MovieApp.xcdatamodeld */,
 			);
 			path = MovieApp;
 			sourceTree = "<group>";
@@ -209,6 +263,7 @@
 		BECEEC8B2316684900C89786 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				BECEED0B23175AD300C89786 /* Constants */,
 				BECEECDB231721A300C89786 /* Theme */,
 			);
 			path = Assets;
@@ -219,10 +274,11 @@
 			children = (
 				BECEEC8D2316698900C89786 /* ApplicationServicesManager.swift */,
 				BECEEC662316681F00C89786 /* AppDelegate.swift */,
-				BECEEC8F23166A7F00C89786 /* CoreDataAppDelegate.swift */,
 				BECEECA523166BB500C89786 /* RouterAppDelegate.swift */,
 				BECEECD92316863F00C89786 /* ServicesAppDelegate.swift */,
 				BECEECE1231725EE00C89786 /* ThemeAppDelegate.swift */,
+				BECEECF823173BA900C89786 /* CacheAppDelegate.swift */,
+				BE4401D12317BBDC00D5EE33 /* RealmAppDelegate.swift */,
 			);
 			path = Delegate;
 			sourceTree = "<group>";
@@ -285,6 +341,7 @@
 		BECEEC9723166B4700C89786 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BECEECFA23174C3F00C89786 /* Cell */,
 				BECEEC9C23166B5B00C89786 /* MovieListViewController.swift */,
 				BECEEC9E23166B5B00C89786 /* MovieListViewController.xib */,
 			);
@@ -321,9 +378,9 @@
 		BECEECAB23166CCE00C89786 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				BECEED4823177C4000C89786 /* Model */,
 				BECEECBD2316724200C89786 /* Cache */,
 				BECEECB123166CFD00C89786 /* UseCase */,
-				BECEECAC23166CD400C89786 /* Repository */,
 				BECEECAA23166CC600C89786 /* Service */,
 				BECEECCB23167B1F00C89786 /* Entity.swift */,
 				BECEECCF2316803800C89786 /* Result.swift */,
@@ -335,6 +392,8 @@
 			isa = PBXGroup;
 			children = (
 				BECEECAD23166CDE00C89786 /* Repository.swift */,
+				BECEED05231756E000C89786 /* ImageRepository.swift */,
+				BECEED1523176BF500C89786 /* PersistanceController.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -350,7 +409,11 @@
 		BECEECBD2316724200C89786 /* Cache */ = {
 			isa = PBXGroup;
 			children = (
+				BE4401CC2317BA7E00D5EE33 /* Realm */,
+				BECEECAC23166CD400C89786 /* Repository */,
 				BECEECBE2316724C00C89786 /* CodableEntity.swift */,
+				BECEECF423173A9B00C89786 /* ImageCaching.swift */,
+				BECEECF623173AF700C89786 /* ImageDownloader.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -358,18 +421,10 @@
 		BECEECC0231675FD00C89786 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				BECEECC32316778000C89786 /* CoreData */,
+				BE4401D72317BDB000D5EE33 /* Realm */,
 				BECEECC12316760A00C89786 /* MovieRepository.swift */,
 			);
 			path = Repository;
-			sourceTree = "<group>";
-		};
-		BECEECC32316778000C89786 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				BECEECC42316779200C89786 /* MovieDataController.swift */,
-			);
-			path = CoreData;
 			sourceTree = "<group>";
 		};
 		BECEECC623167A2500C89786 /* UseCase */ = {
@@ -401,6 +456,7 @@
 			children = (
 				BECEECBB2316723300C89786 /* Movie.swift */,
 				BECEECD5231684A700C89786 /* MovieListResponse.swift */,
+				BE4401DC2317C25700D5EE33 /* RealmMovie.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -418,6 +474,8 @@
 			isa = PBXGroup;
 			children = (
 				BECEECDF231722FC00C89786 /* UIColor.swift */,
+				BECEED0123174C8300C89786 /* UITableViewCell.swift */,
+				BECEED0323174CCC00C89786 /* UITableView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -451,8 +509,39 @@
 			isa = PBXGroup;
 			children = (
 				BECEECF1231731A900C89786 /* AppDefaults.swift */,
+				BECEED0E231769B300C89786 /* DateFormat.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		BECEECFA23174C3F00C89786 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BECEECFD23174C7200C89786 /* ImageTableViewCell.swift */,
+				BECEECFE23174C7200C89786 /* ImageTableViewCell.xib */,
+				BECEED072317573200C89786 /* MovieTableViewCell.swift */,
+				BECEED082317573200C89786 /* MovieTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		BECEED0B23175AD300C89786 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				BECEED0C23175ADD00C89786 /* ImageConstants.swift */,
+				BECEED1123176B7E00C89786 /* CoreDataConstants.swift */,
+				BE4401D32317BC1900D5EE33 /* AppConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		BECEED4823177C4000C89786 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BECEED4923177C4900C89786 /* Image.swift */,
+				BE4401DA2317BE4E00D5EE33 /* RealmImage.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		F556E7CCA504BFAE038720F8 /* Frameworks */ = {
@@ -552,6 +641,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BECEECA423166B5B00C89786 /* MovieListViewController.xib in Resources */,
+				BECEED0A2317573200C89786 /* MovieTableViewCell.xib in Resources */,
+				BECEED0023174C7200C89786 /* ImageTableViewCell.xib in Resources */,
 				BECEEC742316681F00C89786 /* LaunchScreen.storyboard in Resources */,
 				BECEEC712316681F00C89786 /* Assets.xcassets in Resources */,
 			);
@@ -622,11 +713,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MovieApp/Pods-MovieApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
@@ -677,6 +772,10 @@
 			files = (
 				BECEEC672316681F00C89786 /* AppDelegate.swift in Sources */,
 				BECEECA323166B5B00C89786 /* MovieListInteractor.swift in Sources */,
+				BE4401DD2317C25700D5EE33 /* RealmMovie.swift in Sources */,
+				BECEED092317573200C89786 /* MovieTableViewCell.swift in Sources */,
+				BECEED0D23175ADD00C89786 /* ImageConstants.swift in Sources */,
+				BE4401CE2317BA8900D5EE33 /* RealmHandler.swift in Sources */,
 				BECEECDA2316863F00C89786 /* ServicesAppDelegate.swift in Sources */,
 				BECEECCC23167B1F00C89786 /* Entity.swift in Sources */,
 				BECEECE0231722FC00C89786 /* UIColor.swift in Sources */,
@@ -687,6 +786,7 @@
 				BECEECA023166B5B00C89786 /* MovieListRouter.swift in Sources */,
 				BECEECBA2316719D00C89786 /* ServiceConstants.swift in Sources */,
 				BECEECA623166BB500C89786 /* RouterAppDelegate.swift in Sources */,
+				BECEED0223174C8300C89786 /* UITableViewCell.swift in Sources */,
 				BECEECE82317271E00C89786 /* ThemeViews.swift in Sources */,
 				BECEEC8E2316698900C89786 /* ApplicationServicesManager.swift in Sources */,
 				BECEECEB23172D3700C89786 /* BaseViewController.swift in Sources */,
@@ -696,18 +796,30 @@
 				BECEECDD231721AC00C89786 /* Theme.swift in Sources */,
 				BECEECA223166B5B00C89786 /* MovieListViewController.swift in Sources */,
 				BECEECEF2317319000C89786 /* ThemeProvider.swift in Sources */,
-				BECEEC6F2316681F00C89786 /* MovieApp.xcdatamodeld in Sources */,
+				BECEED4A23177C4900C89786 /* Image.swift in Sources */,
+				BECEED1223176B7E00C89786 /* CoreDataConstants.swift in Sources */,
 				BECEECD6231684A700C89786 /* MovieListResponse.swift in Sources */,
 				BECEECD02316803800C89786 /* Result.swift in Sources */,
 				BECEECB523166D8500C89786 /* BaseService.swift in Sources */,
-				BECEEC9023166A7F00C89786 /* CoreDataAppDelegate.swift in Sources */,
+				BECEECF523173A9B00C89786 /* ImageCaching.swift in Sources */,
+				BECEED06231756E000C89786 /* ImageRepository.swift in Sources */,
 				BECEEC9F23166B5B00C89786 /* MovieListPresenter.swift in Sources */,
 				BECEECA923166C1600C89786 /* MainRouter.swift in Sources */,
-				BECEECC52316779200C89786 /* MovieDataController.swift in Sources */,
 				BECEECD32316812F00C89786 /* BaseParser.swift in Sources */,
+				BECEECFF23174C7200C89786 /* ImageTableViewCell.swift in Sources */,
+				BECEED1623176BF500C89786 /* PersistanceController.swift in Sources */,
 				BECEECB323166D0700C89786 /* UseCase.swift in Sources */,
+				BECEECF923173BA900C89786 /* CacheAppDelegate.swift in Sources */,
 				BECEECA123166B5B00C89786 /* MovieListContracts.swift in Sources */,
 				BECEECAE23166CDE00C89786 /* Repository.swift in Sources */,
+				BE4401D22317BBDC00D5EE33 /* RealmAppDelegate.swift in Sources */,
+				BE4401DB2317BE4E00D5EE33 /* RealmImage.swift in Sources */,
+				BE4401D42317BC1900D5EE33 /* AppConstants.swift in Sources */,
+				BECEED0423174CCC00C89786 /* UITableView.swift in Sources */,
+				BECEECF723173AF700C89786 /* ImageDownloader.swift in Sources */,
+				BE4401D62317BD5200D5EE33 /* ImageDataController.swift in Sources */,
+				BECEED0F231769B300C89786 /* DateFormat.swift in Sources */,
+				BE4401D92317BDBC00D5EE33 /* MovieDataController.swift in Sources */,
 				BECEECCE23167D2B00C89786 /* GetMovieList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -967,19 +1079,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		BECEEC6D2316681F00C89786 /* MovieApp.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				BECEEC6E2316681F00C89786 /* MovieApp.xcdatamodel */,
-			);
-			currentVersion = BECEEC6E2316681F00C89786 /* MovieApp.xcdatamodel */;
-			path = MovieApp.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = BECEEC5B2316681F00C89786 /* Project object */;
 }

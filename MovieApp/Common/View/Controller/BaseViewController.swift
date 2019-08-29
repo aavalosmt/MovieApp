@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class BaseViewController: UIViewController {
     
     private var theme: ThemeProtocol = ThemeProvider.shared.getTheme().object
+    let disposeBag: DisposeBag = DisposeBag()
     
     func reloadTheme() {
         theme = ThemeProvider.shared.getTheme().object
@@ -26,4 +29,7 @@ class BaseViewController: UIViewController {
         applyTheme()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return theme.colors.statusBarStyle
+    }
 }

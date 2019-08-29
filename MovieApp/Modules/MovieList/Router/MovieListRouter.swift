@@ -15,9 +15,19 @@ class MovieListRouter: MovieListRouterProtocol {
         
         let interactor = MovieListInteractor(
             getMovieListUseCase: GetMovieListImpl(
-                service: MovieListWebService()
+                service: MovieListWebService(),
+                repository: MovieRepositoryImpl(
+                    persistanceController: MovieDataController()
+                )
+            ),
+            imageProvider: ImageProvider(
+                cache: ImageCache.shared,
+                repository: ImageRepositoryImpl(
+                    persistanceController: ImageDataController()
+                )
             )
         )
+        
         let router = MovieListRouter()
         
         let presenter = MovieListPresenter(

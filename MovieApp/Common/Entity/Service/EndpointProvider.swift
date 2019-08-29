@@ -10,11 +10,14 @@ import Foundation
 
 enum Endpoint {
     case MovieList
+    case Image(path: String)
     
     var path: String {
         switch self {
         case .MovieList:
             return "/list/%d"
+        case .Image(let path):
+            return path
         }
     }
 }
@@ -29,6 +32,13 @@ class EndpointProvider {
         return environment.baseUrl + endpoint.path
     }
     
+    func imageUrl(forEndpoint endpoint: Endpoint) -> String {
+        return environment.imageBaseUrl + endpoint.path
+    }
+    
+    func thumbnailUrl(forEndpoint endpoint: Endpoint) -> String {
+        return environment.thumbnailBaseUrl + endpoint.path
+    }
 }
 
 extension EndpointProvider {

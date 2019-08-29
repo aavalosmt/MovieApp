@@ -8,21 +8,37 @@
 
 import Foundation
 
-class MovieEntity: CodableEntity {
+protocol Movie {
+    var originalTitle: String? { get }
+    var title: String? { get }
+    var voteCount: Int? { get }
+    var voteAverage: Double? { get }
+    var popularity: Double? { get }
+    var hasVideo: Bool? { get }
+    var mediaType: String? { get }
+    var releaseDate: String? { get }
+    var originalLanguage: String? { get }
+    var overView: String? { get }
+    var isAdultRated: Bool? { get }
+    var genreIds: [Int]? { get }
+    var posterPath: String? { get }
+}
+
+class MovieEntity: CodableEntity, Movie {
     
-    var originalTitle: String
-    var title: String
-    var voteCount: Int
-    var voteAverage: Double
-    var popularity: Double
-    var hasVideo: Bool
-    var mediaType: String
-    var releaseDate: String
-    var originalLanguage: String
-    var overView: String
-    var isAdultRated: Bool
-    var genreIds: [Int]
-    var posterPath: String
+    var originalTitle: String?
+    var title: String?
+    var voteCount: Int?
+    var voteAverage: Double?
+    var popularity: Double?
+    var hasVideo: Bool?
+    var mediaType: String?
+    var releaseDate: String?
+    var originalLanguage: String?
+    var overView: String?
+    var isAdultRated: Bool?
+    var genreIds: [Int]?
+    var posterPath: String?
     
     enum CodingKeys: String, CodingKey {
         case originalTitle = "original_title"
@@ -40,19 +56,19 @@ class MovieEntity: CodableEntity {
         case posterPath = "poster_path"
     }
     
-    init(originalTitle: String,
-         title: String,
-         voteCount: Int,
-         voteAverage: Double,
-         popularity: Double,
-         hasVideo: Bool,
-         mediaType: String,
-         releaseDate: String,
-         originalLanguage: String,
-         overView: String,
-         isAdultRated: Bool,
-         genreIds: [Int],
-         posterPath: String) {
+    init(originalTitle: String?,
+         title: String?,
+         voteCount: Int?,
+         voteAverage: Double?,
+         popularity: Double?,
+         hasVideo: Bool?,
+         mediaType: String?,
+         releaseDate: String?,
+         originalLanguage: String?,
+         overView: String?,
+         isAdultRated: Bool?,
+         genreIds: [Int]?,
+         posterPath: String?) {
         
         self.originalTitle = originalTitle
         self.title = title

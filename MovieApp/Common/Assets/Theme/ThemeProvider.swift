@@ -11,7 +11,7 @@ import Foundation
 class ThemeProvider {
     
     static let shared: ThemeProvider = ThemeProvider()
-    static let defaultTheme: Theme = .light
+    static let defaultTheme: Theme = .dark
 
     private let appDefaults: AppDefaults = AppDefaults()
     private var currentTheme: Theme

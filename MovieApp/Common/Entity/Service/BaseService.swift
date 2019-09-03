@@ -38,7 +38,6 @@ enum ServiceError: Int, Error {
  * This enum defines the possible response result a request can return
  */
 enum ServiceResponse {
-    case paginatedSuccess(results: [CodableEntity])
     /// Returned when the service completes and parses the given model with no errors
     case success(entity: CodableEntity)
     /// Returned when the service completes with an http error or cannot parse the given model
@@ -55,20 +54,10 @@ protocol Service {
                  method: RequestMethod,
                  parameters: Dictionary<String, Any>,
                  headers: Dictionary<String, String>,
-                 paginated: Bool,
-                 page: Int,
-                 limit: Int,
                  completion: @escaping ServiceResponseClosure
     )
     
-    func processResponse(baseUrl: String,
-                         method: RequestMethod,
-                         parameters: Dictionary<String, Any>,
-                         headers: Dictionary<String, String>,
-                         data: Data?,
-                         paginated: Bool,
-                         page: Int,
-                         limit: Int,
+    func processResponse(data: Data?,
                          urlResponse: HTTPURLResponse,
                          completion: @escaping ServiceResponseClosure)
 }
@@ -86,7 +75,7 @@ class BaseService<Entity: CodableEntity>: Service {
     private let configuration: URLSessionConfiguration
     private let cachePolicy: URLRequest.CachePolicy
     private let timeOut: TimeInterval
-    private var results: [Entity] = []
+    
     let endpointProvider: EndpointProvider
     var parser: BaseParser<Entity>
 
@@ -117,18 +106,15 @@ class BaseService<Entity: CodableEntity>: Service {
                  method: RequestMethod,
                  parameters: Dictionary<String, Any>,
                  headers: Dictionary<String, String>,
-                 paginated: Bool,
-                 page: Int,
-                 limit: Int,
                  completion: @escaping ServiceResponseClosure) {
         
-        var endpointURL: String = paginated ? String(format: baseUrl, page): baseUrl
+        var baseUrl: String = baseUrl
         
         if method == .get {
-            endpointURL += "?" + ServiceConstants.apiKey + "=" + apiKey
+            baseUrl += "?" + ServiceConstants.apiKey + "=" + apiKey
         }
         
-        guard let url = URL(string: endpointURL) else {
+        guard let url = URL(string: baseUrl) else {
             completion(.failure(error: ServiceError.badRequest))
             return
         }
@@ -146,7 +132,7 @@ class BaseService<Entity: CodableEntity>: Service {
                 completion(.failure(error: ServiceError.serverError))
                 return
             }
-            self.processResponse(baseUrl: baseUrl, method: method, parameters: parameters, headers: headers, data: body, paginated: paginated, page: page, limit: limit, urlResponse: urlResponse, completion: completion)
+            self.processResponse(data: body, urlResponse: urlResponse, completion: completion)
         }
         task.resume()
     }
@@ -161,14 +147,7 @@ class BaseService<Entity: CodableEntity>: Service {
     /**
      * Decides wheter or not a request response is successful based on the statusCode and the parsed Model from the `parse(data:)` method
      */
-    func processResponse(baseUrl: String,
-                         method: RequestMethod,
-                         parameters: Dictionary<String, Any>,
-                         headers: Dictionary<String, String>,
-                         data: Data?,
-                         paginated: Bool,
-                         page: Int,
-                         limit: Int,
+    func processResponse(data: Data?,
                          urlResponse: HTTPURLResponse,
                          completion: @escaping ServiceResponseClosure) {
         
@@ -183,35 +162,15 @@ class BaseService<Entity: CodableEntity>: Service {
                 return
             }
             
-            if paginated {
-                results.append(entity)
-                guard page <= limit else {
-                    
-                    if !results.isEmpty {
-                        completion(.paginatedSuccess(results: results))
-                    } else {
-                        completion(.failure(error: ServiceError.parseError))
-                    }
-                    return
-                }
-                
-                request(baseUrl: baseUrl, method: method, parameters: parameters, headers: headers, paginated: paginated, page: page + 1, limit: limit, completion: completion)
-                
-                completion(.success(entity: entity))
-            } else {
-                completion(.success(entity: entity))
-            }
+            completion(.success(entity: entity))
+            
             
         default:
             guard let serviceError = ServiceError(rawValue: urlResponse.statusCode) else {
                 completion(.failure(error: ServiceError.badRequest))
                 return
             }
-            if paginated, !results.isEmpty {
-                completion(.paginatedSuccess(results: results))
-            } else {
-                completion(.failure(error: serviceError))
-            }
+            completion(.failure(error: serviceError))
         }
     }
 }

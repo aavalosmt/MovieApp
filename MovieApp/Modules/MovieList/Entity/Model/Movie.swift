@@ -22,6 +22,7 @@ protocol Movie {
     var isAdultRated: Bool? { get }
     var genreIds: [Int]? { get }
     var posterPath: String? { get }
+    var page: Int? { get }
 }
 
 class MovieEntity: CodableEntity, Movie {
@@ -39,6 +40,7 @@ class MovieEntity: CodableEntity, Movie {
     var isAdultRated: Bool?
     var genreIds: [Int]?
     var posterPath: String?
+    var page: Int?
     
     enum CodingKeys: String, CodingKey {
         case originalTitle = "original_title"
@@ -68,7 +70,8 @@ class MovieEntity: CodableEntity, Movie {
          overView: String?,
          isAdultRated: Bool?,
          genreIds: [Int]?,
-         posterPath: String?) {
+         posterPath: String?,
+         page: Int?) {
         
         self.originalTitle = originalTitle
         self.title = title
@@ -83,6 +86,7 @@ class MovieEntity: CodableEntity, Movie {
         self.isAdultRated = isAdultRated
         self.genreIds = genreIds
         self.posterPath = posterPath
+        self.page = page
     }
     
     required init(from decoder: Decoder) throws {

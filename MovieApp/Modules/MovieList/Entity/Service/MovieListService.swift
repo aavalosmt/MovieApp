@@ -9,21 +9,18 @@
 import Foundation
 
 protocol MovieListService {
-    func getMovieList(completion: @escaping ServiceResponseClosure)
+    func getMovieList(page: Int, completion: @escaping ServiceResponseClosure)
 }
 
 class MovieListWebService: BaseService<MovieListResponse>, MovieListService {
     
-    func getMovieList(completion: @escaping ServiceResponseClosure) {
-        let url = endpointProvider.url(forEndpoint: .MovieList)
+    func getMovieList(page: Int, completion: @escaping ServiceResponseClosure) {
+        let url = String(format: endpointProvider.url(forEndpoint: .MovieList), page)
         
         super.request(baseUrl: url,
                       method: .get,
                       parameters: [:],
                       headers: [:],
-                      paginated: true,
-                      page: 1,
-                      limit: 5,
                       completion: completion)
     }
     

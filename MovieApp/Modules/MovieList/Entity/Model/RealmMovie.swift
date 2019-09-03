@@ -24,6 +24,7 @@ class RealmMovie: Object {
     let r_isAdultRated = RealmOptional<Bool>()
     var r_genreIds = List<Int>()
     @objc dynamic var r_posterPath: String?
+    let r_page = RealmOptional<Int>()
     
     public override static func primaryKey() -> String? {
         return "r_title"
@@ -167,6 +168,15 @@ extension RealmMovie: Movie {
             list.append(genre)
         }
         return list
+    }
+    
+    var page: Int? {
+        get {
+            return r_page.value
+        }
+        set(newValue) {
+            r_page.value = newValue
+        }
     }
     
 }

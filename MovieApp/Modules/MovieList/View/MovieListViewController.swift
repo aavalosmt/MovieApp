@@ -23,16 +23,19 @@ class MovieListViewController: BaseViewController {
     
     private var didLoadRelay: PublishRelay<Void>
     private var imageNeededRelay: PublishRelay<(Int, String)>
-    
+    private var selectRowRelay: PublishRelay<Movie>
+
     init() {
         self.didLoadRelay = PublishRelay<Void>()
         self.imageNeededRelay = PublishRelay<(Int, String)>()
+        self.selectRowRelay = PublishRelay<Movie>()
         super.init(nibName: String(describing: MovieListViewController.self), bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
         self.didLoadRelay = PublishRelay<Void>()
         self.imageNeededRelay = PublishRelay<(Int, String)>()
+        self.selectRowRelay = PublishRelay<Movie>()
         super.init(coder: aDecoder)
     }
     
@@ -41,12 +44,19 @@ class MovieListViewController: BaseViewController {
         
         bindToPresenter()
         configureTableView()
-        didLoadRelay.accept(())
+
+        presenter?.viewDidLoadTrigger.onNext(())
+        
+        tableView.rx.reachedBottom
+            .bind(to: presenter!.reachedBottomTrigger)
+            .disposed(by: disposeBag)
     }
     
     private func bindToPresenter() {
         
-        presenter?.bind(viewDidLoad: didLoadRelay.asSignal(), imageNeeded: imageNeededRelay.asSignal())
+        presenter?.bind(
+            imageNeededTrigger: imageNeededRelay.asSignal(),
+            selectRowTrigger: selectRowRelay.asSignal())
         
         presenter?.didMovieListChange.drive(onNext: { [weak self] results in
             self?.movies.append(contentsOf: results)
@@ -86,25 +96,30 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.identifier) as? MovieTableViewCell else {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.identifier) as? MovieTableViewCell,
+              let movie = movies[safe: indexPath.row] else {
             return UITableViewCell()
         }
-        let index = indexPath.row
-        let movie = movies[index]
-        
         cell.configure(with: movie)
         return cell
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let index = indexPath.row
-        let movie = movies[index]
         
-        if let posterPath = movie.posterPath {
+        if let posterPath = movies[safe: indexPath.row]?.posterPath {
             DispatchQueue.global().sync {
-                imageNeededRelay.accept((index, posterPath))
+                imageNeededRelay.accept((indexPath.row, posterPath))
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let movie = movies[safe: indexPath.row] else {
+            return
+        }
+        
+        selectRowRelay.accept(movie)
     }
     
 }

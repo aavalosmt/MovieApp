@@ -14,8 +14,10 @@ protocol MovieRepository: Repository {
     
     var count: Int { get }
     
+    func count(forPage page: Int) -> Int
     func saveMovies(movies: [MovieEntity])
     func fetchMovieList() -> [MovieEntity]?
+    func fetchMovieList(forPage page: Int) -> [MovieEntity]?
 }
 
 class MovieRepositoryImpl: MovieRepository {
@@ -30,12 +32,25 @@ class MovieRepositoryImpl: MovieRepository {
         return persistanceController.count
     }
     
+    func count(forPage page: Int) -> Int {
+        let pagePredicate = String(format: "(r_page = %d)", page)
+        return persistanceController.count(predicate: pagePredicate)
+    }
+    
     func saveMovies(movies: [MovieEntity]) {
         persistanceController.save(objects: movies)
     }
     
     func fetchMovieList() -> [MovieEntity]? {
         guard let movies = persistanceController.fetch() as? [MovieEntity], !movies.isEmpty else {
+            return nil
+        }
+        return movies
+    }
+    
+    func fetchMovieList(forPage page: Int) -> [MovieEntity]? {
+        let pagePredicate = String(format: "(r_page = %d)", page)
+        guard let movies = persistanceController.fetch(predicate: pagePredicate) as? [MovieEntity], !movies.isEmpty else {
             return nil
         }
         return movies

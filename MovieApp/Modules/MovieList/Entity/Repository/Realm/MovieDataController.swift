@@ -14,6 +14,10 @@ class MovieDataController: PersistanceController {
         return fetch()?.count ?? 0
     }
     
+    func count(predicate: String) -> Int {
+        return realmHandler.getObjects(type: RealmMovie.self, predicateFormat: predicate)?.count ?? 0
+    }
+    
     let realmHandler: RealmHandler
     
     init(realmHandler: RealmHandler = .shared) {
@@ -41,6 +45,7 @@ class MovieDataController: PersistanceController {
             realmMovie.isAdultRated = movie.isAdultRated
             realmMovie.genreIds = movie.genreIds
             realmMovie.posterPath = movie.posterPath
+            realmMovie.page = movie.page
             
             return realmMovie
         })
@@ -68,7 +73,8 @@ class MovieDataController: PersistanceController {
                                      overView: realmMovie.overView,
                                      isAdultRated: realmMovie.isAdultRated,
                                      genreIds: realmMovie.genreIds,
-                                     posterPath: realmMovie.posterPath)
+                                     posterPath: realmMovie.posterPath,
+                                     page: realmMovie.page)
             
             return entity
         })
@@ -97,7 +103,37 @@ class MovieDataController: PersistanceController {
                            overView: realmMovie.overView,
                            isAdultRated: realmMovie.isAdultRated,
                            genreIds: realmMovie.genreIds,
-                           posterPath: realmMovie.posterPath)
+                           posterPath: realmMovie.posterPath,
+                           page: realmMovie.page)
+    }
+    
+    func fetch(predicate: String) -> [Any]? {
+        let realmMovies = realmHandler.getObjects(type: RealmMovie.self, predicateFormat: predicate)
+        
+        let movies = realmMovies?.compactMap({ (realmMovie) -> MovieEntity? in
+            guard let realmMovie = realmMovie as? RealmMovie else {
+                return nil
+            }
+            
+            let entity = MovieEntity(originalTitle: realmMovie.originalTitle,
+                                     title: realmMovie.title,
+                                     voteCount: realmMovie.voteCount,
+                                     voteAverage: realmMovie.voteAverage,
+                                     popularity: realmMovie.popularity,
+                                     hasVideo: realmMovie.hasVideo,
+                                     mediaType: realmMovie.mediaType,
+                                     releaseDate: realmMovie.releaseDate,
+                                     originalLanguage: realmMovie.originalLanguage,
+                                     overView: realmMovie.overView,
+                                     isAdultRated: realmMovie.isAdultRated,
+                                     genreIds: realmMovie.genreIds,
+                                     posterPath: realmMovie.posterPath,
+                                     page: realmMovie.page)
+            
+            return entity
+        })
+        
+        return (movies?.isEmpty ?? true) ? nil : movies
     }
     
 }

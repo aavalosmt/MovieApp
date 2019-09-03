@@ -20,15 +20,18 @@ class MovieListPresenter: MovieListPresenterProtocol {
     let didMovieErrorChange: Signal<Error>
     let didImageChange: Driver<(index: Int, image: UIImage?)>
     
+    let reachedBottomTrigger: PublishSubject<Void> = PublishSubject<Void>()
+    let viewDidLoadTrigger: PublishSubject<Void> = PublishSubject<Void>()
+    
     weak var view: MovieListViewProtocol?
     var interactor: MovieListInputInteractorProtocol
-    var router: MovieListRouterProtocol
+    var router: MovieListRouterProtocol & MovieListRouterOutputProtocol
     
     private let disposeBag: DisposeBag = DisposeBag()
     
     init(view: MovieListViewProtocol,
          interactor: MovieListInputInteractorProtocol,
-         router: MovieListRouterProtocol) {
+         router: MovieListRouterProtocol & MovieListRouterOutputProtocol) {
         self.view = view
         self.interactor = interactor
         self.router = router
@@ -42,17 +45,31 @@ class MovieListPresenter: MovieListPresenterProtocol {
         let value: (Int, UIImage?) = (-1, nil)
         self.imageChangeRelay = BehaviorRelay<(index: Int, image: UIImage?)>(value: value)
         self.didImageChange = imageChangeRelay.asDriver()
+        
+        viewDidLoadTrigger.asSignal(onErrorJustReturn: ())
+            .emit(onNext: { [weak self] text in
+                    guard let self = self else { return }
+                    self.getMovieList()
+                }
+            ).disposed(by: disposeBag)
+        
+        reachedBottomTrigger.asObservable()
+            .debounce(0.2, scheduler: SharingScheduler.make())
+            .subscribe({ [weak self] _ in
+                guard let self = self else { return }
+                self.getMovieList()
+        }).disposed(by: disposeBag)
     }
     
-    func bind(viewDidLoad: Signal<Void>, imageNeeded: Signal<(Int, String)>) {
-        viewDidLoad.emit(onNext: { [weak self] text in
-            guard let self = self else { return }
-            self.getMovieList()
-        }).disposed(by: disposeBag)
-        
-        imageNeeded.emit(onNext: { [weak self] (index, path) in
+    func bind(imageNeededTrigger: Signal<(Int, String)>, selectRowTrigger: Signal<Movie>) {
+        imageNeededTrigger.emit(onNext: { [weak self] (index, path) in
             guard let self = self else { return }
             self.getImage(forPath: path, index: index)
+        }).disposed(by: disposeBag)
+        
+        selectRowTrigger.emit(onNext: { [weak self] movie in
+            guard let self = self, let view = self.view as? Navigatable else { return }
+            self.router.transitionDetail(from: view, movie: movie)
         }).disposed(by: disposeBag)
     }
     

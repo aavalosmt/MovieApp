@@ -16,8 +16,10 @@ class RouterAppDelegate: NSObject, ApplicationService {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
+        let initialView = MainRouter.startNavigation()
+        
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = MainRouter.startNavigation()
+        window?.rootViewController = UINavigationController(rootViewController: initialView)
         window?.makeKeyAndVisible()
         
         return true

@@ -12,8 +12,10 @@ protocol PersistanceController {
     
     var count: Int { get }
     
+    func count(predicate: String) -> Int
     func save(objects: [Any]) 
     func fetch() -> [Any]?
     func search(key: Any) -> Any?
+    func fetch(predicate: String) -> [Any]?
     
 }

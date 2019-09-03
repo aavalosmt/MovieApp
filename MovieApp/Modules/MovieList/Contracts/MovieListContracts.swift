@@ -14,16 +14,22 @@ protocol MovieListRouterProtocol: class {
     static func createModule() -> UIViewController
 }
 
+protocol MovieListRouterOutputProtocol: class {
+    func transitionDetail(from: Navigatable, movie: Movie)
+}
+
 protocol MovieListPresenterProtocol: class {
     var didMovieListChange: Driver<[MovieEntity]> { get }
     var didMovieErrorChange: Signal<Error> { get }
     var didImageChange: Driver<(index: Int, image: UIImage?)> { get }
-    
+    var reachedBottomTrigger: PublishSubject<Void> { get }
+    var viewDidLoadTrigger: PublishSubject<Void> { get }
+
     var view: MovieListViewProtocol? { get }
     var interactor: MovieListInputInteractorProtocol { get }
-    var router: MovieListRouterProtocol { get }
+    var router: MovieListRouterProtocol & MovieListRouterOutputProtocol { get }
     
-    func bind(viewDidLoad: Signal<Void>, imageNeeded: Signal<(Int, String)>)
+    func bind(imageNeededTrigger: Signal<(Int, String)>, selectRowTrigger: Signal<Movie>)
     func getMovieList()
 }
 

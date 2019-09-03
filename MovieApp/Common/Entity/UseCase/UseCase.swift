@@ -13,7 +13,6 @@ enum UseCaseError: Error {
 }
 
 enum UseCaseResponse {
-    case paginatedSuccess(results: [CodableEntity])
     case success(model: CodableEntity)
     case failure(error: Error)
 }

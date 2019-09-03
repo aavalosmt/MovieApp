@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController, Navigatable {
     
     private var theme: ThemeProtocol = ThemeProvider.shared.getTheme().object
     let disposeBag: DisposeBag = DisposeBag()

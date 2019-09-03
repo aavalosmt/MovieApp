@@ -15,7 +15,7 @@ enum Environment {
     var baseUrl: String {
         switch self {
         case .development:
-            return "https://api.themoviedb.org/4"
+            return "https://api.themoviedb.org"
         default:
             return ""
         }

@@ -34,7 +34,9 @@ class ThemeAppDelegate: NSObject, ApplicationService {
         
         AppLabel.appearance().appearancetextColor = self.theme.colors.textColor
         AppLabel.appearance().appearanceFont = self.theme.fonts.smallTitle
-
+        
+        TMDBLabel.appearance().appearancetextColor = self.theme.colors.tmdbColor
+        TMDBLabel.appearance().appearanceFont = self.theme.fonts.tmdbFont
         
         AppButton.appearance().tintColor = self.theme.colors.textColor
     }

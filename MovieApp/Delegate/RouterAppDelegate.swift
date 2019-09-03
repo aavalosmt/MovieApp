@@ -16,13 +16,25 @@ class RouterAppDelegate: NSObject, ApplicationService {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
+        startLoader()
+        
+        return true
+    }
+    
+    func startLoader() {
+        let initialView = MainRouter.startLoader()
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = UINavigationController(rootViewController: initialView)
+        window?.makeKeyAndVisible()
+    }
+    
+    func startNavigation() {
         let initialView = MainRouter.startNavigation()
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = UINavigationController(rootViewController: initialView)
         window?.makeKeyAndVisible()
-        
-        return true
     }
     
 }

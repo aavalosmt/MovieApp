@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoaderViewController" customModule="MovieApp" customModuleProvider="target">
+            <connections>
+                <outlet property="centerView" destination="htb-Sp-g8Q" id="V0r-dC-TjD"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MovieIcon" translatesAutoresizingMaskIntoConstraints="NO" id="htb-Sp-g8Q">
+                    <rect key="frame" x="139.5" y="283.5" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="Hkd-2d-I9q"/>
+                        <constraint firstAttribute="height" constant="100" id="tvs-BZ-Dur"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYr-M6-9Qt" customClass="TMDBLabel" customModule="MovieApp" customModuleProvider="target">
+                    <rect key="frame" x="143" y="232.5" width="89.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hxu-XI-351" customClass="TMDBLabel" customModule="MovieApp" customModuleProvider="target">
+                    <rect key="frame" x="150" y="616" width="75" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Hxu-XI-351" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="NBQ-QA-C2Z"/>
+                <constraint firstItem="htb-Sp-g8Q" firstAttribute="top" secondItem="vYr-M6-9Qt" secondAttribute="bottom" constant="30" id="OQB-ES-opO"/>
+                <constraint firstItem="htb-Sp-g8Q" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="aDC-re-UK8"/>
+                <constraint firstItem="htb-Sp-g8Q" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="2" id="c1u-1B-2kQ"/>
+                <constraint firstAttribute="bottom" secondItem="Hxu-XI-351" secondAttribute="bottom" constant="30" id="uIl-lb-SnE"/>
+                <constraint firstItem="vYr-M6-9Qt" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="uzB-am-2PG"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="MovieIcon" width="256" height="256"/>
+    </resources>
+</document>

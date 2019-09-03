@@ -9,6 +9,7 @@ target 'MovieApp' do
   pod 'RxSwift', '~> 4.5'
   pod 'RxCocoa', '~> 4.5'  
   pod 'RealmSwift'
+  pod 'XLPagerTabStrip', '~> 8.1.1'
 
   target 'MovieAppTests' do
     inherit! :search_paths

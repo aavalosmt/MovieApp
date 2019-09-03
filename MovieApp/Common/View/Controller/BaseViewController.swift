@@ -12,7 +12,7 @@ import RxCocoa
 
 class BaseViewController: UIViewController, Navigatable {
     
-    private var theme: ThemeProtocol = ThemeProvider.shared.getTheme().object
+    var theme: ThemeProtocol = ThemeProvider.shared.getTheme().object
     let disposeBag: DisposeBag = DisposeBag()
     
     func reloadTheme() {
@@ -31,5 +31,9 @@ class BaseViewController: UIViewController, Navigatable {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return theme.colors.statusBarStyle
+    }
+    
+    func hideNavBar(animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 }

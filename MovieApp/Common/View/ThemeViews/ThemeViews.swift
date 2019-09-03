@@ -8,6 +8,10 @@
 
 import UIKit
 
+class TMDBLabel: UILabel {
+    
+}
+
 class AppLabel: UILabel {
     
 }

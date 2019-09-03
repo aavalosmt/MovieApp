@@ -17,6 +17,7 @@ class PopularPresenter: PopularPresenterProtocol {
     let moviesChanged: Signal<[Movie]>
     let imageChanged: Signal<(Int, UIImage?)>
     let error: Signal<Error>
+    let module: Signal<PopularModule>
     
     // MARK: - Inputs
     
@@ -26,6 +27,7 @@ class PopularPresenter: PopularPresenterProtocol {
     
     // MARK: - Aux Relays
     
+    private let moduleChangeRelay: PublishRelay<PopularModule> = PublishRelay<PopularModule>()
     private let errorChangeRelay: PublishRelay<Error> = PublishRelay<Error>()
     private let didMoviesChangeRelay: PublishRelay<[Movie]> = PublishRelay<[Movie]>()
     private let imageChangeRelay: PublishRelay<(Int, UIImage?)> = PublishRelay<(Int, UIImage?)>()
@@ -35,23 +37,27 @@ class PopularPresenter: PopularPresenterProtocol {
     weak var view: PopularViewProtocol?
     var interactor: PopularInputInteractorProtocol
     var router: PopularRouterProtocol
+    private let factory: PopularModulesFactory
     
     init(view: PopularViewProtocol,
          interactor: PopularInputInteractorProtocol,
-         router: PopularRouterProtocol) {
+         router: PopularRouterProtocol,
+         factory: PopularModulesFactory) {
         self.view = view
         self.interactor = interactor
         self.router = router
+        self.factory = factory
         
         self.moviesChanged = didMoviesChangeRelay.asSignal()
         self.error = errorChangeRelay.asSignal()
         self.imageChanged = imageChangeRelay.asSignal()
+        self.module = moduleChangeRelay.asSignal()
         
         viewDidLoadTrigger
             .asSignal(onErrorJustReturn: ())
             .emit(onNext: { [weak self] text in
                 guard let self = self else { return }
-                self.getMovieList()
+                self.getGenres()
             }).disposed(by: disposeBag)
         
         imageNeededTrigger
@@ -61,11 +67,49 @@ class PopularPresenter: PopularPresenterProtocol {
                 self.getImage(forPath: path, index: index)
             }).disposed(by: disposeBag)
         
-        reachedBottomTrigger.asObservable()
+        reachedBottomTrigger
+            .asObservable()
             .debounce(0.2, scheduler: SharingScheduler.make())
             .subscribe({ [weak self] _ in
                 guard let self = self else { return }
                 self.getMovieList()
+            }).disposed(by: disposeBag)
+        
+//        self.factory.moduleCreated
+//            .asObservable()
+//            .subscribe({ [weak self] event in
+//                guard let self = self else { return }
+//                switch event {
+//                case .next(let e):
+//                    print(e.type)
+//                default: break
+//                }
+//            }).disposed(by: disposeBag)
+        
+        self.factory.moduleCreated
+                    .asObservable()
+                    .bind(to: moduleChangeRelay)
+                    .disposed(by: disposeBag)
+    }
+    
+    private func getGenres() {
+        interactor
+            .getGenreList()
+            .subscribeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
+            .subscribe({ [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let genreResponse):
+                    guard let genres = genreResponse.value else {
+                        self.errorChangeRelay.accept(UseCaseError.malformation)
+                        return
+                    }
+                    self.factory.genreTrigger.onNext(genres)
+                    self.getMovieList()
+                case .error(let error):
+                    self.errorChangeRelay.accept(error)
+                }
+                
             }).disposed(by: disposeBag)
     }
     
@@ -78,7 +122,7 @@ class PopularPresenter: PopularPresenterProtocol {
                 switch result {
                 case .next(let moviesResult):
                     if let movies = moviesResult.value {
-                        self.didMoviesChangeRelay.accept(movies)
+                        self.factory.movieTrigger.onNext(movies)
                     } else {
                         self.errorChangeRelay.accept(ServiceError.badRequest)
                     }

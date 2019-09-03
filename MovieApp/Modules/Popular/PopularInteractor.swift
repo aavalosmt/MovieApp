@@ -16,12 +16,14 @@ class PopularInteractor: PopularInputInteractorProtocol {
     
     let disposeBag = DisposeBag()
     let getMovieListUseCase: GetMovieList
+    let getGenreListUseCase: GetGenreList
     let imageProvider: ImageDownloader
     
     weak var presenter: PopularOutputInteractorProtocol?
 
-    init(getMovieListUseCase: GetMovieList, imageProvider: ImageDownloader) {
+    init(getMovieListUseCase: GetMovieList, getGenreListUseCase: GetGenreList, imageProvider: ImageDownloader) {
         self.getMovieListUseCase = getMovieListUseCase
+        self.getGenreListUseCase = getGenreListUseCase
         self.imageProvider = imageProvider
     }
     
@@ -71,6 +73,30 @@ class PopularInteractor: PopularInputInteractorProtocol {
                     
                 }
                 ).disposed(by: self.disposeBag)
+            
+            return Disposables.create()
+        })
+    }
+    
+    func getGenreList() -> Single<Result<[Genre]>> {
+        return Single.create(subscribe: { [weak self] observer in
+            guard let self = self else {
+                observer(.error(UseCaseError.malformation))
+                return Disposables.create()
+            }
+            
+            self.getGenreListUseCase.execute(completion: { result in
+                switch result {
+                case .success(let model):
+                    guard let genres = (model as? GenreListResponse)?.genres else {
+                        observer(.error(UseCaseError.malformation))
+                        return
+                    }
+                    observer(.success(Result.success(genres)))
+                case .failure(let error):
+                    observer(.error(error))
+                }
+            })
             
             return Disposables.create()
         })

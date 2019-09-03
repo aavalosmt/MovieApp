@@ -33,7 +33,7 @@ protocol Movie {
     var genres: [String] { get }
 }
 
-class MovieEntity: CodableEntity, Movie {
+struct MovieEntity: CodableEntity, Movie {
     
     var originalTitle: String?
     var title: String?
@@ -99,7 +99,7 @@ class MovieEntity: CodableEntity, Movie {
         self.page = page
     }
     
-    required init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         originalTitle = try container.decode(String.self, forKey: .originalTitle)

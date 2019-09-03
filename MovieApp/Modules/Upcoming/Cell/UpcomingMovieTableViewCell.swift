@@ -16,10 +16,11 @@ class UpcomingMovieTableViewCell: UITableViewCell {
     @IBOutlet weak var releaseDateLabel: AppNoteLabel!
     @IBOutlet weak var titleLabel: AppTitleLabel!
     @IBOutlet weak var overViewLabel: AppParagraphLabel!
+    @IBOutlet weak var genreLabel: AppTiltLabel!
     
     // MARK: - Variables
     
-    weak var movie: MovieEntity?
+    var movie: MovieEntity?
     
     // MARK: - Constants
     
@@ -44,5 +45,28 @@ class UpcomingMovieTableViewCell: UITableViewCell {
         titleLabel.text = movie.title
         releaseDateLabel.text = "RELEASE_DATE".localized + (movie.releaseDate ?? "")
         overViewLabel.text = movie.overView
+        
+        setGenres()
+    }
+    
+    private func setGenres() {
+        guard let movie = movie else {
+            return
+        }
+        
+        genreLabel.text = "GENRE".localized
+        
+        for genre in movie.genres {
+            guard let currentText = genreLabel.text else {
+                continue
+            }
+            var newText: String = currentText + genre
+            
+            if movie.genres.last != genre {
+                newText += " | "
+            }
+            
+            genreLabel.text = newText
+        }
     }
 }

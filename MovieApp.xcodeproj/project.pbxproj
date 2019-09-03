@@ -30,6 +30,10 @@
 		BE4006ED231E6FB8001D6F1D /* Carousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4006EC231E6FB8001D6F1D /* Carousel.swift */; };
 		BE4006F1231E7130001D6F1D /* CarouselMovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4006EF231E7130001D6F1D /* CarouselMovieCollectionViewCell.swift */; };
 		BE4006F2231E7130001D6F1D /* CarouselMovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE4006F0231E7130001D6F1D /* CarouselMovieCollectionViewCell.xib */; };
+		BE4006F6231EA1FE001D6F1D /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4006F4231EA1FE001D6F1D /* SearchTableViewCell.swift */; };
+		BE4006F7231EA1FE001D6F1D /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE4006F5231EA1FE001D6F1D /* SearchTableViewCell.xib */; };
+		BE4006FA231EA2F7001D6F1D /* PopularModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4006F9231EA2F7001D6F1D /* PopularModule.swift */; };
+		BE4006FC231EA45E001D6F1D /* PopularModulesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4006FB231EA45E001D6F1D /* PopularModulesFactory.swift */; };
 		BE4401CE2317BA8900D5EE33 /* RealmHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4401CD2317BA8900D5EE33 /* RealmHandler.swift */; };
 		BE4401D22317BBDC00D5EE33 /* RealmAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4401D12317BBDC00D5EE33 /* RealmAppDelegate.swift */; };
 		BE4401D42317BC1900D5EE33 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4401D32317BC1900D5EE33 /* AppConstants.swift */; };
@@ -169,6 +173,10 @@
 		BE4006EC231E6FB8001D6F1D /* Carousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carousel.swift; sourceTree = "<group>"; };
 		BE4006EF231E7130001D6F1D /* CarouselMovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselMovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		BE4006F0231E7130001D6F1D /* CarouselMovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselMovieCollectionViewCell.xib; sourceTree = "<group>"; };
+		BE4006F4231EA1FE001D6F1D /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		BE4006F5231EA1FE001D6F1D /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
+		BE4006F9231EA2F7001D6F1D /* PopularModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularModule.swift; sourceTree = "<group>"; };
+		BE4006FB231EA45E001D6F1D /* PopularModulesFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularModulesFactory.swift; sourceTree = "<group>"; };
 		BE4401CD2317BA8900D5EE33 /* RealmHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmHandler.swift; sourceTree = "<group>"; };
 		BE4401D12317BBDC00D5EE33 /* RealmAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAppDelegate.swift; sourceTree = "<group>"; };
 		BE4401D32317BC1900D5EE33 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
@@ -422,6 +430,24 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		BE4006F3231EA1D7001D6F1D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BE4006F4231EA1FE001D6F1D /* SearchTableViewCell.swift */,
+				BE4006F5231EA1FE001D6F1D /* SearchTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		BE4006F8231EA2E8001D6F1D /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				BE4006F9231EA2F7001D6F1D /* PopularModule.swift */,
+				BE4006FB231EA45E001D6F1D /* PopularModulesFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
 		BE4401CC2317BA7E00D5EE33 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
@@ -446,6 +472,8 @@
 		BE822A84231E0E8400965001 /* Popular */ = {
 			isa = PBXGroup;
 			children = (
+				BE4006F8231EA2E8001D6F1D /* Factory */,
+				BE4006F3231EA1D7001D6F1D /* Cell */,
 				BE822A87231E0F9700965001 /* PopularPresenter.swift */,
 				BE822A88231E0F9700965001 /* PopularRouter.swift */,
 				BE822A89231E0F9700965001 /* PopularContracts.swift */,
@@ -862,6 +890,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEC232762318EDB200C7054C /* MovieDetailViewController.xib in Resources */,
+				BE4006F7231EA1FE001D6F1D /* SearchTableViewCell.xib in Resources */,
 				BECEECA423166B5B00C89786 /* MovieListViewController.xib in Resources */,
 				BE822A83231E0E3400965001 /* TabbedHomeViewController.xib in Resources */,
 				BE4006E4231E66A2001D6F1D /* Localizable.strings in Resources */,
@@ -1024,6 +1053,7 @@
 				BECEECCC23167B1F00C89786 /* Entity.swift in Sources */,
 				BE4006D0231E2EE0001D6F1D /* GenreDataController.swift in Sources */,
 				BE822AB4231E206D00965001 /* UpcomingPresenter.swift in Sources */,
+				BE4006F6231EA1FE001D6F1D /* SearchTableViewCell.swift in Sources */,
 				BE822A8D231E0F9700965001 /* PopularPresenter.swift in Sources */,
 				BEC232732318EDB200C7054C /* MovieDetailContracts.swift in Sources */,
 				BECEECE0231722FC00C89786 /* UIColor.swift in Sources */,
@@ -1056,6 +1086,7 @@
 				BECEECA223166B5B00C89786 /* MovieListViewController.swift in Sources */,
 				BE4006BD231E2A1A001D6F1D /* LoaderPresenter.swift in Sources */,
 				BE822ABB231E22BA00965001 /* FontName.swift in Sources */,
+				BE4006FC231EA45E001D6F1D /* PopularModulesFactory.swift in Sources */,
 				BE4006CC231E2D38001D6F1D /* Genre.swift in Sources */,
 				BE822A80231E0E3400965001 /* TabbedHomeContracts.swift in Sources */,
 				BECEECEF2317319000C89786 /* ThemeProvider.swift in Sources */,
@@ -1067,6 +1098,7 @@
 				BECEECD6231684A700C89786 /* MovieListResponse.swift in Sources */,
 				BE822A8F231E0F9700965001 /* PopularContracts.swift in Sources */,
 				BECEECD02316803800C89786 /* Result.swift in Sources */,
+				BE4006FA231EA2F7001D6F1D /* PopularModule.swift in Sources */,
 				BECEECB523166D8500C89786 /* BaseService.swift in Sources */,
 				BECEECF523173A9B00C89786 /* ImageCaching.swift in Sources */,
 				BE822A82231E0E3400965001 /* TabbedHomeInteractor.swift in Sources */,

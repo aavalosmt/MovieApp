@@ -33,6 +33,7 @@ protocol UpcomingInputInteractorProtocol: class {
     
     func getMovieList() -> Observable<Result<[Movie]>>
     func getImage(imagePath: String) -> Single<Result<UIImage?>>
+    func getGenreList() -> Single<Result<[Genre]>>
 }
 
 protocol UpcomingOutputInteractorProtocol: class {

@@ -31,7 +31,8 @@ class UpcomingPresenter: UpcomingPresenterProtocol {
     private let imageChangeRelay: PublishRelay<(Int, UIImage?)> = PublishRelay<(Int, UIImage?)>()
 
     private let disposeBag: DisposeBag = DisposeBag()
-    
+    private var genres: [Genre] = []
+
     weak var view: UpcomingViewProtocol?
     var interactor: UpcomingInputInteractorProtocol
     var router: UpcomingRouterProtocol
@@ -51,7 +52,7 @@ class UpcomingPresenter: UpcomingPresenterProtocol {
             .asSignal(onErrorJustReturn: ())
             .emit(onNext: { [weak self] text in
                 guard let self = self else { return }
-                self.getMovieList()
+                self.getGenres()
             }).disposed(by: disposeBag)
         
         imageNeededTrigger
@@ -69,6 +70,27 @@ class UpcomingPresenter: UpcomingPresenterProtocol {
             }).disposed(by: disposeBag)
     }
     
+    private func getGenres() {
+        interactor
+            .getGenreList()
+            .subscribeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
+            .subscribe({ [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let genreResponse):
+                    guard let genres = genreResponse.value else {
+                        self.errorChangeRelay.accept(UseCaseError.malformation)
+                        return
+                    }
+                    self.genres = genres
+                    self.getMovieList()
+                case .error(let error):
+                    self.errorChangeRelay.accept(error)
+                }
+                
+            }).disposed(by: disposeBag)
+    }
+    
     func getMovieList() {
         interactor
             .getMovieList()
@@ -77,7 +99,13 @@ class UpcomingPresenter: UpcomingPresenterProtocol {
                 guard let self = self else { return }
                 switch result {
                 case .next(let moviesResult):
-                    if let movies = moviesResult.value {
+                    if let movies = moviesResult.value?.compactMap({ (movie) -> MovieEntity? in
+                        guard var movie = movie as? MovieEntity else {
+                            return nil
+                        }
+                        self.addGenres(toMovie: &movie)
+                        return movie
+                    }) {
                         self.didMoviesChangeRelay.accept(movies)
                     } else {
                         self.errorChangeRelay.accept(ServiceError.badRequest)
@@ -104,6 +132,18 @@ class UpcomingPresenter: UpcomingPresenterProtocol {
                 default: break
                 }
             }).disposed(by: disposeBag)
+    }
+    
+    private func addGenres(toMovie movie: inout MovieEntity) {
+        guard let genreIds = movie.genreIds else {
+            return
+        }
+        
+        for genreId in genreIds {
+            if let genreName = genres.first(where: { $0.id == genreId })?.name {
+                movie.genres.append(genreName)
+            }
+        }
     }
 }
 

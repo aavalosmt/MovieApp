@@ -20,6 +20,12 @@ class PopularRouter: PopularRouterProtocol {
                     persistanceController: MovieDataController()
                 ), type: .popular
             ),
+            getGenreListUseCase: GetGenreListImpl(
+                service: GenreListWebService(),
+                repository: GenreRepositoryImpl(
+                    persistanceController: GenreDataController()
+                )
+            ),
             imageProvider: ImageProvider(
                 cache: ImageCache.shared,
                 repository: ImageRepositoryImpl(
@@ -32,7 +38,8 @@ class PopularRouter: PopularRouterProtocol {
         let presenter = PopularPresenter(
             view: view,
             interactor: interactor,
-            router: router
+            router: router,
+            factory: PopularModulesFactory()
         )
         
         view.presenter = presenter

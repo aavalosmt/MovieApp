@@ -14,6 +14,7 @@
                 <outlet property="genreLabel" destination="9fo-HZ-Mdu" id="bie-kc-Xrc"/>
                 <outlet property="overviewDescriptionLabel" destination="K9p-Nd-CvG" id="uob-9i-zrk"/>
                 <outlet property="overviewLabel" destination="xyh-Xs-bfF" id="v7w-DR-RsB"/>
+                <outlet property="releaseDateLabel" destination="GSY-Bg-w9o" id="ikd-c6-40v"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="yearLabel" destination="A09-gY-dzM" id="8KT-xj-2VQ"/>
             </connections>
@@ -58,6 +59,12 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GSY-Bg-w9o" customClass="AppTiltLabel" customModule="MovieApp" customModuleProvider="target">
+                    <rect key="frame" x="30" y="455" width="315" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
@@ -73,7 +80,10 @@
                 <constraint firstItem="hQ7-bO-G7u" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="V3W-xE-NGr"/>
                 <constraint firstItem="K9p-Nd-CvG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="VTa-dA-cai"/>
                 <constraint firstItem="xyh-Xs-bfF" firstAttribute="top" secondItem="hQ7-bO-G7u" secondAttribute="bottom" constant="60" id="Vjj-hM-FLk"/>
+                <constraint firstAttribute="trailing" secondItem="GSY-Bg-w9o" secondAttribute="trailing" constant="30" id="c7T-Am-dsW"/>
+                <constraint firstItem="GSY-Bg-w9o" firstAttribute="top" secondItem="9fo-HZ-Mdu" secondAttribute="bottom" constant="8" id="cCu-aH-DpF"/>
                 <constraint firstItem="CU7-Vm-Ivl" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.4" id="cVX-mt-zJQ"/>
+                <constraint firstItem="GSY-Bg-w9o" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="gdK-Yd-XpN"/>
                 <constraint firstItem="A09-gY-dzM" firstAttribute="top" secondItem="hQ7-bO-G7u" secondAttribute="bottom" constant="8" id="mZd-Dt-Xlh"/>
                 <constraint firstItem="xyh-Xs-bfF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="o7I-RC-fbf"/>
                 <constraint firstAttribute="trailing" secondItem="CU7-Vm-Ivl" secondAttribute="trailing" id="sUj-CS-esJ"/>

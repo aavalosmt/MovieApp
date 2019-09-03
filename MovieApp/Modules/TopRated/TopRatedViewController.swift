@@ -21,6 +21,7 @@ class TopRatedViewController: BasePagerViewController {
     @IBOutlet weak var yearLabel: AppTiltLabel!
     @IBOutlet weak var overviewDescriptionLabel: AppParagraphLabel!
     @IBOutlet weak var genreLabel: AppTiltLabel!
+    @IBOutlet weak var releaseDateLabel: AppTiltLabel!
     
     lazy var readFormatter: DateFormatter = {
         let df = DateFormatter()
@@ -149,9 +150,11 @@ class TopRatedViewController: BasePagerViewController {
             genreLabel.text = newText
         }
         
-        guard let date = readFormatter.date(from: movie.releaseDate ?? "") else {
+        guard let releaseDate = movie.releaseDate,
+              let date = readFormatter.date(from: releaseDate) else {
             return
         }
+        releaseDateLabel.text = "RELEASE_DATE".localized + releaseDate
         yearLabel.text = formatter.string(from: date)
     }
     

@@ -73,7 +73,7 @@ class MovieDataController: PersistanceController {
                 return nil
             }
             
-            let entity = MovieEntity(originalTitle: realmMovie.originalTitle,
+            var entity = MovieEntity(originalTitle: realmMovie.originalTitle,
                                      title: realmMovie.title,
                                      voteCount: realmMovie.voteCount,
                                      voteAverage: realmMovie.voteAverage,
@@ -104,7 +104,7 @@ class MovieDataController: PersistanceController {
             return nil
         }
         
-        let entity = MovieEntity(originalTitle: realmMovie.originalTitle,
+        var entity = MovieEntity(originalTitle: realmMovie.originalTitle,
                            title: realmMovie.title,
                            voteCount: realmMovie.voteCount,
                            voteAverage: realmMovie.voteAverage,
@@ -132,7 +132,7 @@ class MovieDataController: PersistanceController {
                 return nil
             }
             
-            let entity = MovieEntity(originalTitle: realmMovie.originalTitle,
+            var entity = MovieEntity(originalTitle: realmMovie.originalTitle,
                                      title: realmMovie.title,
                                      voteCount: realmMovie.voteCount,
                                      voteAverage: realmMovie.voteAverage,

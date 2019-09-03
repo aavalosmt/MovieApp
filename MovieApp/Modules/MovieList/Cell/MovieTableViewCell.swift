@@ -17,7 +17,7 @@ class MovieTableViewCell: UITableViewCell {
     
     // MARK: - Variables
     
-    weak var movie: MovieEntity?
+    var movie: MovieEntity?
     
     // MARK: - Constants
     

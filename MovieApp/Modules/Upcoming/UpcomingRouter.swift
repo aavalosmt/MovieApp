@@ -20,6 +20,12 @@ class UpcomingRouter: UpcomingRouterProtocol {
                     persistanceController: MovieDataController()
                 ), type: .upcoming
             ),
+            getGenreListUseCase: GetGenreListImpl(
+                service: GenreListWebService(),
+                repository: GenreRepositoryImpl(
+                    persistanceController: GenreDataController()
+                )
+            ),
             imageProvider: ImageProvider(
                 cache: ImageCache.shared,
                 repository: ImageRepositoryImpl(

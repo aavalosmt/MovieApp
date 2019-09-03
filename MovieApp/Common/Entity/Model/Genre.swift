@@ -13,7 +13,7 @@ protocol Genre {
     var name: String? { get }
 }
 
-class GenreEntity: CodableEntity, Genre {
+struct GenreEntity: CodableEntity, Genre {
     var id: Int?
     var name: String?
     
@@ -27,7 +27,7 @@ class GenreEntity: CodableEntity, Genre {
         self.name = name
     }
     
-    required init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         id = try container.decode(Int.self, forKey: .id)

@@ -23,6 +23,10 @@
 		BE4006D4231E31EA001D6F1D /* GenreListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4006D3231E31EA001D6F1D /* GenreListResponse.swift */; };
 		BE4006D6231E3245001D6F1D /* GetGenreList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4006D5231E3245001D6F1D /* GetGenreList.swift */; };
 		BE4006D9231E3479001D6F1D /* AppAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4006D8231E3479001D6F1D /* AppAnimations.swift */; };
+		BE4006DD231E627B001D6F1D /* UpcomingMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4006DB231E627B001D6F1D /* UpcomingMovieTableViewCell.swift */; };
+		BE4006DE231E627B001D6F1D /* UpcomingMovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE4006DC231E627B001D6F1D /* UpcomingMovieTableViewCell.xib */; };
+		BE4006E3231E665C001D6F1D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4006E2231E665C001D6F1D /* String.swift */; };
+		BE4006E4231E66A2001D6F1D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE4006E6231E66A2001D6F1D /* Localizable.strings */; };
 		BE4401CE2317BA8900D5EE33 /* RealmHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4401CD2317BA8900D5EE33 /* RealmHandler.swift */; };
 		BE4401D22317BBDC00D5EE33 /* RealmAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4401D12317BBDC00D5EE33 /* RealmAppDelegate.swift */; };
 		BE4401D42317BC1900D5EE33 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4401D32317BC1900D5EE33 /* AppConstants.swift */; };
@@ -153,6 +157,12 @@
 		BE4006D3231E31EA001D6F1D /* GenreListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreListResponse.swift; sourceTree = "<group>"; };
 		BE4006D5231E3245001D6F1D /* GetGenreList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGenreList.swift; sourceTree = "<group>"; };
 		BE4006D8231E3479001D6F1D /* AppAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAnimations.swift; sourceTree = "<group>"; };
+		BE4006DB231E627B001D6F1D /* UpcomingMovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMovieTableViewCell.swift; sourceTree = "<group>"; };
+		BE4006DC231E627B001D6F1D /* UpcomingMovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpcomingMovieTableViewCell.xib; sourceTree = "<group>"; };
+		BE4006E2231E665C001D6F1D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		BE4006E5231E66A2001D6F1D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BE4006E9231E6732001D6F1D /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		BE4006EA231E6732001D6F1D /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		BE4401CD2317BA8900D5EE33 /* RealmHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmHandler.swift; sourceTree = "<group>"; };
 		BE4401D12317BBDC00D5EE33 /* RealmAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAppDelegate.swift; sourceTree = "<group>"; };
 		BE4401D32317BC1900D5EE33 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
@@ -372,6 +382,23 @@
 			path = Animations;
 			sourceTree = "<group>";
 		};
+		BE4006DA231E6265001D6F1D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BE4006DB231E627B001D6F1D /* UpcomingMovieTableViewCell.swift */,
+				BE4006DC231E627B001D6F1D /* UpcomingMovieTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		BE4006DF231E65F1001D6F1D /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				BE4006E6231E66A2001D6F1D /* Localizable.strings */,
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
 		BE4401CC2317BA7E00D5EE33 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
@@ -422,6 +449,7 @@
 		BE822A86231E0E9B00965001 /* Upcoming */ = {
 			isa = PBXGroup;
 			children = (
+				BE4006DA231E6265001D6F1D /* Cell */,
 				BE822AAE231E206D00965001 /* UpcomingPresenter.swift */,
 				BE822AAF231E206D00965001 /* UpcomingRouter.swift */,
 				BE822AB0231E206D00965001 /* UpcomingContracts.swift */,
@@ -516,6 +544,7 @@
 		BECEEC8B2316684900C89786 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				BE4006DF231E65F1001D6F1D /* Strings */,
 				BECEED0B23175AD300C89786 /* Constants */,
 				BECEECDB231721A300C89786 /* Theme */,
 			);
@@ -629,6 +658,7 @@
 				BECEED0323174CCC00C89786 /* UITableView.swift */,
 				BEC2327B231C84EA00C7054C /* Collection.swift */,
 				BE822A99231E180B00965001 /* UICollectionView.swift */,
+				BE4006E2231E665C001D6F1D /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -788,6 +818,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"es-419",
 			);
 			mainGroup = BECEEC5A2316681F00C89786;
 			productRefGroup = BECEEC642316681F00C89786 /* Products */;
@@ -808,10 +839,12 @@
 				BEC232762318EDB200C7054C /* MovieDetailViewController.xib in Resources */,
 				BECEECA423166B5B00C89786 /* MovieListViewController.xib in Resources */,
 				BE822A83231E0E3400965001 /* TabbedHomeViewController.xib in Resources */,
+				BE4006E4231E66A2001D6F1D /* Localizable.strings in Resources */,
 				BE822AB9231E206D00965001 /* UpcomingViewController.xib in Resources */,
 				BE822A9F231E197900965001 /* TabCollectionViewCell.xib in Resources */,
 				BECEED0A2317573200C89786 /* MovieTableViewCell.xib in Resources */,
 				BE822AAB231E1FBC00965001 /* TopRatedViewController.xib in Resources */,
+				BE4006DE231E627B001D6F1D /* UpcomingMovieTableViewCell.xib in Resources */,
 				BE4006C2231E2A1A001D6F1D /* LoaderViewController.xib in Resources */,
 				BE822A92231E0F9700965001 /* PopularViewController.xib in Resources */,
 				BECEED0023174C7200C89786 /* ImageTableViewCell.xib in Resources */,
@@ -952,6 +985,7 @@
 				BE822A81231E0E3400965001 /* TabbedHomeViewController.swift in Sources */,
 				BE4401DD2317C25700D5EE33 /* RealmMovie.swift in Sources */,
 				BECEED092317573200C89786 /* MovieTableViewCell.swift in Sources */,
+				BE4006DD231E627B001D6F1D /* UpcomingMovieTableViewCell.swift in Sources */,
 				BE822A9E231E197900965001 /* TabCollectionViewCell.swift in Sources */,
 				BEC232752318EDB200C7054C /* MovieDetailInteractor.swift in Sources */,
 				BEC232712318EDB200C7054C /* MovieDetailPresenter.swift in Sources */,
@@ -1018,6 +1052,7 @@
 				BECEECD32316812F00C89786 /* BaseParser.swift in Sources */,
 				BECEECFF23174C7200C89786 /* ImageTableViewCell.swift in Sources */,
 				BE822AA8231E1FBC00965001 /* TopRatedContracts.swift in Sources */,
+				BE4006E3231E665C001D6F1D /* String.swift in Sources */,
 				BE822AB5231E206D00965001 /* UpcomingRouter.swift in Sources */,
 				BECEED1623176BF500C89786 /* PersistanceController.swift in Sources */,
 				BECEECB323166D0700C89786 /* UseCase.swift in Sources */,
@@ -1065,10 +1100,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		BE4006E6231E66A2001D6F1D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE4006E5231E66A2001D6F1D /* en */,
+				BE4006EA231E6732001D6F1D /* es-419 */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		BECEEC722316681F00C89786 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				BECEEC732316681F00C89786 /* Base */,
+				BE4006E9231E6732001D6F1D /* es-419 */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1080,6 +1125,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1141,6 +1187,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

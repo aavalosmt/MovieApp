@@ -52,6 +52,7 @@ protocol Service {
     
     func request(baseUrl: String,
                  method: RequestMethod,
+                 queryItems: Dictionary<String, String>,
                  parameters: Dictionary<String, Any>,
                  headers: Dictionary<String, String>,
                  completion: @escaping ServiceResponseClosure
@@ -104,24 +105,28 @@ class BaseService<Entity: CodableEntity>: Service {
      */
     func request(baseUrl: String,
                  method: RequestMethod,
+                 queryItems: Dictionary<String, String>,
                  parameters: Dictionary<String, Any>,
                  headers: Dictionary<String, String>,
                  completion: @escaping ServiceResponseClosure) {
-        
-        var baseUrl: String = baseUrl
-        
-        if method == .get {
-            baseUrl += "?" + ServiceConstants.apiKey + "=" + apiKey
+                
+        var urlComponents = URLComponents(string: baseUrl)
+        var queryComponents: [URLQueryItem] = []
+        for (key, value) in queryItems {
+            queryComponents.append(URLQueryItem(name: key, value: value))
         }
+        queryComponents.append(URLQueryItem(name: ServiceConstants.apiKey, value: apiKey))
         
-        guard let url = URL(string: baseUrl) else {
+        urlComponents?.queryItems = queryComponents
+
+        guard let url = urlComponents?.url else {
             completion(.failure(error: ServiceError.badRequest))
             return
         }
         
         var request: URLRequest = URLRequest(url: url, cachePolicy: self.cachePolicy, timeoutInterval: self.timeOut)
         request.httpMethod = method.rawValue
-        if method != .get {
+        if !parameters.isEmpty {
             request.httpBody = try? JSONSerialization.data(withJSONObject: parameters)
         }
         request.allHTTPHeaderFields = headers

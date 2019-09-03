@@ -25,6 +25,7 @@ protocol AppFontsProtocol {
 protocol ColorPalleteProtocol {
     var textColor: UIColor { get }
     var tmdbColor: UIColor { get }
+    var paragraph: UIColor { get }
     var primary: UIColor { get }
     var light: UIColor { get }
     var dark: UIColor { get }
@@ -41,9 +42,9 @@ struct DarkTheme: ThemeProtocol {
 }
 
 struct DarkFonts: AppFontsProtocol {
-    var title: UIFont = UIFont.systemFont(ofSize: 17.0)
-    var paragraph: UIFont = UIFont.systemFont(ofSize: 14.0)
-    var smallTitle: UIFont = UIFont.systemFont(ofSize: 15.0)
+    var title: UIFont = UIFont(name: FontName.Helvetica.regular.rawValue, size: 15.0) ?? FontName.defaultFont
+    var paragraph: UIFont = UIFont(name: FontName.Helvetica.light.rawValue, size: 12.0) ?? FontName.defaultFont
+    var smallTitle: UIFont = UIFont(name: FontName.Helvetica.light.rawValue, size: 12.0) ?? FontName.defaultFont
     
     var tabFont: UIFont = UIFont(name: FontName.Helvetica.light.rawValue, size: 17.0) ?? FontName.defaultFont
     var tmdbFont: UIFont = UIFont(name: FontName.Helvetica.light.rawValue, size: 12.0) ?? FontName.defaultFont
@@ -53,6 +54,7 @@ struct DarkPallete: ColorPalleteProtocol {
     var textColor: UIColor               = UIColor.white
     var tmdbColor: UIColor               = UIColor(rgb: 0x60D17D)
     var primary: UIColor                 = UIColor(rgb: 0xFFC400)
+    var paragraph: UIColor               = UIColor.white
     var light: UIColor                   = UIColor(rgb: 0x484848)
     var dark: UIColor                    = UIColor.black
     var backgroundColor: UIColor         = UIColor(rgb: 0x212121)

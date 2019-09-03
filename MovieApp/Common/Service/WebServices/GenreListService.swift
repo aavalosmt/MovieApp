@@ -19,6 +19,7 @@ class GenreListWebService: BaseService<GenreListResponse>, GenreListService {
         
         super.request(baseUrl: url,
                       method: .get,
+                      queryItems: [:],
                       parameters: [:],
                       headers: [:],
                       completion: completion)

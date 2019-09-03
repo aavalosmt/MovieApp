@@ -13,9 +13,9 @@ protocol MovieRepository: Repository {
     
     var count: Int { get }
     
-    func count(forPredicate predicate: String) -> Int
+    func count(forPage page: Int, type: MovieListType) -> Int
     func saveMovies(movies: [MovieEntity])
-    func fetchMovieList() -> [MovieEntity]?
+    func fetchMovieList(type: MovieListType) -> [MovieEntity]?
     func fetchMovieList(forPage page: Int, type: MovieListType) -> [MovieEntity]?
 }
 
@@ -31,27 +31,31 @@ class MovieRepositoryImpl: MovieRepository {
         return persistanceController.count
     }
     
-    
-    func count(forPredicate predicate: String) -> Int {
-        return persistanceController.count(predicate: predicate)
-
+    func count(forPage page: Int, type: MovieListType) -> Int {
+        return fetchMovieList(forPage: page, type: type)?.count ?? 0
     }
     
     func saveMovies(movies: [MovieEntity]) {
         persistanceController.save(objects: movies)
     }
     
-    func fetchMovieList() -> [MovieEntity]? {
-        guard let movies = persistanceController.fetch() as? [MovieEntity], !movies.isEmpty else {
+    func fetchMovieList(type: MovieListType) -> [MovieEntity]? {
+        guard let movies = (persistanceController.fetch() as? [MovieEntity])?.filter({ movie in
+            
+            return movie.listTypes?.contains(type) ?? false
+        }) else {
             return nil
         }
         return movies
     }
     
     func fetchMovieList(forPage page: Int, type: MovieListType) -> [MovieEntity]? {
-        let pagePredicate = String(format: "(r_page = %d) AND (%d IN r_listTypes)", page, type.rawValue)
+        let pagePredicate = String(format: "(r_page = %d)", page, type.rawValue)
         
-        guard let movies = persistanceController.fetch(predicate: pagePredicate) as? [MovieEntity], !movies.isEmpty else {
+        guard let movies = (persistanceController.fetch(predicate: pagePredicate) as? [MovieEntity])?.filter({ movie in
+            
+            return movie.listTypes?.contains(type) ?? false
+        }) else {
             return nil
         }
         return movies

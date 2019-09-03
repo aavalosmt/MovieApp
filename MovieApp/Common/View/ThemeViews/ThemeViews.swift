@@ -8,13 +8,15 @@
 
 import UIKit
 
-class TMDBLabel: UILabel {
-    
-}
+class TMDBLabel: UILabel {}
 
-class AppLabel: UILabel {
-    
-}
+class AppLabel: UILabel {}
+
+class AppTitleLabel: UILabel {}
+
+class AppParagraphLabel: UILabel {}
+
+class AppNoteLabel: UILabel {}
 
 extension UIAppearance where Self: UILabel {
     var appearancetextColor: UIColor {

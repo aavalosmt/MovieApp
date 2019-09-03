@@ -15,7 +15,7 @@ protocol PopularViewProtocol: class {
 class PopularViewController: BasePagerViewController {
     
     override var tabTitle: String {
-        return "Popular"
+        return "POPULAR_TITLE".localized
     }
     
     var presenter: PopularPresenterProtocol?

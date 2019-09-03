@@ -15,7 +15,7 @@ protocol TopRatedViewProtocol: class {
 class TopRatedViewController: BasePagerViewController {
     
     override var tabTitle: String {
-        return "Top Rated"
+        return "TOP_RATED_TITLE".localized
     }
     
     var presenter: TopRatedPresenterProtocol?

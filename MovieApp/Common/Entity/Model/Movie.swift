@@ -106,13 +106,13 @@ class MovieEntity: CodableEntity, Movie {
         voteAverage = try container.decode(Double.self, forKey: .voteAverage)
         popularity = try container.decode(Double.self, forKey: .popularity)
         hasVideo = try container.decode(Bool.self, forKey: .hasVideo)
-        mediaType = try container.decode(String.self, forKey: .mediaType)
+        mediaType = try container.decodeIfPresent(String.self, forKey: .mediaType)
         releaseDate = try container.decode(String.self, forKey: .releaseDate)
         originalLanguage = try container.decode(String.self, forKey: .originalLanguage)
         overView = try container.decode(String.self, forKey: .overView)
         isAdultRated = try container.decode(Bool.self, forKey: .isAdultRated)
         genreIds = try container.decode([Int].self, forKey: .genreIds)
-        posterPath = try container.decode(String.self, forKey: .posterPath)
+        posterPath = try container.decodeIfPresent(String.self, forKey: .posterPath)
     }
     
 }

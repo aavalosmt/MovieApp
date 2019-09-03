@@ -32,9 +32,7 @@ class GetMovieListImpl: UseCaseImpl, GetMovieList {
         
         self.apiState.increment()
         
-        let predicate = String(format: "(r_page = %d) AND (%d IN r_listTypes)", apiState.page, type.rawValue)
-
-        guard let repository = repository as? MovieRepository, repository.count(forPredicate: predicate) > 0 else {
+        guard let repository = repository as? MovieRepository, repository.count(forPage: apiState.page, type: type) > 0 else {
             fetchMoviesFromService(page: apiState.page, type: type, completion: completion)
             return
         }
@@ -89,6 +87,9 @@ class GetMovieListImpl: UseCaseImpl, GetMovieList {
         guard let repository = repository as? MovieRepository,
               let movies = (movies as? MovieListResponse)?.results.compactMap({ movie -> (MovieEntity) in
                 movie.page = page
+                if movie.listTypes == nil {
+                    movie.listTypes = Set<MovieListType>()
+                }
                 movie.listTypes?.insert(type)
                 return movie
               }) else {

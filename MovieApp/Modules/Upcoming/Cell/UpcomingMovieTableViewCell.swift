@@ -1,19 +1,21 @@
 //
-//  MovieTableViewCell.swift
+//  UpcomingMovieTableViewCell.swift
 //  MovieApp
 //
-//  Created by Aldo Antonio Martinez Avalos on 8/28/19.
+//  Created by Aldo Antonio Martinez Avalos on 9/3/19.
 //  Copyright © 2019 aavalosmt. All rights reserved.
 //
 
 import UIKit
 
-class MovieTableViewCell: UITableViewCell {
-
+class UpcomingMovieTableViewCell: UITableViewCell {
+    
     // MARK: - IBOutlets
     
     @IBOutlet weak var movieImage: UIImageView!
-    @IBOutlet weak var title: AppLabel!
+    @IBOutlet weak var releaseDateLabel: AppNoteLabel!
+    @IBOutlet weak var titleLabel: AppTitleLabel!
+    @IBOutlet weak var overViewLabel: AppParagraphLabel!
     
     // MARK: - Variables
     
@@ -25,23 +27,22 @@ class MovieTableViewCell: UITableViewCell {
         return ImageConstants.MovieList.filmPlaceholder
     }
     
-    // MARK: - Cell LifeCycle
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        movieImage.image = UIImage(named: placeholder)
+        selectionStyle = .none
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         movieImage.image = UIImage(named: placeholder)
     }
-
+    
     // MARK: - Public methods
     
     func configure(with movie: Movie) {
         self.movie = movie as? MovieEntity
-        title.text = movie.title
+        titleLabel.text = movie.title
+        releaseDateLabel.text = "RELEASE_DATE".localized + (movie.releaseDate ?? "")
+        overViewLabel.text = movie.overView
     }
-    
 }

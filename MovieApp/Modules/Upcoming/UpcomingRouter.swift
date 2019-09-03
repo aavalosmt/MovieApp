@@ -13,7 +13,21 @@ class UpcomingRouter: UpcomingRouterProtocol {
     static func createModule() -> UIViewController {
         let view = UpcomingViewController()
         
-        let interactor = UpcomingInteractor()
+        let interactor = UpcomingInteractor(
+            getMovieListUseCase: GetMovieListImpl(
+                service: MovieListWebService(),
+                repository: MovieRepositoryImpl(
+                    persistanceController: MovieDataController()
+                ), type: .upcoming
+            ),
+            imageProvider: ImageProvider(
+                cache: ImageCache.shared,
+                repository: ImageRepositoryImpl(
+                    persistanceController: ImageDataController()
+                )
+            )
+        )
+        
         let router = UpcomingRouter()
         
         let presenter = UpcomingPresenter(

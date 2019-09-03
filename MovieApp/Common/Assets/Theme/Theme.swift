@@ -27,6 +27,7 @@ protocol ColorPalleteProtocol {
     var tmdbColor: UIColor { get }
     var paragraph: UIColor { get }
     var primary: UIColor { get }
+    var tilt: UIColor { get }
     var light: UIColor { get }
     var dark: UIColor { get }
     var backgroundColor: UIColor { get }
@@ -54,6 +55,7 @@ struct DarkPallete: ColorPalleteProtocol {
     var textColor: UIColor               = UIColor.white
     var tmdbColor: UIColor               = UIColor(rgb: 0x60D17D)
     var primary: UIColor                 = UIColor(rgb: 0xFFC400)
+    var tilt: UIColor                    = UIColor(rgb: 0x8D8C8C)
     var paragraph: UIColor               = UIColor.white
     var light: UIColor                   = UIColor(rgb: 0x484848)
     var dark: UIColor                    = UIColor.black

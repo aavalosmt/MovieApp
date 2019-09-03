@@ -14,6 +14,8 @@ class CarouselMovieCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var movieImage: UIImageView!
     
+    // MARK: - Variables
+
     var image: UIImage? {
         get {
             return movieImage.image
@@ -29,8 +31,6 @@ class CarouselMovieCollectionViewCell: UICollectionViewCell {
             }, completion: nil)
         }
     }
-    
-    // MARK: - Variables
     
     var placeholder: String {
         return ImageConstants.MovieList.filmPlaceholder
@@ -54,6 +54,8 @@ class CarouselMovieCollectionViewCell: UICollectionViewCell {
     }
     
 }
+
+// MARK: - CarouselItem
 
 extension CarouselMovieCollectionViewCell: CarouselItem {
     

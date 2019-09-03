@@ -24,12 +24,6 @@ class UpcomingViewController: BasePagerViewController {
     
     private var movies: [Movie] = []
     
-    lazy var formatter: DateFormatter = {
-        let df = DateFormatter()
-        df.dateFormat = DateFormat.ddSmmSyyyy.rawValue
-        return df
-    }()
-
     override var tabTitle: String {
         return "UPCOMING_TITLE".localized
     }

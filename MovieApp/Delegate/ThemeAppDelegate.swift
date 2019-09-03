@@ -46,6 +46,9 @@ class ThemeAppDelegate: NSObject, ApplicationService {
         AppParagraphLabel.appearance().appearancetextColor = self.theme.colors.paragraph
         AppParagraphLabel.appearance().appearanceFont = self.theme.fonts.paragraph
         
+        AppTiltLabel.appearance().appearancetextColor = self.theme.colors.tilt
+        AppTiltLabel.appearance().appearanceFont = self.theme.fonts.paragraph
+
         AppButton.appearance().tintColor = self.theme.colors.textColor
     }
     

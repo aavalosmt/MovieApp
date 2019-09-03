@@ -18,6 +18,8 @@ class AppParagraphLabel: UILabel {}
 
 class AppNoteLabel: UILabel {}
 
+class AppTiltLabel: UILabel {}
+
 extension UIAppearance where Self: UILabel {
     var appearancetextColor: UIColor {
         get {

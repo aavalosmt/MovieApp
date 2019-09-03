@@ -14,8 +14,26 @@ protocol TopRatedViewProtocol: class {
 
 class TopRatedViewController: BasePagerViewController {
     
-    @IBOutlet weak var carouselContainer: UIView!
+    // MARK: - IBOutlet
     
+    @IBOutlet weak var carouselContainer: UIView!
+    @IBOutlet weak var overviewLabel: AppNoteLabel!
+    @IBOutlet weak var yearLabel: AppTiltLabel!
+    @IBOutlet weak var overviewDescriptionLabel: AppParagraphLabel!
+    
+    lazy var readFormatter: DateFormatter = {
+        let df = DateFormatter()
+        df.dateFormat = DateFormat.yyyy_mm_dd.rawValue
+        return df
+    }()
+    
+    lazy var formatter: DateFormatter = {
+        let df = DateFormatter()
+        df.dateFormat = DateFormat.yyyy.rawValue
+        return df
+    }()
+    
+    private var layout: CarouselCollectionViewLayout!
     private var carousel: Carousel<Movie, CarouselMovieCollectionViewCell>!
     private var carouselDataSource: CarouselDataSource<Movie, CarouselMovieCollectionViewCell>!
     private var carouselData: CarouselDataContainer<Movie>!
@@ -31,6 +49,14 @@ class TopRatedViewController: BasePagerViewController {
         
         configureCarousel()
         bind()
+    }
+    
+    private func configureStrings() {
+        overviewLabel.text = "OVERVIEW".localized
+        
+        if let firstMovie = carouselData.data.first {
+            configureView(withMovie: firstMovie)
+        }
     }
     
     // MARK: - Private methods
@@ -82,12 +108,18 @@ class TopRatedViewController: BasePagerViewController {
         }
         configureDataSource()
         
-        let layout = CarouselCollectionViewLayout()
+        self.layout = CarouselCollectionViewLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
         self.carousel = Carousel<Movie, CarouselMovieCollectionViewCell>(
             frame: CGRect(x: 0, y: 0, width: carouselContainer.frame.width, height: carouselContainer.frame.height),
             collectionViewLayout: layout)
+        
+        carousel.didPageChangedClosure = { [weak self] page in
+            guard let self = self, let movie = self.carouselData.data[safe: page] else { return }
+            self.configureView(withMovie: movie)
+        }
+        
         self.carousel.setCarouselDataSource(carouselDataSource)
         
         self.carousel.backgroundColor = UIColor.clear
@@ -95,6 +127,15 @@ class TopRatedViewController: BasePagerViewController {
         
         carouselContainer.addSubview(self.carousel)
         carouselContainer.layoutIfNeeded()
+    }
+    
+    private func configureView(withMovie movie: Movie) {
+        overviewDescriptionLabel.text = movie.overView
+        
+        guard let date = readFormatter.date(from: movie.releaseDate ?? "") else {
+            return
+        }
+        yearLabel.text = formatter.string(from: date)
     }
     
 }

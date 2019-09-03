@@ -13,7 +13,20 @@ class TopRatedRouter: TopRatedRouterProtocol {
     static func createModule() -> UIViewController {
         let view = TopRatedViewController()
         
-        let interactor = TopRatedInteractor()
+        let interactor = TopRatedInteractor(
+            getMovieListUseCase: GetMovieListImpl(
+                service: MovieListWebService(),
+                repository: MovieRepositoryImpl(
+                    persistanceController: MovieDataController()
+                ), type: .topRated
+            ),
+            imageProvider: ImageProvider(
+                cache: ImageCache.shared,
+                repository: ImageRepositoryImpl(
+                    persistanceController: ImageDataController()
+                )
+            )
+        )
         let router = TopRatedRouter()
         
         let presenter = TopRatedPresenter(

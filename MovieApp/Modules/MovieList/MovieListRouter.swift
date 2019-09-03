@@ -18,7 +18,7 @@ class MovieListRouter: MovieListRouterProtocol {
                 service: MovieListWebService(),
                 repository: MovieRepositoryImpl(
                     persistanceController: MovieDataController()
-                ), type: .general
+                ), type: .popular
             ),
             imageProvider: ImageProvider(
                 cache: ImageCache.shared,

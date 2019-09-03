@@ -9,8 +9,8 @@
 import Foundation
 
 enum MovieListType: Int {
-    case general
     case popular
+    case topRated
     case upcoming
 }
 

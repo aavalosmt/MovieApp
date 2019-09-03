@@ -26,8 +26,8 @@ enum Endpoint {
     
     private func getMovieListPath(type: MovieListType) -> String {
         switch type {
-        case .general:
-            return "/3/list/%d"
+        case .topRated:
+            return "/3/movie/top_rated"
         case .upcoming:
             return "/3/movie/upcoming"
         case .popular:

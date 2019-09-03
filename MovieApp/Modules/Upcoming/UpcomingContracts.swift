@@ -26,8 +26,6 @@ protocol UpcomingPresenterProtocol: class {
     var reachedBottomTrigger: PublishSubject<Void> { get }
     var viewDidLoadTrigger: PublishSubject<Void> { get }
     var imageNeededTrigger: PublishSubject<(Int, String)> { get }
-
-    func getMovieList()
 }
 
 protocol UpcomingInputInteractorProtocol: class {

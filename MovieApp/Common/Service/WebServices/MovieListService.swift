@@ -18,7 +18,7 @@ class MovieListWebService: BaseService<MovieListResponse>, MovieListService {
         var url: String = ""
         
         switch type {
-        case .general:
+        case .popular:
             url = String(format: endpointProvider.url(forEndpoint: .MovieList(type: type)), page)
         default:
             url = endpointProvider.url(forEndpoint: .MovieList(type: type))

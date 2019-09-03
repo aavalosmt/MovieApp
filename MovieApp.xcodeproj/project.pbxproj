@@ -27,6 +27,9 @@
 		BE4006DE231E627B001D6F1D /* UpcomingMovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE4006DC231E627B001D6F1D /* UpcomingMovieTableViewCell.xib */; };
 		BE4006E3231E665C001D6F1D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4006E2231E665C001D6F1D /* String.swift */; };
 		BE4006E4231E66A2001D6F1D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE4006E6231E66A2001D6F1D /* Localizable.strings */; };
+		BE4006ED231E6FB8001D6F1D /* Carousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4006EC231E6FB8001D6F1D /* Carousel.swift */; };
+		BE4006F1231E7130001D6F1D /* CarouselMovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4006EF231E7130001D6F1D /* CarouselMovieCollectionViewCell.swift */; };
+		BE4006F2231E7130001D6F1D /* CarouselMovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE4006F0231E7130001D6F1D /* CarouselMovieCollectionViewCell.xib */; };
 		BE4401CE2317BA8900D5EE33 /* RealmHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4401CD2317BA8900D5EE33 /* RealmHandler.swift */; };
 		BE4401D22317BBDC00D5EE33 /* RealmAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4401D12317BBDC00D5EE33 /* RealmAppDelegate.swift */; };
 		BE4401D42317BC1900D5EE33 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4401D32317BC1900D5EE33 /* AppConstants.swift */; };
@@ -163,6 +166,9 @@
 		BE4006E5231E66A2001D6F1D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BE4006E9231E6732001D6F1D /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		BE4006EA231E6732001D6F1D /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		BE4006EC231E6FB8001D6F1D /* Carousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carousel.swift; sourceTree = "<group>"; };
+		BE4006EF231E7130001D6F1D /* CarouselMovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselMovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		BE4006F0231E7130001D6F1D /* CarouselMovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselMovieCollectionViewCell.xib; sourceTree = "<group>"; };
 		BE4401CD2317BA8900D5EE33 /* RealmHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmHandler.swift; sourceTree = "<group>"; };
 		BE4401D12317BBDC00D5EE33 /* RealmAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAppDelegate.swift; sourceTree = "<group>"; };
 		BE4401D32317BC1900D5EE33 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
@@ -399,6 +405,23 @@
 			path = Strings;
 			sourceTree = "<group>";
 		};
+		BE4006EB231E6FA9001D6F1D /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				BE4006EC231E6FB8001D6F1D /* Carousel.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		BE4006EE231E7119001D6F1D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BE4006EF231E7130001D6F1D /* CarouselMovieCollectionViewCell.swift */,
+				BE4006F0231E7130001D6F1D /* CarouselMovieCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		BE4401CC2317BA7E00D5EE33 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
@@ -436,6 +459,7 @@
 		BE822A85231E0E9400965001 /* TopRated */ = {
 			isa = PBXGroup;
 			children = (
+				BE4006EE231E7119001D6F1D /* Cell */,
 				BE822AA0231E1FBC00965001 /* TopRatedPresenter.swift */,
 				BE822AA1231E1FBC00965001 /* TopRatedRouter.swift */,
 				BE822AA2231E1FBC00965001 /* TopRatedContracts.swift */,
@@ -666,6 +690,7 @@
 		BECEECE3231726EF00C89786 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BE4006EB231E6FA9001D6F1D /* Custom */,
 				BE4006D7231E346F001D6F1D /* Animations */,
 				BE822A9B231E195700965001 /* CollectionViewCell */,
 				BECEECE923172D2B00C89786 /* Controller */,
@@ -847,6 +872,7 @@
 				BE4006DE231E627B001D6F1D /* UpcomingMovieTableViewCell.xib in Resources */,
 				BE4006C2231E2A1A001D6F1D /* LoaderViewController.xib in Resources */,
 				BE822A92231E0F9700965001 /* PopularViewController.xib in Resources */,
+				BE4006F2231E7130001D6F1D /* CarouselMovieCollectionViewCell.xib in Resources */,
 				BECEED0023174C7200C89786 /* ImageTableViewCell.xib in Resources */,
 				BECEEC742316681F00C89786 /* LaunchScreen.storyboard in Resources */,
 				BECEEC712316681F00C89786 /* Assets.xcassets in Resources */,
@@ -1007,6 +1033,7 @@
 				BE822A7F231E0E3400965001 /* TabbedHomeRouter.swift in Sources */,
 				BE4006CE231E2D95001D6F1D /* RealmGenre.swift in Sources */,
 				BECEECF2231731A900C89786 /* AppDefaults.swift in Sources */,
+				BE4006F1231E7130001D6F1D /* CarouselMovieCollectionViewCell.swift in Sources */,
 				BECEECC22316760A00C89786 /* MovieRepository.swift in Sources */,
 				BE4006CA231E2BB1001D6F1D /* GenreListService.swift in Sources */,
 				BE822AA9231E1FBC00965001 /* TopRatedViewController.swift in Sources */,
@@ -1046,6 +1073,7 @@
 				BE822AB6231E206D00965001 /* UpcomingContracts.swift in Sources */,
 				BECEED06231756E000C89786 /* ImageRepository.swift in Sources */,
 				BECEEC9F23166B5B00C89786 /* MovieListPresenter.swift in Sources */,
+				BE4006ED231E6FB8001D6F1D /* Carousel.swift in Sources */,
 				BE822A98231E178600965001 /* BasePagerContainerViewController.swift in Sources */,
 				BE4006D9231E3479001D6F1D /* AppAnimations.swift in Sources */,
 				BECEECA923166C1600C89786 /* MainRouter.swift in Sources */,

@@ -13,7 +13,20 @@ class PopularRouter: PopularRouterProtocol {
     static func createModule() -> UIViewController {
         let view = PopularViewController()
         
-        let interactor = PopularInteractor()
+        let interactor = PopularInteractor(
+            getMovieListUseCase: GetMovieListImpl(
+                service: MovieListWebService(),
+                repository: MovieRepositoryImpl(
+                    persistanceController: MovieDataController()
+                ), type: .popular
+            ),
+            imageProvider: ImageProvider(
+                cache: ImageCache.shared,
+                repository: ImageRepositoryImpl(
+                    persistanceController: ImageDataController()
+                )
+            )
+        )
         let router = PopularRouter()
         
         let presenter = PopularPresenter(

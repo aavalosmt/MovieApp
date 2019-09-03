@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TopRatedViewController" customModule="MovieApp" customModuleProvider="target">
             <connections>
                 <outlet property="carouselContainer" destination="CU7-Vm-Ivl" id="c2C-5t-kOa"/>
+                <outlet property="genreLabel" destination="9fo-HZ-Mdu" id="bie-kc-Xrc"/>
                 <outlet property="overviewDescriptionLabel" destination="K9p-Nd-CvG" id="uob-9i-zrk"/>
                 <outlet property="overviewLabel" destination="xyh-Xs-bfF" id="v7w-DR-RsB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -26,8 +27,8 @@
                     <rect key="frame" x="0.0" y="40" width="375" height="267"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xyh-Xs-bfF" customClass="AppNoteLabel" customModule="MovieApp" customModuleProvider="target">
-                    <rect key="frame" x="30" y="422" width="72" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xyh-Xs-bfF" customClass="AppNoteLabel" customModule="MovieApp" customModuleProvider="target">
+                    <rect key="frame" x="30" y="422" width="0.0" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -39,14 +40,20 @@
                         <constraint firstAttribute="height" constant="35" id="JOe-Wx-3ZN"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A09-gY-dzM" customClass="AppTiltLabel" customModule="MovieApp" customModuleProvider="target">
-                    <rect key="frame" x="166.5" y="370" width="42" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A09-gY-dzM" customClass="AppTiltLabel" customModule="MovieApp" customModuleProvider="target">
+                    <rect key="frame" x="187.5" y="370" width="0.0" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K9p-Nd-CvG" customClass="AppParagraphLabel" customModule="MovieApp" customModuleProvider="target">
-                    <rect key="frame" x="30" y="458" width="315" height="20.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K9p-Nd-CvG" customClass="AppParagraphLabel" customModule="MovieApp" customModuleProvider="target">
+                    <rect key="frame" x="30" y="437" width="315" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fo-HZ-Mdu" customClass="AppTiltLabel" customModule="MovieApp" customModuleProvider="target">
+                    <rect key="frame" x="30" y="447" width="315" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -54,10 +61,13 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="9fo-HZ-Mdu" secondAttribute="trailing" constant="30" id="41A-BK-mCb"/>
                 <constraint firstItem="CU7-Vm-Ivl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="5RQ-eZ-Ace"/>
                 <constraint firstAttribute="trailing" secondItem="hQ7-bO-G7u" secondAttribute="trailing" constant="10" id="8ux-lm-34e"/>
                 <constraint firstAttribute="trailing" secondItem="K9p-Nd-CvG" secondAttribute="trailing" constant="30" id="F6h-5P-qCR"/>
+                <constraint firstItem="9fo-HZ-Mdu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="OdU-1K-Aaq"/>
                 <constraint firstItem="hQ7-bO-G7u" firstAttribute="top" secondItem="CU7-Vm-Ivl" secondAttribute="bottom" constant="20" id="P7D-6a-ZMZ"/>
+                <constraint firstItem="9fo-HZ-Mdu" firstAttribute="top" secondItem="K9p-Nd-CvG" secondAttribute="bottom" constant="10" id="RBp-pn-TS7"/>
                 <constraint firstItem="CU7-Vm-Ivl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Sb7-kR-KVX"/>
                 <constraint firstItem="A09-gY-dzM" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="TgH-FF-vdC"/>
                 <constraint firstItem="hQ7-bO-G7u" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="V3W-xE-NGr"/>

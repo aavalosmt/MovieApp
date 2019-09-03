@@ -20,6 +20,12 @@ class TopRatedRouter: TopRatedRouterProtocol {
                     persistanceController: MovieDataController()
                 ), type: .topRated
             ),
+            getGenreListUseCase: GetGenreListImpl(
+                service: GenreListWebService(),
+                repository: GenreRepositoryImpl(
+                    persistanceController: GenreDataController()
+                )
+            ),
             imageProvider: ImageProvider(
                 cache: ImageCache.shared,
                 repository: ImageRepositoryImpl(

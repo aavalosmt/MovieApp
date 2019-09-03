@@ -20,6 +20,7 @@ class TopRatedViewController: BasePagerViewController {
     @IBOutlet weak var overviewLabel: AppNoteLabel!
     @IBOutlet weak var yearLabel: AppTiltLabel!
     @IBOutlet weak var overviewDescriptionLabel: AppParagraphLabel!
+    @IBOutlet weak var genreLabel: AppTiltLabel!
     
     lazy var readFormatter: DateFormatter = {
         let df = DateFormatter()
@@ -70,6 +71,7 @@ class TopRatedViewController: BasePagerViewController {
                 
                 DispatchQueue.main.async {
                     self.carousel.reloadData()
+                    self.configureStrings()
                 }
             }).disposed(by: disposeBag)
         
@@ -131,6 +133,21 @@ class TopRatedViewController: BasePagerViewController {
     
     private func configureView(withMovie movie: Movie) {
         overviewDescriptionLabel.text = movie.overView
+        
+        genreLabel.text = "GENRE".localized
+        
+        for genre in movie.genres {
+            guard let currentText = genreLabel.text else {
+                continue
+            }
+            var newText: String = currentText + genre
+            
+            if movie.genres.last != genre {
+                newText += " | "
+            }
+            
+            genreLabel.text = newText
+        }
         
         guard let date = readFormatter.date(from: movie.releaseDate ?? "") else {
             return

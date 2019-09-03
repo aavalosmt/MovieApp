@@ -31,6 +31,7 @@ class TopRatedPresenter: TopRatedPresenterProtocol {
     private let imageChangeRelay: PublishRelay<(Int, UIImage?)> = PublishRelay<(Int, UIImage?)>()
     
     private let disposeBag: DisposeBag = DisposeBag()
+    private var genres: [Genre] = []
 
     // MARK: - Dependencies
     
@@ -53,7 +54,7 @@ class TopRatedPresenter: TopRatedPresenterProtocol {
             .asSignal(onErrorJustReturn: ())
             .emit(onNext: { [weak self] text in
                 guard let self = self else { return }
-                self.getMovieList()
+                self.getGenres()
             }).disposed(by: disposeBag)
         
         imageNeededTrigger
@@ -71,6 +72,27 @@ class TopRatedPresenter: TopRatedPresenterProtocol {
             }).disposed(by: disposeBag)
     }
     
+    private func getGenres() {
+        interactor
+            .getGenreList()
+            .subscribeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
+            .subscribe({ [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let genreResponse):
+                    guard let genres = genreResponse.value else {
+                        self.errorChangeRelay.accept(UseCaseError.malformation)
+                        return
+                    }
+                    self.genres = genres
+                    self.getMovieList()
+                case .error(let error):
+                    self.errorChangeRelay.accept(error)
+                }
+                
+            }).disposed(by: disposeBag)
+    }
+    
     func getMovieList() {
         interactor
             .getMovieList()
@@ -79,7 +101,13 @@ class TopRatedPresenter: TopRatedPresenterProtocol {
                 guard let self = self else { return }
                 switch result {
                 case .next(let moviesResult):
-                    if let movies = moviesResult.value {
+                    if let movies = moviesResult.value?.compactMap({ (movie) -> MovieEntity? in
+                        guard var movie = movie as? MovieEntity else {
+                            return nil
+                        }
+                        self.addGenres(toMovie: &movie)
+                        return movie
+                    }) {
                         self.didMoviesChangeRelay.accept(movies)
                     } else {
                         self.errorChangeRelay.accept(ServiceError.badRequest)
@@ -89,8 +117,7 @@ class TopRatedPresenter: TopRatedPresenterProtocol {
                 case .completed:
                     break
                 }
-                }
-            ).disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
     }
     
     func getImage(forPath path: String, index: Int) {
@@ -106,6 +133,18 @@ class TopRatedPresenter: TopRatedPresenterProtocol {
                 default: break
                 }
             }).disposed(by: disposeBag)
+    }
+    
+    private func addGenres(toMovie movie: inout MovieEntity) {
+        guard let genreIds = movie.genreIds else {
+            return
+        }
+        
+        for genreId in genreIds {
+            if let genreName = genres.first(where: { $0.id == genreId })?.name {
+                movie.genres.append(genreName)
+            }
+        }
     }
     
 }

@@ -189,6 +189,10 @@ extension RealmMovie: Movie {
         }
     }
     
+    var genres: [String] {
+        return []
+    }
+    
     private func getListTypes() -> Set<MovieListType>? {
         var types: Set<MovieListType> = []
         for type in r_listTypes {

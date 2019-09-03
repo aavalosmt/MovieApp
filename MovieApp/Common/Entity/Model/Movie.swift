@@ -30,6 +30,7 @@ protocol Movie {
     var posterPath: String? { get }
     var page: Int? { get }
     var listTypes: Set<MovieListType>? { get }
+    var genres: [String] { get }
 }
 
 class MovieEntity: CodableEntity, Movie {
@@ -49,6 +50,7 @@ class MovieEntity: CodableEntity, Movie {
     var posterPath: String?
     var page: Int?
     var listTypes: Set<MovieListType>?
+    var genres: [String] = []
     
     enum CodingKeys: String, CodingKey {
         case originalTitle = "original_title"

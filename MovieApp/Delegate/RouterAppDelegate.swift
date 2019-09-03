@@ -23,18 +23,42 @@ class RouterAppDelegate: NSObject, ApplicationService {
     
     func startLoader() {
         let initialView = MainRouter.startLoader()
+
+        guard let window = UIApplication.shared.keyWindow,
+              let rootViewController = window.rootViewController else {
+                
+                self.window = UIWindow(frame: UIScreen.main.bounds)
+                self.window?.rootViewController = UINavigationController(rootViewController: initialView)
+                self.window?.makeKeyAndVisible()
+            return
+        }
         
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = UINavigationController(rootViewController: initialView)
-        window?.makeKeyAndVisible()
+        initialView.view.frame = rootViewController.view.frame
+        initialView.view.layoutIfNeeded()
+        
+        UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
+            window.rootViewController = initialView
+        }, completion: nil)
     }
     
     func startNavigation() {
         let initialView = MainRouter.startNavigation()
+
+        guard let window = UIApplication.shared.keyWindow,
+            let rootViewController = window.rootViewController else {
+                
+                self.window = UIWindow(frame: UIScreen.main.bounds)
+                self.window?.rootViewController = UINavigationController(rootViewController: initialView)
+                self.window?.makeKeyAndVisible()
+                return
+        }
         
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = UINavigationController(rootViewController: initialView)
-        window?.makeKeyAndVisible()
+        initialView.view.frame = rootViewController.view.frame
+        initialView.view.layoutIfNeeded()
+        
+        UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
+            window.rootViewController = initialView
+        }, completion: nil)
     }
     
 }

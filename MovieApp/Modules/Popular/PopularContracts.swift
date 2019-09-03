@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 protocol PopularRouterProtocol: class {
     static func createModule() -> UIViewController
@@ -16,10 +18,21 @@ protocol PopularPresenterProtocol: class {
     var view: PopularViewProtocol? { get }
     var interactor: PopularInputInteractorProtocol { get }
     var router: PopularRouterProtocol { get }
+    
+    var moviesChanged: Signal<[Movie]> { get }
+    var imageChanged: Signal<(Int, UIImage?)> { get }
+    var error: Signal<Error> { get }
+    
+    var reachedBottomTrigger: PublishSubject<Void> { get }
+    var viewDidLoadTrigger: PublishSubject<Void> { get }
+    var imageNeededTrigger: PublishSubject<(Int, String)> { get }
 }
 
 protocol PopularInputInteractorProtocol: class {
     var presenter: PopularOutputInteractorProtocol? { get set }
+    
+    func getMovieList() -> Observable<Result<[Movie]>>
+    func getImage(imagePath: String) -> Single<Result<UIImage?>>
 }
 
 protocol PopularOutputInteractorProtocol: class {

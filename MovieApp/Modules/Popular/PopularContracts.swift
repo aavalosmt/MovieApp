@@ -20,13 +20,13 @@ protocol PopularPresenterProtocol: class {
     var router: PopularRouterProtocol { get }
     
     var moviesChanged: Signal<[Movie]> { get }
-    var imageChanged: Signal<(Int, UIImage?)> { get }
+    var imageChanged: Signal<(Int, Int?, UIImage?)> { get }
     var error: Signal<Error> { get }
     
     var reachedBottomTrigger: PublishSubject<Void> { get }
     var viewDidLoadTrigger: PublishSubject<Void> { get }
-    var imageNeededTrigger: PublishSubject<(Int, String)> { get }
-    var module: Signal<PopularModule> { get }
+    var imageNeededTrigger: PublishSubject<(Int, Int?, String)> { get }
+    var module: Driver<PopularModule> { get }
 }
 
 protocol PopularInputInteractorProtocol: class {

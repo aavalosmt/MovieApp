@@ -15,22 +15,23 @@ class PopularPresenter: PopularPresenterProtocol {
     // MARK: - Outputs
     
     let moviesChanged: Signal<[Movie]>
-    let imageChanged: Signal<(Int, UIImage?)>
+    let imageChanged: Signal<(Int, Int?, UIImage?)>
     let error: Signal<Error>
-    let module: Signal<PopularModule>
+    let module: Driver<PopularModule>
     
     // MARK: - Inputs
     
     let reachedBottomTrigger: PublishSubject<Void> = PublishSubject<Void>()
     let viewDidLoadTrigger: PublishSubject<Void> = PublishSubject<Void>()
-    let imageNeededTrigger: PublishSubject<(Int, String)> = PublishSubject<(Int, String)> ()
+    let imageNeededTrigger: PublishSubject<(Int, Int?, String)> = PublishSubject<(Int, Int?, String)> ()
     
     // MARK: - Aux Relays
     
-    private let moduleChangeRelay: PublishRelay<PopularModule> = PublishRelay<PopularModule>()
+    private let moduleChangeRelay: BehaviorRelay<PopularModule> = BehaviorRelay<PopularModule>(value: PopularModule(type: .search))
     private let errorChangeRelay: PublishRelay<Error> = PublishRelay<Error>()
     private let didMoviesChangeRelay: PublishRelay<[Movie]> = PublishRelay<[Movie]>()
-    private let imageChangeRelay: PublishRelay<(Int, UIImage?)> = PublishRelay<(Int, UIImage?)>()
+    private let imageChangeRelay: PublishRelay<(Int, Int?, UIImage?)> = PublishRelay<(Int, Int?, UIImage?)>()
+    private var genres: [Genre] = []
     
     private let disposeBag: DisposeBag = DisposeBag()
     
@@ -51,7 +52,7 @@ class PopularPresenter: PopularPresenterProtocol {
         self.moviesChanged = didMoviesChangeRelay.asSignal()
         self.error = errorChangeRelay.asSignal()
         self.imageChanged = imageChangeRelay.asSignal()
-        self.module = moduleChangeRelay.asSignal()
+        self.module = moduleChangeRelay.asDriver()
         
         viewDidLoadTrigger
             .asSignal(onErrorJustReturn: ())
@@ -61,10 +62,10 @@ class PopularPresenter: PopularPresenterProtocol {
             }).disposed(by: disposeBag)
         
         imageNeededTrigger
-            .asSignal(onErrorJustReturn: (-1, ""))
-            .emit(onNext: { [weak self] (index, path) in
+            .asSignal(onErrorJustReturn: (-1, nil, ""))
+            .emit(onNext: { [weak self] (index, subIndex, path) in
                 guard let self = self else { return }
-                self.getImage(forPath: path, index: index)
+                self.getImage(forPath: path, subIndex: subIndex, index: index)
             }).disposed(by: disposeBag)
         
         reachedBottomTrigger
@@ -74,17 +75,6 @@ class PopularPresenter: PopularPresenterProtocol {
                 guard let self = self else { return }
                 self.getMovieList()
             }).disposed(by: disposeBag)
-        
-//        self.factory.moduleCreated
-//            .asObservable()
-//            .subscribe({ [weak self] event in
-//                guard let self = self else { return }
-//                switch event {
-//                case .next(let e):
-//                    print(e.type)
-//                default: break
-//                }
-//            }).disposed(by: disposeBag)
         
         self.factory.moduleCreated
                     .asObservable()
@@ -121,7 +111,13 @@ class PopularPresenter: PopularPresenterProtocol {
                 guard let self = self else { return }
                 switch result {
                 case .next(let moviesResult):
-                    if let movies = moviesResult.value {
+                    if let movies = moviesResult.value?.compactMap({ (movie) -> MovieEntity? in
+                        guard var movie = movie as? MovieEntity else {
+                            return nil
+                        }
+                        self.addGenres(toMovie: &movie)
+                        return movie
+                    }) {
                         self.factory.movieTrigger.onNext(movies)
                     } else {
                         self.errorChangeRelay.accept(ServiceError.badRequest)
@@ -135,7 +131,7 @@ class PopularPresenter: PopularPresenterProtocol {
             ).disposed(by: disposeBag)
     }
     
-    func getImage(forPath path: String, index: Int) {
+    func getImage(forPath path: String, subIndex: Int?, index: Int) {
         interactor
             .getImage(imagePath: path)
             .observeOn(MainScheduler.asyncInstance)
@@ -144,10 +140,22 @@ class PopularPresenter: PopularPresenterProtocol {
                 guard let self = self else { return }
                 switch result {
                 case let .success(image):
-                    self.imageChangeRelay.accept((index: index, image: image))
+                    self.imageChangeRelay.accept((index: index, subIndex: subIndex, image: image))
                 default: break
                 }
             }).disposed(by: disposeBag)
+    }
+    
+    private func addGenres(toMovie movie: inout MovieEntity) {
+        guard let genreIds = movie.genreIds else {
+            return
+        }
+        
+        for genreId in genreIds {
+            if let genreName = genres.first(where: { $0.id == genreId })?.name {
+                movie.genres.append(genreName)
+            }
+        }
     }
     
 }

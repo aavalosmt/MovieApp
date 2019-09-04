@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="366" id="KGk-i7-Jjw" customClass="StarredMovieTableViewCell" customModule="MovieApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="366"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="365.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="78m-Tl-ZAg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="78m-Tl-ZAg" secondAttribute="height" multiplier="4:3" id="UJp-xR-IEC"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NaU-nE-iiW" customClass="AppTitleLabel" customModule="MovieApp" customModuleProvider="target">
+                        <rect key="frame" x="16" y="207" width="288" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79q-55-jpi" customClass="AppParagraphLabel" customModule="MovieApp" customModuleProvider="target">
+                        <rect key="frame" x="16" y="260" width="288" height="75"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="79q-55-jpi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="6af-Os-7D5"/>
+                    <constraint firstItem="NaU-nE-iiW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="IX8-e0-Riz"/>
+                    <constraint firstItem="79q-55-jpi" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" constant="-20" id="P1C-8g-UlF"/>
+                    <constraint firstAttribute="trailing" secondItem="78m-Tl-ZAg" secondAttribute="trailing" id="XAj-DY-CNE"/>
+                    <constraint firstItem="78m-Tl-ZAg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Y4D-rO-tFp"/>
+                    <constraint firstItem="79q-55-jpi" firstAttribute="top" secondItem="78m-Tl-ZAg" secondAttribute="bottom" constant="20" id="b0X-fx-sbe"/>
+                    <constraint firstItem="78m-Tl-ZAg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="gVF-kX-za1"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="79q-55-jpi" secondAttribute="trailing" id="nmP-eP-SjI"/>
+                    <constraint firstItem="NaU-nE-iiW" firstAttribute="bottom" secondItem="78m-Tl-ZAg" secondAttribute="bottomMargin" constant="-4" id="p4j-9u-AlR"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="NaU-nE-iiW" secondAttribute="trailing" id="pCi-3e-GlR"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="movieImage" destination="78m-Tl-ZAg" id="6SF-0a-W6L"/>
+                <outlet property="overviewLabel" destination="79q-55-jpi" id="Nth-S5-X14"/>
+                <outlet property="titleLabel" destination="NaU-nE-iiW" id="gQM-Ak-gmW"/>
+            </connections>
+            <point key="canvasLocation" x="137.59999999999999" y="262.66866566716647"/>
+        </tableViewCell>
+    </objects>
+</document>

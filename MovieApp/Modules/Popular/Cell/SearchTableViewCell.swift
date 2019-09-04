@@ -13,11 +13,12 @@ class SearchTableViewCell: UITableViewCell {
     // MARK: - IBOutlet
     
     @IBOutlet weak var titleLabel: AppTitleLabel!
-    @IBOutlet weak var searchBar: UISearchBar!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        selectionStyle = .none
+        
+        titleLabel.text = "CATEGORIES".localized
     }
     
 }

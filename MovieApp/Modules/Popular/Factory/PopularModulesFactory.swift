@@ -71,7 +71,6 @@ class PopularModulesFactory {
                 modules.insert(.carousel(movies: []))
             case .list:
                 moduleCreated.onNext(PopularModule(type: .list(movies: results)))
-                modules.insert(.list(movies: []))
             default: return
             }
         }
@@ -85,9 +84,7 @@ class PopularModulesFactory {
         
         let top: Int = min(capacity, movies.count)
         
-        if capacity < movies.count {
-            results.append(contentsOf: movies[0..<top])
-        }
+        results.append(contentsOf: Array(movies[0..<top]))
         movies = Array(movies[top..<(movies.count)])
         
         return results

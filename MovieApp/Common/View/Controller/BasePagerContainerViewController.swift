@@ -78,7 +78,7 @@ class BasePagerContainerViewController<T: TabCollectionViewCell>: BaseButtonBarP
         }
         super.viewDidLoad()
         
-        buttonBarView.frame.origin.y = 20.0
+        buttonBarView.frame.origin.y = 30.0
 
 //        navigationController?.navigationBar.shadowImage = UIImage()
 //        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)

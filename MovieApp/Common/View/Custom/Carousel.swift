@@ -29,7 +29,11 @@ protocol CarouselDataSourceDelegate: class {
 }
 
 class CarouselDataContainer<T> {
-    var data: [T]
+    var data: [T] = []
+    
+    init() {
+        
+    }
     
     init(data: [T]) {
         self.data = data

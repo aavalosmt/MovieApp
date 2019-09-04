@@ -55,7 +55,7 @@
 		BE822A92231E0F9700965001 /* PopularViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE822A8C231E0F9700965001 /* PopularViewController.xib */; };
 		BE822A94231E104D00965001 /* TabBarViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE822A93231E104D00965001 /* TabBarViewProtocol.swift */; };
 		BE822A98231E178600965001 /* BasePagerContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE822A97231E178600965001 /* BasePagerContainerViewController.swift */; };
-		BE822A9A231E180B00965001 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE822A99231E180B00965001 /* UICollectionView.swift */; };
+		BE822A9A231E180B00965001 /* UICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE822A99231E180B00965001 /* UICollectionViewCell.swift */; };
 		BE822A9E231E197900965001 /* TabCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE822A9C231E197900965001 /* TabCollectionViewCell.swift */; };
 		BE822A9F231E197900965001 /* TabCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE822A9D231E197900965001 /* TabCollectionViewCell.xib */; };
 		BE822AA6231E1FBC00965001 /* TopRatedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE822AA0231E1FBC00965001 /* TopRatedPresenter.swift */; };
@@ -82,6 +82,18 @@
 		BEC2327A2318F8A400C7054C /* ApiState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC232792318F8A400C7054C /* ApiState.swift */; };
 		BEC2327C231C84EA00C7054C /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC2327B231C84EA00C7054C /* Collection.swift */; };
 		BEC2327E231C8D3500C7054C /* RxHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC2327D231C8D3500C7054C /* RxHelpers.swift */; };
+		BEC349C5231F8C0800A77867 /* PopularViewControllerTableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC349C4231F8C0800A77867 /* PopularViewControllerTableViewExtension.swift */; };
+		BEC349C8231F911500A77867 /* GenreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC349C6231F911500A77867 /* GenreTableViewCell.swift */; };
+		BEC349C9231F911500A77867 /* GenreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC349C7231F911500A77867 /* GenreTableViewCell.xib */; };
+		BEC349CC231F929F00A77867 /* GenreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC349CA231F929F00A77867 /* GenreCollectionViewCell.swift */; };
+		BEC349CD231F929F00A77867 /* GenreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC349CB231F929F00A77867 /* GenreCollectionViewCell.xib */; };
+		BEC349CF231F939300A77867 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC349CE231F939300A77867 /* CGFloat.swift */; };
+		BEC349D1231F94AA00A77867 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC349D0231F94AA00A77867 /* UICollectionView.swift */; };
+		BEC349D4231FA2B500A77867 /* StarredMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC349D2231FA2B500A77867 /* StarredMovieTableViewCell.swift */; };
+		BEC349D5231FA2B500A77867 /* StarredMovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC349D3231FA2B500A77867 /* StarredMovieTableViewCell.xib */; };
+		BEC349D8231FA8B900A77867 /* CarouselTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC349D6231FA8B900A77867 /* CarouselTableViewCell.swift */; };
+		BEC349D9231FA8B900A77867 /* CarouselTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC349D7231FA8B900A77867 /* CarouselTableViewCell.xib */; };
+		BEC349DB231FAED300A77867 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC349DA231FAED300A77867 /* UIView.swift */; };
 		BECEEC672316681F00C89786 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEEC662316681F00C89786 /* AppDelegate.swift */; };
 		BECEEC712316681F00C89786 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BECEEC702316681F00C89786 /* Assets.xcassets */; };
 		BECEEC742316681F00C89786 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BECEEC722316681F00C89786 /* LaunchScreen.storyboard */; };
@@ -198,7 +210,7 @@
 		BE822A8C231E0F9700965001 /* PopularViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopularViewController.xib; sourceTree = "<group>"; };
 		BE822A93231E104D00965001 /* TabBarViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewProtocol.swift; sourceTree = "<group>"; };
 		BE822A97231E178600965001 /* BasePagerContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePagerContainerViewController.swift; sourceTree = "<group>"; };
-		BE822A99231E180B00965001 /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
+		BE822A99231E180B00965001 /* UICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCell.swift; sourceTree = "<group>"; };
 		BE822A9C231E197900965001 /* TabCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCollectionViewCell.swift; sourceTree = "<group>"; };
 		BE822A9D231E197900965001 /* TabCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabCollectionViewCell.xib; sourceTree = "<group>"; };
 		BE822AA0231E1FBC00965001 /* TopRatedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedPresenter.swift; sourceTree = "<group>"; };
@@ -225,6 +237,18 @@
 		BEC232792318F8A400C7054C /* ApiState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiState.swift; sourceTree = "<group>"; };
 		BEC2327B231C84EA00C7054C /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		BEC2327D231C8D3500C7054C /* RxHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxHelpers.swift; sourceTree = "<group>"; };
+		BEC349C4231F8C0800A77867 /* PopularViewControllerTableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewControllerTableViewExtension.swift; sourceTree = "<group>"; };
+		BEC349C6231F911500A77867 /* GenreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreTableViewCell.swift; sourceTree = "<group>"; };
+		BEC349C7231F911500A77867 /* GenreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenreTableViewCell.xib; sourceTree = "<group>"; };
+		BEC349CA231F929F00A77867 /* GenreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCollectionViewCell.swift; sourceTree = "<group>"; };
+		BEC349CB231F929F00A77867 /* GenreCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenreCollectionViewCell.xib; sourceTree = "<group>"; };
+		BEC349CE231F939300A77867 /* CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
+		BEC349D0231F94AA00A77867 /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
+		BEC349D2231FA2B500A77867 /* StarredMovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarredMovieTableViewCell.swift; sourceTree = "<group>"; };
+		BEC349D3231FA2B500A77867 /* StarredMovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StarredMovieTableViewCell.xib; sourceTree = "<group>"; };
+		BEC349D6231FA8B900A77867 /* CarouselTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselTableViewCell.swift; sourceTree = "<group>"; };
+		BEC349D7231FA8B900A77867 /* CarouselTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselTableViewCell.xib; sourceTree = "<group>"; };
+		BEC349DA231FAED300A77867 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		BECEEC632316681F00C89786 /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BECEEC662316681F00C89786 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BECEEC702316681F00C89786 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -435,6 +459,14 @@
 			children = (
 				BE4006F4231EA1FE001D6F1D /* SearchTableViewCell.swift */,
 				BE4006F5231EA1FE001D6F1D /* SearchTableViewCell.xib */,
+				BEC349C6231F911500A77867 /* GenreTableViewCell.swift */,
+				BEC349C7231F911500A77867 /* GenreTableViewCell.xib */,
+				BEC349CA231F929F00A77867 /* GenreCollectionViewCell.swift */,
+				BEC349CB231F929F00A77867 /* GenreCollectionViewCell.xib */,
+				BEC349D2231FA2B500A77867 /* StarredMovieTableViewCell.swift */,
+				BEC349D3231FA2B500A77867 /* StarredMovieTableViewCell.xib */,
+				BEC349D6231FA8B900A77867 /* CarouselTableViewCell.swift */,
+				BEC349D7231FA8B900A77867 /* CarouselTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -480,6 +512,7 @@
 				BE822A8A231E0F9700965001 /* PopularViewController.swift */,
 				BE822A8B231E0F9700965001 /* PopularInteractor.swift */,
 				BE822A8C231E0F9700965001 /* PopularViewController.xib */,
+				BEC349C4231F8C0800A77867 /* PopularViewControllerTableViewExtension.swift */,
 			);
 			path = Popular;
 			sourceTree = "<group>";
@@ -709,8 +742,11 @@
 				BECEED0123174C8300C89786 /* UITableViewCell.swift */,
 				BECEED0323174CCC00C89786 /* UITableView.swift */,
 				BEC2327B231C84EA00C7054C /* Collection.swift */,
-				BE822A99231E180B00965001 /* UICollectionView.swift */,
+				BE822A99231E180B00965001 /* UICollectionViewCell.swift */,
 				BE4006E2231E665C001D6F1D /* String.swift */,
+				BEC349CE231F939300A77867 /* CGFloat.swift */,
+				BEC349D0231F94AA00A77867 /* UICollectionView.swift */,
+				BEC349DA231FAED300A77867 /* UIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -896,14 +932,18 @@
 				BE4006E4231E66A2001D6F1D /* Localizable.strings in Resources */,
 				BE822AB9231E206D00965001 /* UpcomingViewController.xib in Resources */,
 				BE822A9F231E197900965001 /* TabCollectionViewCell.xib in Resources */,
+				BEC349D9231FA8B900A77867 /* CarouselTableViewCell.xib in Resources */,
 				BECEED0A2317573200C89786 /* MovieTableViewCell.xib in Resources */,
 				BE822AAB231E1FBC00965001 /* TopRatedViewController.xib in Resources */,
 				BE4006DE231E627B001D6F1D /* UpcomingMovieTableViewCell.xib in Resources */,
 				BE4006C2231E2A1A001D6F1D /* LoaderViewController.xib in Resources */,
 				BE822A92231E0F9700965001 /* PopularViewController.xib in Resources */,
 				BE4006F2231E7130001D6F1D /* CarouselMovieCollectionViewCell.xib in Resources */,
+				BEC349D5231FA2B500A77867 /* StarredMovieTableViewCell.xib in Resources */,
+				BEC349C9231F911500A77867 /* GenreTableViewCell.xib in Resources */,
 				BECEED0023174C7200C89786 /* ImageTableViewCell.xib in Resources */,
 				BECEEC742316681F00C89786 /* LaunchScreen.storyboard in Resources */,
+				BEC349CD231F929F00A77867 /* GenreCollectionViewCell.xib in Resources */,
 				BECEEC712316681F00C89786 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1050,6 +1090,7 @@
 				BE4006BE231E2A1A001D6F1D /* LoaderRouter.swift in Sources */,
 				BE4401CE2317BA8900D5EE33 /* RealmHandler.swift in Sources */,
 				BECEECDA2316863F00C89786 /* ServicesAppDelegate.swift in Sources */,
+				BEC349D4231FA2B500A77867 /* StarredMovieTableViewCell.swift in Sources */,
 				BECEECCC23167B1F00C89786 /* Entity.swift in Sources */,
 				BE4006D0231E2EE0001D6F1D /* GenreDataController.swift in Sources */,
 				BE822AB4231E206D00965001 /* UpcomingPresenter.swift in Sources */,
@@ -1079,6 +1120,7 @@
 				BEC232722318EDB200C7054C /* MovieDetailRouter.swift in Sources */,
 				BECEECE2231725EE00C89786 /* ThemeAppDelegate.swift in Sources */,
 				BECEECBC2316723300C89786 /* Movie.swift in Sources */,
+				BEC349C5231F8C0800A77867 /* PopularViewControllerTableViewExtension.swift in Sources */,
 				BE4006BF231E2A1A001D6F1D /* LoaderContracts.swift in Sources */,
 				BECEECBF2316724C00C89786 /* CodableEntity.swift in Sources */,
 				BECEECDD231721AC00C89786 /* Theme.swift in Sources */,
@@ -1100,8 +1142,10 @@
 				BECEECD02316803800C89786 /* Result.swift in Sources */,
 				BE4006FA231EA2F7001D6F1D /* PopularModule.swift in Sources */,
 				BECEECB523166D8500C89786 /* BaseService.swift in Sources */,
+				BEC349DB231FAED300A77867 /* UIView.swift in Sources */,
 				BECEECF523173A9B00C89786 /* ImageCaching.swift in Sources */,
 				BE822A82231E0E3400965001 /* TabbedHomeInteractor.swift in Sources */,
+				BEC349C8231F911500A77867 /* GenreTableViewCell.swift in Sources */,
 				BE822AB6231E206D00965001 /* UpcomingContracts.swift in Sources */,
 				BECEED06231756E000C89786 /* ImageRepository.swift in Sources */,
 				BECEEC9F23166B5B00C89786 /* MovieListPresenter.swift in Sources */,
@@ -1116,10 +1160,11 @@
 				BE822AB5231E206D00965001 /* UpcomingRouter.swift in Sources */,
 				BECEED1623176BF500C89786 /* PersistanceController.swift in Sources */,
 				BECEECB323166D0700C89786 /* UseCase.swift in Sources */,
-				BE822A9A231E180B00965001 /* UICollectionView.swift in Sources */,
+				BE822A9A231E180B00965001 /* UICollectionViewCell.swift in Sources */,
 				BEC232782318F37C00C7054C /* Navigatable.swift in Sources */,
 				BECEECF923173BA900C89786 /* CacheAppDelegate.swift in Sources */,
 				BEC2327E231C8D3500C7054C /* RxHelpers.swift in Sources */,
+				BEC349CF231F939300A77867 /* CGFloat.swift in Sources */,
 				BECEECA123166B5B00C89786 /* MovieListContracts.swift in Sources */,
 				BECEECAE23166CDE00C89786 /* Repository.swift in Sources */,
 				BEC2327A2318F8A400C7054C /* ApiState.swift in Sources */,
@@ -1128,14 +1173,17 @@
 				BE4401DB2317BE4E00D5EE33 /* RealmImage.swift in Sources */,
 				BE4401D42317BC1900D5EE33 /* AppConstants.swift in Sources */,
 				BECEED0423174CCC00C89786 /* UITableView.swift in Sources */,
+				BEC349D8231FA8B900A77867 /* CarouselTableViewCell.swift in Sources */,
 				BE4006D4231E31EA001D6F1D /* GenreListResponse.swift in Sources */,
 				BE822A91231E0F9700965001 /* PopularInteractor.swift in Sources */,
 				BECEECF723173AF700C89786 /* ImageDownloader.swift in Sources */,
 				BE4401D62317BD5200D5EE33 /* ImageDataController.swift in Sources */,
 				BE822AB8231E206D00965001 /* UpcomingInteractor.swift in Sources */,
 				BE4006C0231E2A1A001D6F1D /* LoaderViewController.swift in Sources */,
+				BEC349D1231F94AA00A77867 /* UICollectionView.swift in Sources */,
 				BECEED0F231769B300C89786 /* DateFormat.swift in Sources */,
 				BE822AA6231E1FBC00965001 /* TopRatedPresenter.swift in Sources */,
+				BEC349CC231F929F00A77867 /* GenreCollectionViewCell.swift in Sources */,
 				BE4401D92317BDBC00D5EE33 /* MovieDataController.swift in Sources */,
 				BECEECCE23167D2B00C89786 /* GetMovieList.swift in Sources */,
 			);

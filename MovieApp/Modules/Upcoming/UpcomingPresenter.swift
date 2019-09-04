@@ -23,7 +23,7 @@ class UpcomingPresenter: UpcomingPresenterProtocol {
     let reachedBottomTrigger: PublishSubject<Void> = PublishSubject<Void>()
     let viewDidLoadTrigger: PublishSubject<Void> = PublishSubject<Void>()
     let imageNeededTrigger: PublishSubject<(Int, String)> = PublishSubject<(Int, String)> ()
-    let selectRowTrigger: PublishSubject<Movie> = PublishSubject<Movie>()
+    let selectRowTrigger: PublishSubject<(Movie, TransitionDependencies)> = PublishSubject<(Movie, TransitionDependencies)>()
     
     // MARK: - Aux Relays
     
@@ -72,10 +72,10 @@ class UpcomingPresenter: UpcomingPresenterProtocol {
         
         selectRowTrigger
             .asSignal(
-                onErrorJustReturn: MovieEntity()
-            ).emit(onNext: { [weak self] movie in
-                guard let self = self, let view = self.view as? Navigatable else { return }
-                self.router.transitionDetail(from: view, movie: movie)
+                onErrorJustReturn: (MovieEntity(), TransitionDependencies.default)
+            ).emit(onNext: { [weak self] (movie, transition) in
+                guard let self = self, let view = self.view as? TabBarViewProtocol else { return }
+                self.router.transitionDetail(from: view, movie: movie, transition: transition)
             }).disposed(by: disposeBag)
     }
     

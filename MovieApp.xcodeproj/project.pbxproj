@@ -41,6 +41,10 @@
 		BE4401D92317BDBC00D5EE33 /* MovieDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4401D82317BDBC00D5EE33 /* MovieDataController.swift */; };
 		BE4401DB2317BE4E00D5EE33 /* RealmImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4401DA2317BE4E00D5EE33 /* RealmImage.swift */; };
 		BE4401DD2317C25700D5EE33 /* RealmMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4401DC2317C25700D5EE33 /* RealmMovie.swift */; };
+		BE63D10723205FD400E7ED7F /* TransitionDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE63D10623205FD400E7ED7F /* TransitionDependencies.swift */; };
+		BE63D1092320605E00E7ED7F /* InterViewAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE63D1082320605E00E7ED7F /* InterViewAnimation.swift */; };
+		BE63D10F23206FA300E7ED7F /* OverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE63D10D23206FA300E7ED7F /* OverviewTableViewCell.swift */; };
+		BE63D11023206FA300E7ED7F /* OverviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE63D10E23206FA300E7ED7F /* OverviewTableViewCell.xib */; };
 		BE822A7E231E0E3400965001 /* TabbedHomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE822A78231E0E3400965001 /* TabbedHomePresenter.swift */; };
 		BE822A7F231E0E3400965001 /* TabbedHomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE822A79231E0E3400965001 /* TabbedHomeRouter.swift */; };
 		BE822A80231E0E3400965001 /* TabbedHomeContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE822A7A231E0E3400965001 /* TabbedHomeContracts.swift */; };
@@ -199,6 +203,10 @@
 		BE4401D82317BDBC00D5EE33 /* MovieDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDataController.swift; sourceTree = "<group>"; };
 		BE4401DA2317BE4E00D5EE33 /* RealmImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmImage.swift; sourceTree = "<group>"; };
 		BE4401DC2317C25700D5EE33 /* RealmMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMovie.swift; sourceTree = "<group>"; };
+		BE63D10623205FD400E7ED7F /* TransitionDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionDependencies.swift; sourceTree = "<group>"; };
+		BE63D1082320605E00E7ED7F /* InterViewAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterViewAnimation.swift; sourceTree = "<group>"; };
+		BE63D10D23206FA300E7ED7F /* OverviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewTableViewCell.swift; sourceTree = "<group>"; };
+		BE63D10E23206FA300E7ED7F /* OverviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverviewTableViewCell.xib; sourceTree = "<group>"; };
 		BE822A78231E0E3400965001 /* TabbedHomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbedHomePresenter.swift; sourceTree = "<group>"; };
 		BE822A79231E0E3400965001 /* TabbedHomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbedHomeRouter.swift; sourceTree = "<group>"; };
 		BE822A7A231E0E3400965001 /* TabbedHomeContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbedHomeContracts.swift; sourceTree = "<group>"; };
@@ -494,6 +502,24 @@
 			path = Realm;
 			sourceTree = "<group>";
 		};
+		BE63D10523205FBF00E7ED7F /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				BE63D10623205FD400E7ED7F /* TransitionDependencies.swift */,
+				BE63D1082320605E00E7ED7F /* InterViewAnimation.swift */,
+			);
+			path = Transition;
+			sourceTree = "<group>";
+		};
+		BE63D10C23206F9200E7ED7F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BE63D10D23206FA300E7ED7F /* OverviewTableViewCell.swift */,
+				BE63D10E23206FA300E7ED7F /* OverviewTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		BE822A77231E0DA800965001 /* TabbedHome */ = {
 			isa = PBXGroup;
 			children = (
@@ -683,6 +709,7 @@
 			isa = PBXGroup;
 			children = (
 				BEC349DE231FD42300A77867 /* Factory */,
+				BE63D10C23206F9200E7ED7F /* Cell */,
 				BEC2326B2318EDB200C7054C /* MovieDetailPresenter.swift */,
 				BEC2326C2318EDB200C7054C /* MovieDetailRouter.swift */,
 				BEC2326D2318EDB200C7054C /* MovieDetailContracts.swift */,
@@ -771,6 +798,7 @@
 		BECEECE3231726EF00C89786 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BE63D10523205FBF00E7ED7F /* Transition */,
 				BE4006EB231E6FA9001D6F1D /* Custom */,
 				BE4006D7231E346F001D6F1D /* Animations */,
 				BE822A9B231E195700965001 /* CollectionViewCell */,
@@ -953,6 +981,7 @@
 				BECEED0A2317573200C89786 /* MovieTableViewCell.xib in Resources */,
 				BE822AAB231E1FBC00965001 /* TopRatedViewController.xib in Resources */,
 				BE4006DE231E627B001D6F1D /* UpcomingMovieTableViewCell.xib in Resources */,
+				BE63D11023206FA300E7ED7F /* OverviewTableViewCell.xib in Resources */,
 				BE4006C2231E2A1A001D6F1D /* LoaderViewController.xib in Resources */,
 				BE822A92231E0F9700965001 /* PopularViewController.xib in Resources */,
 				BE4006F2231E7130001D6F1D /* CarouselMovieCollectionViewCell.xib in Resources */,
@@ -1139,9 +1168,11 @@
 				BECEECE2231725EE00C89786 /* ThemeAppDelegate.swift in Sources */,
 				BECEECBC2316723300C89786 /* Movie.swift in Sources */,
 				BEC349C5231F8C0800A77867 /* PopularViewControllerTableViewExtension.swift in Sources */,
+				BE63D1092320605E00E7ED7F /* InterViewAnimation.swift in Sources */,
 				BE4006BF231E2A1A001D6F1D /* LoaderContracts.swift in Sources */,
 				BECEECBF2316724C00C89786 /* CodableEntity.swift in Sources */,
 				BECEECDD231721AC00C89786 /* Theme.swift in Sources */,
+				BE63D10723205FD400E7ED7F /* TransitionDependencies.swift in Sources */,
 				BEC2327C231C84EA00C7054C /* Collection.swift in Sources */,
 				BECEECA223166B5B00C89786 /* MovieListViewController.swift in Sources */,
 				BE4006BD231E2A1A001D6F1D /* LoaderPresenter.swift in Sources */,
@@ -1151,6 +1182,7 @@
 				BE822A80231E0E3400965001 /* TabbedHomeContracts.swift in Sources */,
 				BECEECEF2317319000C89786 /* ThemeProvider.swift in Sources */,
 				BECEED4A23177C4900C89786 /* Image.swift in Sources */,
+				BE63D10F23206FA300E7ED7F /* OverviewTableViewCell.swift in Sources */,
 				BE4006C1231E2A1A001D6F1D /* LoaderInteractor.swift in Sources */,
 				BE4006D6231E3245001D6F1D /* GetGenreList.swift in Sources */,
 				BECEED1223176B7E00C89786 /* CoreDataConstants.swift in Sources */,

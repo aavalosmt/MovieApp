@@ -13,7 +13,15 @@ class MovieDetailRouter: MovieDetailRouterProtocol {
     static func createModule(movie: Movie) -> UIViewController {
         let view = MovieDetailViewController()
         
-        let interactor = MovieDetailInteractor()
+        let interactor = MovieDetailInteractor(
+            imageProvider: ImageProvider(
+                cache: ImageCache.shared,
+                repository: ImageRepositoryImpl(
+                    persistanceController: ImageDataController()
+                )
+            )
+        )
+        
         let router = MovieDetailRouter()
         
         let presenter = MovieDetailPresenter(

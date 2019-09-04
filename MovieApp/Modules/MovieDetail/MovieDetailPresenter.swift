@@ -20,7 +20,7 @@ class MovieDetailPresenter: MovieDetailPresenterProtocol {
     // Inputs
     
     let viewDidLoadTrigger: PublishSubject<Void> = PublishSubject<Void>()
-    let imageNeededTrigger: PublishSubject<(Int, String)> = PublishSubject<(Int, String)> ()
+    let imageNeededTrigger: PublishSubject<(Int, String, ImageSize)> = PublishSubject<(Int, String, ImageSize)> ()
     
     // Aux relay
     
@@ -40,11 +40,13 @@ class MovieDetailPresenter: MovieDetailPresenterProtocol {
          router: MovieDetailRouterProtocol,
          movie: Movie,
          factory: MovieDetailModulesFactory) {
+                
         self.view = view
         self.interactor = interactor
         self.router = router
         self.movie = movie
         self.factory = factory
+        
         
         self.imageChanged = imageChangeRelay.asSignal(onErrorJustReturn: (-1, nil))
         self.module = moduleChangeRelay.asSignal()
@@ -56,6 +58,13 @@ class MovieDetailPresenter: MovieDetailPresenterProtocol {
                 self.getModules()
             }).disposed(by: disposeBag)
         
+        imageNeededTrigger
+            .asSignal(onErrorJustReturn: (-1, "", .thumbnail))
+            .emit(onNext: { [weak self] (index, path, size) in
+                guard let self = self else { return }
+                self.getImage(imagePath: path, index: index, size: size)
+            }).disposed(by: disposeBag)
+        
         self.factory.moduleCreated
                     .asObservable()
                     .bind(to: moduleChangeRelay)
@@ -64,6 +73,21 @@ class MovieDetailPresenter: MovieDetailPresenterProtocol {
     
     private func getModules() {
         self.factory.getModules(for: movie)
+    }
+    
+    private func getImage(imagePath: String, index: Int, size: ImageSize) {
+        interactor
+            .getImage(imagePath: imagePath, size: size)
+            .observeOn(MainScheduler.asyncInstance)
+            .subscribeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
+            .subscribe(onSuccess: { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case let .success(image):
+                    self.imageChangeRelay.accept((index: index, image: image))
+                default: break
+                }
+            }).disposed(by: disposeBag)
     }
     
 }

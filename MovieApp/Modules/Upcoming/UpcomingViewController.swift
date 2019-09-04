@@ -19,6 +19,7 @@ class UpcomingViewController: BasePagerViewController {
     // MARK: - IBOutlets
     
     @IBOutlet weak var tableView: UITableView!
+    private weak var selectedImage: UIImageView?
     
     // MARK: - Variables
     
@@ -118,13 +119,20 @@ extension UpcomingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let movie = movies[safe: indexPath.row] else {
+        guard let movie = movies[safe: indexPath.row], let cell = tableView.cellForRow(at: indexPath) as? UpcomingMovieTableViewCell else {
             return
         }
         
+        selectedImage = cell.movieImage
+        
+        let transitionDependencies = TransitionDependencies(
+            modalPresentationStyle: .custom,
+            transitioningDelegate: self,
+            sharingView: targetView)
+        
         presenter?
             .selectRowTrigger
-            .onNext(movie)
+            .onNext((movie, transitionDependencies))
     }
 }
 
@@ -132,4 +140,33 @@ extension UpcomingViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension UpcomingViewController: UpcomingViewProtocol {
     
+}
+
+
+extension UpcomingViewController: InterViewAnimatable, UIViewControllerTransitioningDelegate {
+    
+    var targetView: UIView? {
+        return selectedImage
+    }
+
+    weak var snapshotImage: UIImage? {
+        get {
+            return selectedImage?.image
+        }
+        set(newValue) {
+            selectedImage?.image = newValue
+        }
+    }
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let animator = InterViewAnimation()
+        animator.isPresenting = true
+        return animator
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let animator = InterViewAnimation()
+        animator.isPresenting = false
+        return animator
+    }
 }

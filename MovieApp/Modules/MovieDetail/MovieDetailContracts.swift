@@ -22,7 +22,7 @@ protocol MovieDetailPresenterProtocol: class {
     var movie: Movie { get }
     
     var viewDidLoadTrigger: PublishSubject<Void> { get }
-    var imageNeededTrigger: PublishSubject<(Int, String)> { get }
+    var imageNeededTrigger: PublishSubject<(Int, String, ImageSize)> { get }
     
     var imageChanged: Signal<(Int, UIImage?)> { get }
     var module: Signal<MovieDetailModule> { get }
@@ -30,6 +30,8 @@ protocol MovieDetailPresenterProtocol: class {
 
 protocol MovieDetailInputInteractorProtocol: class {
     var presenter: MovieDetailOutputInteractorProtocol? { get set }
+    
+    func getImage(imagePath: String, size: ImageSize) -> Single<Result<UIImage?>>
 }
 
 protocol MovieDetailOutputInteractorProtocol: class {

@@ -37,7 +37,7 @@ class RouterAppDelegate: NSObject, ApplicationService {
         initialView.view.layoutIfNeeded()
         
         UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
-            window.rootViewController = initialView
+            window.rootViewController = UINavigationController(rootViewController: initialView)
         }, completion: nil)
     }
     
@@ -57,7 +57,7 @@ class RouterAppDelegate: NSObject, ApplicationService {
         initialView.view.layoutIfNeeded()
         
         UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
-            window.rootViewController = initialView
+            window.rootViewController = UINavigationController(rootViewController: initialView)
         }, completion: nil)
     }
     

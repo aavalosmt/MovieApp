@@ -19,6 +19,8 @@ class BasePagerViewController: BaseViewController, TabBarViewProtocol {
         return nil
     }
     
+    weak var container: BasePagerContainerViewController<TabCollectionViewCell>?
+    
 }
 
 extension BasePagerViewController: IndicatorInfoProvider {

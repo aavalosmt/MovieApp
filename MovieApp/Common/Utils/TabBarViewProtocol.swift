@@ -13,4 +13,6 @@ protocol TabBarViewProtocol {
     var tabIcon: UIImage? { get }
     var tabTitle: String { get }
     
+    var container: BasePagerContainerViewController<TabCollectionViewCell>? { get set }
+    
 }

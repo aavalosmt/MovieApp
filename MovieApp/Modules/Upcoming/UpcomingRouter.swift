@@ -9,7 +9,7 @@
 import UIKit
 
 protocol UpcomingOutputRouterProtocol: class {
-    func transitionDetail(from: Navigatable, movie: Movie)
+    func transitionDetail(from: TabBarViewProtocol, movie: Movie, transition: TransitionDependencies)
 }
 
 class UpcomingRouter: UpcomingRouterProtocol {
@@ -56,9 +56,15 @@ class UpcomingRouter: UpcomingRouterProtocol {
 
 extension UpcomingRouter: UpcomingOutputRouterProtocol {
     
-    func transitionDetail(from: Navigatable, movie: Movie) {
+    func transitionDetail(from: TabBarViewProtocol, movie: Movie, transition: TransitionDependencies) {
+        guard let origin = from as? (UIViewController & TabBarViewProtocol) else {
+            return
+        }
+        
         let view = MovieDetailRouter.createModule(movie: movie)
-        from.present(view, completion: nil)
+        DispatchQueue.main.async {
+            origin.container?.present(destination: view, transition: transition)
+        }
     }
     
 }

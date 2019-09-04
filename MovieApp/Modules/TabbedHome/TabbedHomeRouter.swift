@@ -12,6 +12,12 @@ class TabbedHomeRouter: TabbedHomeRouterProtocol {
     
     static func createModule(subModules: [TabBarViewProtocol]) -> UIViewController {
         let view = TabbedHomeViewController()
+        let subModules = subModules.map({ module -> TabBarViewProtocol in
+            var module = module
+            module.container = view
+            return module
+        })
+        
         view.tabControllers = subModules
         
         let interactor = TabbedHomeInteractor()

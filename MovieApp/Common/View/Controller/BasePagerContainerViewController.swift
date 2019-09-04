@@ -12,6 +12,17 @@ import XLPagerTabStrip
 class BasePagerContainerViewController<T: TabCollectionViewCell>: BaseButtonBarPagerTabStripViewController<T>, Navigatable {
     
     private var theme: ThemeProtocol = ThemeProvider.shared.getTheme().object
+    private weak var _targetView: UIView?
+    private weak var _snapshotImage: UIImage?
+
+    weak var snapshotImage: UIImage? {
+        get {
+            return _snapshotImage
+        }
+        set(newValue) {
+            _snapshotImage = newValue
+        }
+    }
     
     func reloadTheme() {
         theme = ThemeProvider.shared.getTheme().object
@@ -93,12 +104,37 @@ class BasePagerContainerViewController<T: TabCollectionViewCell>: BaseButtonBarP
     override func updateIndicator(for viewController: PagerTabStripViewController, fromIndex: Int, toIndex: Int, withProgressPercentage progressPercentage: CGFloat, indexWasChanged: Bool) {
         super.updateIndicator(for: viewController, fromIndex: fromIndex, toIndex: toIndex, withProgressPercentage: progressPercentage, indexWasChanged: indexWasChanged)
         if indexWasChanged && toIndex > -1 && toIndex < viewControllers.count {
-            let child = viewControllers[toIndex] as! IndicatorInfoProvider // swiftlint:disable:this force_cast
+            let child = viewControllers[toIndex] as! IndicatorInfoProvider
             UIView.performWithoutAnimation({ [weak self] () -> Void in
                 guard let me = self else { return }
                 me.navigationItem.leftBarButtonItem?.title =  child.indicatorInfo(for: me).title
             })
         }
+    }
+    
+    func present(destination: UIViewController, transition: TransitionDependencies) {
+        
+        _targetView = transition.sharingView
+        destination.modalPresentationStyle = transition.modalPresentationStyle
+        destination.transitioningDelegate = transition.transitioningDelegate
+        
+        if let image = (_targetView as? UIImageView)?.image {
+            _snapshotImage = image
+        }
+        
+        if var destination = destination as? InterViewAnimatable {
+            destination.snapshotImage = _snapshotImage
+        }
+
+        present(destination, animated: true, completion: nil)
+    }
+    
+}
+
+extension BasePagerContainerViewController: InterViewAnimatable {
+    
+    var targetView: UIView? {
+        return _targetView
     }
     
 }

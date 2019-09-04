@@ -24,7 +24,7 @@ class RealmMovie: Object {
     let r_isAdultRated = RealmOptional<Bool>()
     var r_genreIds = List<Int>()
     @objc dynamic var r_posterPath: String?
-    let r_page = RealmOptional<Int>()
+    var r_pages = List<Int>()
     var r_listTypes = List<Int>()
     
     public override static func primaryKey() -> String? {
@@ -171,12 +171,12 @@ extension RealmMovie: Movie {
         return list
     }
     
-    var page: Int? {
+    var pages: Set<Int>? {
         get {
-            return r_page.value
+            return getPages()
         }
         set(newValue) {
-            r_page.value = newValue
+            r_pages = getPageList(pages: newValue)
         }
     }
     
@@ -191,6 +191,29 @@ extension RealmMovie: Movie {
     
     var genres: [String] {
         return []
+    }
+    
+    private func getPageList(pages: Set<Int>?) -> List<Int> {
+        let list = List<Int>()
+
+        guard let pages = pages else {
+            return list
+        }
+        
+        for page in pages {
+            list.append(page)
+        }
+        
+        return list
+    }
+    
+    private func getPages() -> Set<Int>? {
+        var set: Set<Int> = []
+        for page in r_pages {
+            set.insert(page)
+        }
+        
+        return (set.isEmpty ? nil: set)
     }
     
     private func getListTypes() -> Set<MovieListType>? {

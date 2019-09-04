@@ -50,11 +50,10 @@ class MovieRepositoryImpl: MovieRepository {
     }
     
     func fetchMovieList(forPage page: Int, type: MovieListType) -> [MovieEntity]? {
-        let pagePredicate = String(format: "(r_page = %d)", page, type.rawValue)
         
-        guard let movies = (persistanceController.fetch(predicate: pagePredicate) as? [MovieEntity])?.filter({ movie in
+        guard let movies = (persistanceController.fetch() as? [MovieEntity])?.filter({ movie in
             
-            return movie.listTypes?.contains(type) ?? false
+            return (movie.listTypes?.contains(type) ?? false) && (movie.pages?.contains(page) ?? false)
         }) else {
             return nil
         }

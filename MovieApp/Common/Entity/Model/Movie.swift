@@ -28,7 +28,7 @@ protocol Movie {
     var isAdultRated: Bool? { get }
     var genreIds: [Int]? { get }
     var posterPath: String? { get }
-    var page: Int? { get }
+    var pages: Set<Int>? { get }
     var listTypes: Set<MovieListType>? { get }
     var genres: [String] { get }
 }
@@ -48,7 +48,7 @@ struct MovieEntity: CodableEntity, Movie {
     var isAdultRated: Bool?
     var genreIds: [Int]?
     var posterPath: String?
-    var page: Int?
+    var pages: Set<Int>?
     var listTypes: Set<MovieListType>?
     var genres: [String] = []
     
@@ -81,7 +81,7 @@ struct MovieEntity: CodableEntity, Movie {
          isAdultRated: Bool?,
          genreIds: [Int]?,
          posterPath: String?,
-         page: Int?) {
+         pages: Set<Int>?) {
         
         self.originalTitle = originalTitle
         self.title = title
@@ -96,7 +96,7 @@ struct MovieEntity: CodableEntity, Movie {
         self.isAdultRated = isAdultRated
         self.genreIds = genreIds
         self.posterPath = posterPath
-        self.page = page
+        self.pages = pages
     }
     
     init(from decoder: Decoder) throws {

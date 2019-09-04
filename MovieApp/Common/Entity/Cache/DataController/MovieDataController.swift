@@ -45,7 +45,7 @@ class MovieDataController: PersistanceController {
             realmMovie.isAdultRated = movie.isAdultRated
             realmMovie.genreIds = movie.genreIds
             realmMovie.posterPath = movie.posterPath
-            realmMovie.page = movie.page
+            realmMovie.pages = movie.pages
             realmMovie.listTypes = movie.listTypes
             
             // Merge old list types with new ones
@@ -86,7 +86,7 @@ class MovieDataController: PersistanceController {
                                      isAdultRated: realmMovie.isAdultRated,
                                      genreIds: realmMovie.genreIds,
                                      posterPath: realmMovie.posterPath,
-                                     page: realmMovie.page)
+                                     pages: realmMovie.pages)
             
             entity.listTypes = realmMovie.listTypes
             return entity
@@ -117,7 +117,7 @@ class MovieDataController: PersistanceController {
                            isAdultRated: realmMovie.isAdultRated,
                            genreIds: realmMovie.genreIds,
                            posterPath: realmMovie.posterPath,
-                           page: realmMovie.page)
+                           pages: realmMovie.pages)
         
         entity.listTypes = realmMovie.listTypes
         
@@ -145,7 +145,7 @@ class MovieDataController: PersistanceController {
                                      isAdultRated: realmMovie.isAdultRated,
                                      genreIds: realmMovie.genreIds,
                                      posterPath: realmMovie.posterPath,
-                                     page: realmMovie.page)
+                                     pages: realmMovie.pages)
             
             entity.listTypes = realmMovie.listTypes
             return entity

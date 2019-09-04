@@ -87,7 +87,12 @@ class GetMovieListImpl: UseCaseImpl, GetMovieList {
         guard let repository = repository as? MovieRepository,
               let movies = (movies as? MovieListResponse)?.results.compactMap({ movie -> (MovieEntity) in
                 var movie = movie
-                movie.page = page
+                
+                if movie.pages == nil {
+                    movie.pages = Set<Int>()
+                }
+                movie.pages?.insert(page)
+                
                 if movie.listTypes == nil {
                     movie.listTypes = Set<MovieListType>()
                 }

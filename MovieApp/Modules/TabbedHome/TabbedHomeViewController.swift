@@ -17,16 +17,9 @@ protocol TabbedHomeViewProtocol: class {
 class TabbedHomeViewController: BasePagerContainerViewController<TabCollectionViewCell> {
 
     var presenter: TabbedHomePresenterProtocol?
-    var tabControllers: [TabBarViewProtocol]
+    var tabControllers: [TabBarViewProtocol] = []
     
-    init(tabControllers: [TabBarViewProtocol]) {
-        self.tabControllers = tabControllers
-        super.init(nibName: String(describing: TabbedHomeViewController.self), bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    weak var sharedView: UIView?
     
     override func viewDidLoad() {
         super.viewDidLoad()

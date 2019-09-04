@@ -33,7 +33,7 @@ protocol TopRatedInputInteractorProtocol: class {
     var presenter: TopRatedOutputInteractorProtocol? { get set }
     
     func getMovieList() -> Observable<Result<[Movie]>>
-    func getImage(imagePath: String) -> Single<Result<UIImage?>>
+    func getImage(imagePath: String, size: ImageSize) -> Single<Result<UIImage?>>
     func getGenreList() -> Single<Result<[Genre]>> 
 }
 

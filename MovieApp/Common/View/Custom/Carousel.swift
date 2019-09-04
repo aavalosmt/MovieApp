@@ -114,7 +114,7 @@ class Carousel<T, U: CarouselItem>: UICollectionView, CarouselDelegate where T =
         carouselViewLayout.minimumInteritemSpacing = kItemSpacing
         carouselViewLayout.minimumLineSpacing = kItemSpacing
         
-        let itemWidth = self.bounds.width - (UIScreen.main.bounds.size.width / 2.0)
+        let itemWidth = UIScreen.main.bounds.size.width / 2.0
         let itemHeight = self.bounds.height - self.contentInset.top - self.contentInset.bottom - carouselViewLayout.sectionInset.top - carouselViewLayout.sectionInset.bottom
         carouselViewLayout.itemSize = CGSize(width: itemWidth, height: itemHeight)
         carouselViewLayout.didPageChangedClosure = didPageChangedClosure

@@ -9,8 +9,8 @@
 import UIKit
 
 protocol ImageCaching {
-    func saveImage(image: UIImage?, url: URL)
-    func imageWithUrl(url: URL?) -> UIImage?
+    func saveImage(image: UIImage?, url: URL, size: ImageSize)
+    func imageWithUrl(url: URL?, size: ImageSize) -> UIImage?
 }
 
 class ImageCache: ImageCaching {
@@ -19,13 +19,13 @@ class ImageCache: ImageCaching {
     
     private var cache = NSCache<NSString, UIImage>()
     
-    func saveImage(image: UIImage?, url: URL) {
+    func saveImage(image: UIImage?, url: URL, size: ImageSize) {
         guard let image = image else { return }
-        cache.setObject(image, forKey: url.absoluteString as NSString)
+        cache.setObject(image, forKey: url.absoluteString.appending("_" + size.rawValue) as NSString)
     }
     
-    func imageWithUrl(url: URL?) -> UIImage? {
-        guard let path = url?.absoluteString else {
+    func imageWithUrl(url: URL?, size: ImageSize) -> UIImage? {
+        guard let path = url?.absoluteString.appending("_" + size.rawValue) else {
             return nil
         }
         return cache.object(forKey: path as NSString)

@@ -163,7 +163,7 @@ extension PopularViewController: CarouselDataSourceDelegate {
         
         if case let .carousel(movies) = carouselModule.type, let posterPath = movies[index].posterPath {
             DispatchQueue.global().sync {
-                self.presenter?.imageNeededTrigger.onNext((carouselIndex, index, posterPath))
+                self.presenter?.imageNeededTrigger.onNext((carouselIndex, index, posterPath, .thumbnail))
             }
         }
 

@@ -48,7 +48,7 @@ class MovieListRouter: MovieListRouterProtocol {
 extension MovieListRouter: MovieListRouterOutputProtocol {
     
     func transitionDetail(from: Navigatable, movie: Movie) {
-        MovieDetailRouter.push(from: from, movie: movie)
+        //MovieDetailRouter.push(from: from, movie: movie)
     }
     
 }

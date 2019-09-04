@@ -9,7 +9,8 @@
 import UIKit
 
 class StarredMovieTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var starredLabel: AppTitleLabel!
     @IBOutlet weak var titleLabel: AppTitleLabel!
     @IBOutlet weak var movieImage: UIImageView!
     @IBOutlet weak var overviewLabel: AppParagraphLabel!
@@ -31,6 +32,7 @@ class StarredMovieTableViewCell: UITableViewCell {
     
     func configure(movie: Movie) {
         overviewLabel.text = movie.overView
+        starredLabel.text = "STARRED".localized
         
         guard !movie.genres.isEmpty else {
                     titleLabel.text = movie.title
@@ -39,10 +41,10 @@ class StarredMovieTableViewCell: UITableViewCell {
         
         var genreText: String = " - "
         for genre in movie.genres {
+            genreText += genre
             if movie.genres.last != genre {
                 genreText += " | "
             }
-            genreText += genre
         }
         
         titleLabel.text = (movie.title ?? "") + genreText

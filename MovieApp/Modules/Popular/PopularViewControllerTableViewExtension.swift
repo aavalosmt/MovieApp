@@ -58,7 +58,7 @@ extension PopularViewController: UITableViewDelegate, UITableViewDataSource {
             
             if let posterPath = movies[safe: index]?.posterPath {
                 DispatchQueue.global().sync {
-                    self.presenter?.imageNeededTrigger.onNext((indexPath.row, nil, posterPath))
+                    self.presenter?.imageNeededTrigger.onNext((indexPath.row, nil, posterPath, .thumbnail))
                 }
             }
             return
@@ -72,7 +72,7 @@ extension PopularViewController: UITableViewDelegate, UITableViewDataSource {
         case .starred(let movie):
             if let posterPath = movie?.posterPath {
                 DispatchQueue.global().sync {
-                    self.presenter?.imageNeededTrigger.onNext((indexPath.row, nil, posterPath))
+                    self.presenter?.imageNeededTrigger.onNext((indexPath.row, nil, posterPath, .full))
                 }
             }
             

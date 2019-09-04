@@ -23,6 +23,7 @@ class UpcomingPresenter: UpcomingPresenterProtocol {
     let reachedBottomTrigger: PublishSubject<Void> = PublishSubject<Void>()
     let viewDidLoadTrigger: PublishSubject<Void> = PublishSubject<Void>()
     let imageNeededTrigger: PublishSubject<(Int, String)> = PublishSubject<(Int, String)> ()
+    let selectRowTrigger: PublishSubject<Movie> = PublishSubject<Movie>()
     
     // MARK: - Aux Relays
     
@@ -35,11 +36,11 @@ class UpcomingPresenter: UpcomingPresenterProtocol {
 
     weak var view: UpcomingViewProtocol?
     var interactor: UpcomingInputInteractorProtocol
-    var router: UpcomingRouterProtocol
+    var router: UpcomingRouterProtocol & UpcomingOutputRouterProtocol
     
     init(view: UpcomingViewProtocol,
          interactor: UpcomingInputInteractorProtocol,
-         router: UpcomingRouterProtocol) {
+         router: UpcomingRouterProtocol & UpcomingOutputRouterProtocol) {
         self.view = view
         self.interactor = interactor
         self.router = router
@@ -59,7 +60,7 @@ class UpcomingPresenter: UpcomingPresenterProtocol {
             .asSignal(onErrorJustReturn: (-1, ""))
             .emit(onNext: { [weak self] (index, path) in
                 guard let self = self else { return }
-                self.getImage(forPath: path, index: index)
+                self.getImage(forPath: path, index: index, size: .thumbnail)
             }).disposed(by: disposeBag)
         
         reachedBottomTrigger.asObservable()
@@ -67,6 +68,14 @@ class UpcomingPresenter: UpcomingPresenterProtocol {
             .subscribe({ [weak self] _ in
                 guard let self = self else { return }
                 self.getMovieList()
+            }).disposed(by: disposeBag)
+        
+        selectRowTrigger
+            .asSignal(
+                onErrorJustReturn: MovieEntity()
+            ).emit(onNext: { [weak self] movie in
+                guard let self = self, let view = self.view as? Navigatable else { return }
+                self.router.transitionDetail(from: view, movie: movie)
             }).disposed(by: disposeBag)
     }
     
@@ -119,9 +128,9 @@ class UpcomingPresenter: UpcomingPresenterProtocol {
             ).disposed(by: disposeBag)
     }
     
-    func getImage(forPath path: String, index: Int) {
+    func getImage(forPath path: String, index: Int, size: ImageSize) {
         interactor
-            .getImage(imagePath: path)
+            .getImage(imagePath: path, size: size)
             .observeOn(MainScheduler.asyncInstance)
             .subscribeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
             .subscribe(onSuccess: { [weak self] result in

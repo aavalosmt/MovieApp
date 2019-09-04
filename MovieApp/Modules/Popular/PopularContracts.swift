@@ -25,7 +25,7 @@ protocol PopularPresenterProtocol: class {
     
     var reachedBottomTrigger: PublishSubject<Void> { get }
     var viewDidLoadTrigger: PublishSubject<Void> { get }
-    var imageNeededTrigger: PublishSubject<(Int, Int?, String)> { get }
+    var imageNeededTrigger: PublishSubject<(Int, Int?, String, ImageSize)> { get }
     var module: Driver<PopularModule> { get }
 }
 
@@ -33,7 +33,7 @@ protocol PopularInputInteractorProtocol: class {
     var presenter: PopularOutputInteractorProtocol? { get set }
     
     func getMovieList() -> Observable<Result<[Movie]>>
-    func getImage(imagePath: String) -> Single<Result<UIImage?>>
+    func getImage(imagePath: String, size: ImageSize) -> Single<Result<UIImage?>>
     func getGenreList() -> Single<Result<[Genre]>>
 }
 

@@ -20,18 +20,14 @@ class MovieDetailRouter: MovieDetailRouterProtocol {
             view: view,
             interactor: interactor,
             router: router,
-            movie: movie
+            movie: movie,
+            factory: MovieDetailModulesFactory()
         )
         
         view.presenter = presenter
         interactor.presenter = presenter
         
         return view
-    }
-    
-    static func push(from: Navigatable, movie: Movie) {
-        let view = createModule(movie: movie)
-        from.push(view, animated: true)
     }
     
 }

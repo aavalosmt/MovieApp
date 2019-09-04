@@ -23,7 +23,7 @@ class PopularPresenter: PopularPresenterProtocol {
     
     let reachedBottomTrigger: PublishSubject<Void> = PublishSubject<Void>()
     let viewDidLoadTrigger: PublishSubject<Void> = PublishSubject<Void>()
-    let imageNeededTrigger: PublishSubject<(Int, Int?, String)> = PublishSubject<(Int, Int?, String)> ()
+    let imageNeededTrigger: PublishSubject<(Int, Int?, String, ImageSize)> = PublishSubject<(Int, Int?, String, ImageSize)> ()
     
     // MARK: - Aux Relays
     
@@ -62,10 +62,10 @@ class PopularPresenter: PopularPresenterProtocol {
             }).disposed(by: disposeBag)
         
         imageNeededTrigger
-            .asSignal(onErrorJustReturn: (-1, nil, ""))
-            .emit(onNext: { [weak self] (index, subIndex, path) in
+            .asSignal(onErrorJustReturn: (-1, nil, "", .thumbnail))
+            .emit(onNext: { [weak self] (index, subIndex, path, size) in
                 guard let self = self else { return }
-                self.getImage(forPath: path, subIndex: subIndex, index: index)
+                self.getImage(forPath: path, subIndex: subIndex, index: index, size: size)
             }).disposed(by: disposeBag)
         
         reachedBottomTrigger
@@ -94,7 +94,7 @@ class PopularPresenter: PopularPresenterProtocol {
                         self.errorChangeRelay.accept(UseCaseError.malformation)
                         return
                     }
-                    self.factory.genreTrigger.onNext(genres)
+                    self.genres = genres
                     self.getMovieList()
                 case .error(let error):
                     self.errorChangeRelay.accept(error)
@@ -131,9 +131,9 @@ class PopularPresenter: PopularPresenterProtocol {
             ).disposed(by: disposeBag)
     }
     
-    func getImage(forPath path: String, subIndex: Int?, index: Int) {
+    func getImage(forPath path: String, subIndex: Int?, index: Int, size: ImageSize) {
         interactor
-            .getImage(imagePath: path)
+            .getImage(imagePath: path, size: size)
             .observeOn(MainScheduler.asyncInstance)
             .subscribeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
             .subscribe(onSuccess: { [weak self] result in

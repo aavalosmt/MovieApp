@@ -37,6 +37,7 @@ class UpcomingViewController: BasePagerViewController {
      
         configureTableView()
         bind()
+        
     }
     
     // MARK: - Private methods
@@ -114,6 +115,16 @@ extension UpcomingViewController: UITableViewDelegate, UITableViewDataSource {
                 self.presenter?.imageNeededTrigger.onNext((indexPath.row, posterPath))                    
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let movie = movies[safe: indexPath.row] else {
+            return
+        }
+        
+        presenter?
+            .selectRowTrigger
+            .onNext(movie)
     }
 }
 

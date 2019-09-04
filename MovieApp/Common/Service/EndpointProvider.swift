@@ -46,12 +46,8 @@ class EndpointProvider {
         return environment.baseUrl + endpoint.path
     }
     
-    func imageUrl(forEndpoint endpoint: Endpoint) -> String {
-        return environment.imageBaseUrl + endpoint.path
-    }
-    
-    func thumbnailUrl(forEndpoint endpoint: Endpoint) -> String {
-        return environment.thumbnailBaseUrl + endpoint.path
+    func imageUrl(forEndpoint endpoint: Endpoint, size: ImageSize) -> String {
+        return (size == .full ? environment.imageBaseUrl : environment.thumbnailBaseUrl) + endpoint.path
     }
 }
 

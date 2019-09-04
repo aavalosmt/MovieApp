@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 protocol MovieDetailRouterProtocol: class {
     static func createModule(movie: Movie) -> UIViewController
@@ -18,6 +20,12 @@ protocol MovieDetailPresenterProtocol: class {
     var router: MovieDetailRouterProtocol { get }
     
     var movie: Movie { get }
+    
+    var viewDidLoadTrigger: PublishSubject<Void> { get }
+    var imageNeededTrigger: PublishSubject<(Int, String)> { get }
+    
+    var imageChanged: Signal<(Int, UIImage?)> { get }
+    var module: Signal<MovieDetailModule> { get }
 }
 
 protocol MovieDetailInputInteractorProtocol: class {

@@ -64,7 +64,7 @@ class MovieListPresenter: MovieListPresenterProtocol {
     func bind(imageNeededTrigger: Signal<(Int, String)>, selectRowTrigger: Signal<Movie>) {
         imageNeededTrigger.emit(onNext: { [weak self] (index, path) in
             guard let self = self else { return }
-            self.getImage(forPath: path, index: index)
+            self.getImage(forPath: path, index: index, size: .thumbnail)
         }).disposed(by: disposeBag)
         
         selectRowTrigger.emit(onNext: { [weak self] movie in
@@ -95,9 +95,9 @@ class MovieListPresenter: MovieListPresenterProtocol {
             ).disposed(by: disposeBag)
     }
     
-    func getImage(forPath path: String, index: Int) {
+    func getImage(forPath path: String, index: Int, size: ImageSize) {
         interactor
-            .getImage(imagePath: path)
+            .getImage(imagePath: path, size: size)
             .observeOn(MainScheduler.asyncInstance)
             .subscribeOn(ConcurrentDispatchQueueScheduler.init(qos: .background))
             .subscribe(onSuccess: { [weak self] result in

@@ -18,6 +18,7 @@ class CarouselTableViewCell: UITableViewCell {
         }
     }
     
+    @IBOutlet weak var titleLabel: AppTitleLabel!
     @IBOutlet weak var carouselContainer: UIView!
     @IBOutlet weak var paragraphLabel: AppParagraphLabel!
     
@@ -49,6 +50,7 @@ class CarouselTableViewCell: UITableViewCell {
         carousel.didPageChangedClosure = { [weak self] page in
             guard let self = self, let movie = self.carouselData.data[safe: page] else { return }
             self.paragraphLabel.text = movie.overView
+            self.titleLabel.text = movie.title
         }
         
         self.carousel.setCarouselDataSource(carouselDataSource)
@@ -76,6 +78,7 @@ class CarouselTableViewCell: UITableViewCell {
         
         if let first = movies.first {
             self.paragraphLabel.text = first.overView
+            self.titleLabel.text = first.title
         }
     }
     

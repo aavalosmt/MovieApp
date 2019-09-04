@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol UpcomingOutputRouterProtocol: class {
+    func transitionDetail(from: Navigatable, movie: Movie)
+}
+
 class UpcomingRouter: UpcomingRouterProtocol {
     
     static func createModule() -> UIViewController {
@@ -34,7 +38,7 @@ class UpcomingRouter: UpcomingRouterProtocol {
             )
         )
         
-        let router = UpcomingRouter()
+        let router: UpcomingRouterProtocol & UpcomingOutputRouterProtocol = UpcomingRouter()
         
         let presenter = UpcomingPresenter(
             view: view,
@@ -46,6 +50,15 @@ class UpcomingRouter: UpcomingRouterProtocol {
         interactor.presenter = presenter
         
         return view
+    }
+    
+}
+
+extension UpcomingRouter: UpcomingOutputRouterProtocol {
+    
+    func transitionDetail(from: Navigatable, movie: Movie) {
+        let view = MovieDetailRouter.createModule(movie: movie)
+        from.present(view, completion: nil)
     }
     
 }

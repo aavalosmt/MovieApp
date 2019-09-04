@@ -10,7 +10,8 @@ import UIKit
 
 protocol Navigatable {
     func push(_ vc: UIViewController, animated: Bool)
-    func dismiss(animated: Bool, completion:  @escaping (() -> Void))
+    func present(_ vc: UIViewController, completion: (() -> Void)?)
+    func dismiss(animated: Bool, completion: (() -> Void)?)
 }
 
 extension Navigatable where Self: UIViewController {
@@ -19,8 +20,8 @@ extension Navigatable where Self: UIViewController {
         self.navigationController?.pushViewController(vc, animated: animated)
     }
     
-    func dismiss(animated: Bool, completion: @escaping (() -> Void)) {
-        self.dismiss(animated: animated, completion: completion)
+    func present(_ vc: UIViewController, completion: (() -> Void)?) {
+        self.present(vc, animated: true, completion: completion)
     }
-    
+
 }

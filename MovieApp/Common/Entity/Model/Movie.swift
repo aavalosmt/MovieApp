@@ -68,6 +68,8 @@ struct MovieEntity: CodableEntity, Movie {
         case posterPath = "poster_path"
     }
     
+    init() {}
+    
     init(originalTitle: String?,
          title: String?,
          voteCount: Int?,

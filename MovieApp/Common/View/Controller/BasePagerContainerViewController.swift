@@ -9,7 +9,7 @@
 import UIKit
 import XLPagerTabStrip
 
-class BasePagerContainerViewController<T: TabCollectionViewCell>: BaseButtonBarPagerTabStripViewController<T> {
+class BasePagerContainerViewController<T: TabCollectionViewCell>: BaseButtonBarPagerTabStripViewController<T>, Navigatable {
     
     private var theme: ThemeProtocol = ThemeProvider.shared.getTheme().object
     

@@ -52,14 +52,14 @@ class MovieListInteractor: MovieListInputInteractorProtocol {
         })
     }
     
-    func getImage(imagePath: String) -> Single<Result<UIImage?>> {
+    func getImage(imagePath: String, size: ImageSize) -> Single<Result<UIImage?>> {
         return Single.create(subscribe: { [weak self] observer in
             guard let self = self else {
                 observer(.error(UseCaseError.malformation))
                 return Disposables.create()
             }
     
-            self.imageProvider.rxImage(imageUrl: imagePath)
+            self.imageProvider.rxImage(imageUrl: imagePath, size: size)
                 .subscribe(onSuccess: { image in
                     observer(.success(Result.success(image)))
                 }, onError: { error in

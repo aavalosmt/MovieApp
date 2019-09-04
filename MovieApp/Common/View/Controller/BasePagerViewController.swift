@@ -27,6 +27,5 @@ extension BasePagerViewController: IndicatorInfoProvider {
         return IndicatorInfo(title: tabTitle)
     }
     
-    
 }
 

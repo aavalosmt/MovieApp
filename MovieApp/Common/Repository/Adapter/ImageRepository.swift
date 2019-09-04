@@ -11,8 +11,8 @@ import Foundation
 protocol ImageRepository: Repository {
     var persistanceController: PersistanceController { get }
     
-    func saveImages(images: [ImageEntity])
-    func search(key: String) -> ImageEntity?
+    func saveImages(images: [ImageEntity], size: ImageSize)
+    func search(key: String, size: ImageSize) -> ImageEntity?
 }
 
 class ImageRepositoryImpl: ImageRepository {
@@ -23,11 +23,15 @@ class ImageRepositoryImpl: ImageRepository {
         self.persistanceController = persistanceController
     }
     
-    func saveImages(images: [ImageEntity]) {
+    func saveImages(images: [ImageEntity], size: ImageSize) {
+        let images = images.map({ image -> Image in
+            image.key = (image.key ?? "") + "_" + size.rawValue
+            return image
+        })
         persistanceController.save(objects: images)
     }
     
-    func search(key: String) -> ImageEntity? {
-        return persistanceController.search(key: key) as? ImageEntity
+    func search(key: String, size: ImageSize) -> ImageEntity? {
+        return persistanceController.search(key: key + "_" + size.rawValue) as? ImageEntity
     }
 }

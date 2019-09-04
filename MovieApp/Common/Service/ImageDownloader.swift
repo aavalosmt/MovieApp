@@ -15,12 +15,16 @@ protocol ImageDownloader {
     var repository: Repository { get }
     var endpointProvider: EndpointProvider { get }
     
-    func executeRequest(url: URL) -> Result<Any>
-    func rxImage(imageUrl: String) -> Single<UIImage?>
+    func rxImage(imageUrl: String, size: ImageSize) -> Single<UIImage?>
 }
 
 enum ImageError: Error {
     case fetchingError
+}
+
+enum ImageSize: String {
+    case thumbnail
+    case full
 }
 
 class ImageProvider: ImageDownloader {
@@ -37,28 +41,24 @@ class ImageProvider: ImageDownloader {
         self.repository = repository
     }
     
-    func executeRequest(url: URL) -> Result<Any> {
-        return .success(Void.self)
-    }
-    
-    func rxImage(imageUrl: String) -> Single<UIImage?> {
+    func rxImage(imageUrl: String, size: ImageSize) -> Single<UIImage?> {
         return Single.create(subscribe: { [weak self] observer in
             guard let self = self else {
                 observer(.error(ImageError.fetchingError))
                 return Disposables.create()
             }
             
-            let path = self.endpointProvider.thumbnailUrl(forEndpoint: .Image(path: imageUrl))
+            let path = self.endpointProvider.imageUrl(forEndpoint: .Image(path: imageUrl), size: size)
             guard let url = URL(string: path) else {
                 observer(.error(ImageError.fetchingError))
                 return Disposables.create()
             }
             
-            if let image = self.cache.imageWithUrl(url: url) {
+            if let image = self.cache.imageWithUrl(url: url, size: size) {
               
                 observer(.success(image))
                 
-            } else if let image = (self.repository as? ImageRepository)?.search(key: imageUrl), let data = image.data, let uiimage = UIImage(data: data) {
+            } else if let image = (self.repository as? ImageRepository)?.search(key: imageUrl, size: size), let data = image.data, let uiimage = UIImage(data: data) {
                 
                 observer(.success(uiimage))
             } else {
@@ -69,8 +69,8 @@ class ImageProvider: ImageDownloader {
                     .subscribeOn(MainScheduler.instance)
                     .subscribe(onNext: { (response, data) in
                         let image = UIImage(data: data)
-                        self.cache.saveImage(image: image, url: url)
-                        self.saveImage(image: ImageEntity(data: data, key: imageUrl))
+                        self.cache.saveImage(image: image, url: url, size: size)
+                        self.saveImage(image: ImageEntity(data: data, key: imageUrl), size: size)
                         
                         observer(.success(image))
                     }, onError: { error in
@@ -82,9 +82,9 @@ class ImageProvider: ImageDownloader {
         })
     }
     
-    private func saveImage(image: ImageEntity) {
+    private func saveImage(image: ImageEntity, size: ImageSize) {
         if let repository = self.repository as? ImageRepository {
-            repository.saveImages(images: [image])
+            repository.saveImages(images: [image], size: size)
         }
     }
 

@@ -17,7 +17,7 @@ protocol UpcomingRouterProtocol: class {
 protocol UpcomingPresenterProtocol: class {
     var view: UpcomingViewProtocol? { get }
     var interactor: UpcomingInputInteractorProtocol { get }
-    var router: UpcomingRouterProtocol { get }
+    var router: UpcomingRouterProtocol & UpcomingOutputRouterProtocol { get }
     
     var moviesChanged: Signal<[Movie]> { get }
     var imageChanged: Signal<(Int, UIImage?)> { get }
@@ -26,13 +26,15 @@ protocol UpcomingPresenterProtocol: class {
     var reachedBottomTrigger: PublishSubject<Void> { get }
     var viewDidLoadTrigger: PublishSubject<Void> { get }
     var imageNeededTrigger: PublishSubject<(Int, String)> { get }
+    var selectRowTrigger: PublishSubject<Movie> { get }
+
 }
 
 protocol UpcomingInputInteractorProtocol: class {
     var presenter: UpcomingOutputInteractorProtocol? { get set }
     
     func getMovieList() -> Observable<Result<[Movie]>>
-    func getImage(imagePath: String) -> Single<Result<UIImage?>>
+    func getImage(imagePath: String, size: ImageSize) -> Single<Result<UIImage?>>
     func getGenreList() -> Single<Result<[Genre]>>
 }
 

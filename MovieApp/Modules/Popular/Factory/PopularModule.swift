@@ -33,13 +33,13 @@ enum PopularModuleType: Hashable {
     var id: Int {
         switch self {
         case .genre:
-            return 1
+            return -1
         case .starred:
-            return 2
+            return 1
         case .carousel:
-            return 3
+            return 2
         case .list:
-            return 4
+            return 3
         case .search:
             return 0
         }
@@ -58,12 +58,10 @@ enum PopularModuleType: Hashable {
         case 0:
             return .search
         case 1:
-            return .genre(genres: [])
-        case 2:
             return .starred(movie: nil)
-        case 3:
+        case 2:
             return .carousel(movies: [])
-        case 4:
+        case 3:
             return .list(movies: [])
         default: return nil
         }

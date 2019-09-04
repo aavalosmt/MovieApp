@@ -39,7 +39,7 @@ protocol MovieListInputInteractorProtocol: class {
     var imageProvider: ImageDownloader { get }
     
     func getMovieList() -> Observable<Result<[MovieEntity]>>
-    func getImage(imagePath: String) -> Single<Result<UIImage?>>
+    func getImage(imagePath: String, size: ImageSize) -> Single<Result<UIImage?>>
 }
 
 protocol MovieListOutputInteractorProtocol: class {

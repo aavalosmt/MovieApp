@@ -18,4 +18,29 @@ extension UIView {
         trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
     }
     
+    func caSnapshot(scale: CGFloat = 0, isOpaque: Bool = false) -> UIImage? {
+        var isSuccess = false
+        UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, scale)
+        if let context = UIGraphicsGetCurrentContext() {
+            layer.render(in: context)
+            isSuccess = true
+        }
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return isSuccess ? image : nil
+    }
+    
+    func frameIn(_ view: UIView?) -> CGRect {
+        if let superview = superview {
+            return superview.convert(frame, to: view)
+        }
+        return frame
+    }
+    
+    func addSubviews(_ views: UIView...) {
+        for view in views {
+            addSubview(view)
+        }
+    }
+    
 }

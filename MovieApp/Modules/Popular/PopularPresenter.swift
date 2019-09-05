@@ -23,6 +23,7 @@ class PopularPresenter: PopularPresenterProtocol {
     
     let reachedBottomTrigger: PublishSubject<Void> = PublishSubject<Void>()
     let viewDidLoadTrigger: PublishSubject<Void> = PublishSubject<Void>()
+    let searchTapTrigger: PublishSubject<Void> = PublishSubject<Void>()
     let imageNeededTrigger: PublishSubject<(Int, Int?, String, ImageSize)> = PublishSubject<(Int, Int?, String, ImageSize)> ()
     
     // MARK: - Aux Relays
@@ -37,12 +38,12 @@ class PopularPresenter: PopularPresenterProtocol {
     
     weak var view: PopularViewProtocol?
     var interactor: PopularInputInteractorProtocol
-    var router: PopularRouterProtocol
+    var router: PopularRouterProtocol & PopularOutputRouterProtocol
     private let factory: PopularModulesFactory
     
     init(view: PopularViewProtocol,
          interactor: PopularInputInteractorProtocol,
-         router: PopularRouterProtocol,
+         router: PopularRouterProtocol & PopularOutputRouterProtocol,
          factory: PopularModulesFactory) {
         self.view = view
         self.interactor = interactor
@@ -59,6 +60,14 @@ class PopularPresenter: PopularPresenterProtocol {
             .emit(onNext: { [weak self] text in
                 guard let self = self else { return }
                 self.getGenres()
+            }).disposed(by: disposeBag)
+        
+        searchTapTrigger
+            .asSignal(onErrorJustReturn: ())
+            .emit(onNext: { [weak self] text in
+                guard let self = self else { return }
+                guard let view = view as? TabBarViewProtocol else { return }
+                self.router.transitionSearch(from: view)
             }).disposed(by: disposeBag)
         
         imageNeededTrigger

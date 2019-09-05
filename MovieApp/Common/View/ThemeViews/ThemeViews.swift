@@ -40,6 +40,26 @@ extension UIAppearance where Self: UILabel {
     }
 }
 
-class AppButton: UIButton {
+class AppButton: UIButton {}
+class AppFilledButton: UIButton {}
+
+extension UIAppearance where Self: AppFilledButton {
+    var fillColor: UIColor {
+        get {
+            return backgroundColor ?? .clear
+        }
+        
+        set(newValue) {
+            backgroundColor = newValue
+        }
+    }
     
+    var textColor: UIColor {
+        get {
+            return titleColor(for: .normal) ?? .white
+        }
+        set(newValue) {
+            setTitleColor(newValue, for: .normal)
+        }
+    }
 }

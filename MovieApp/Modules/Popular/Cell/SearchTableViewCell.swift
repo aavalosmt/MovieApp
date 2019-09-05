@@ -13,12 +13,21 @@ class SearchTableViewCell: UITableViewCell {
     // MARK: - IBOutlet
     
     @IBOutlet weak var titleLabel: AppTitleLabel!
+    @IBOutlet weak var searchButton: UIButton!
+    
+    var didTapSearch: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
         
         titleLabel.text = "CATEGORIES".localized
+        searchButton.layer.cornerRadius = 15.0
+        searchButton.clipsToBounds = true
+    }
+    
+    @IBAction func didTapSearch(_ sender: Any) {
+        didTapSearch?()
     }
     
 }

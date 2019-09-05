@@ -17,7 +17,7 @@ protocol PopularRouterProtocol: class {
 protocol PopularPresenterProtocol: class {
     var view: PopularViewProtocol? { get }
     var interactor: PopularInputInteractorProtocol { get }
-    var router: PopularRouterProtocol { get }
+    var router: PopularRouterProtocol & PopularOutputRouterProtocol { get }
     
     var moviesChanged: Signal<[Movie]> { get }
     var imageChanged: Signal<(Int, Int?, UIImage?)> { get }
@@ -26,6 +26,7 @@ protocol PopularPresenterProtocol: class {
     var reachedBottomTrigger: PublishSubject<Void> { get }
     var viewDidLoadTrigger: PublishSubject<Void> { get }
     var imageNeededTrigger: PublishSubject<(Int, Int?, String, ImageSize)> { get }
+    var searchTapTrigger: PublishSubject<Void> { get }
     var module: Driver<PopularModule> { get }
 }
 

@@ -112,20 +112,22 @@ class BasePagerContainerViewController<T: TabCollectionViewCell>: BaseButtonBarP
         }
     }
     
-    func present(destination: UIViewController, transition: TransitionDependencies) {
+    func present(destination: UIViewController, transition: TransitionDependencies? = nil) {
         
-        _targetView = transition.sharingView
-        destination.modalPresentationStyle = transition.modalPresentationStyle
-        destination.transitioningDelegate = transition.transitioningDelegate
-        
-        if let image = (_targetView as? UIImageView)?.image {
-            _snapshotImage = image
+        if let transition = transition {
+            _targetView = transition.sharingView
+            destination.modalPresentationStyle = transition.modalPresentationStyle
+            destination.transitioningDelegate = transition.transitioningDelegate
+            
+            if let image = (_targetView as? UIImageView)?.image {
+                _snapshotImage = image
+            }
+            
+            if var destination = destination as? InterViewAnimatable {
+                destination.snapshotImage = _snapshotImage
+            }
         }
         
-        if var destination = destination as? InterViewAnimatable {
-            destination.snapshotImage = _snapshotImage
-        }
-
         present(destination, animated: true, completion: nil)
     }
     

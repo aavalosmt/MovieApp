@@ -96,6 +96,10 @@ extension PopularViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier) as? SearchTableViewCell else {
             return UITableViewCell()
         }
+        cell.didTapSearch = { [weak self] in
+            guard let self = self else { return }
+            self.handleSearchTap()
+        }
         return cell
     }
     

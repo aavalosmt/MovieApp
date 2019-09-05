@@ -24,30 +24,52 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cok-ic-iAZ">
-                        <rect key="frame" x="46" y="62" width="228" height="30"/>
-                        <nil key="textColor"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
-                    </textField>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LjC-uL-Y4o">
+                        <rect key="frame" x="26" y="52" width="268" height="30"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <action selector="didTapSearch:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="CwN-LM-oDf"/>
+                        </connections>
+                    </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SearchIcon" translatesAutoresizingMaskIntoConstraints="NO" id="g0d-kf-ovu">
+                        <rect key="frame" x="36" y="57" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="WPj-AE-bQL"/>
+                            <constraint firstAttribute="height" constant="20" id="ff1-sA-Xjh"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1FG-Q3-jXN">
+                        <rect key="frame" x="64" y="57" width="51.5" height="20"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="Cok-ic-iAZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="30" id="2ob-R3-lnV"/>
-                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="Cok-ic-iAZ" secondAttribute="bottom" constant="50" id="CLv-QR-iX2"/>
+                    <constraint firstItem="LjC-uL-Y4o" firstAttribute="top" secondItem="NfF-7d-5Fu" secondAttribute="bottom" constant="20" id="5iD-rZ-Y3x"/>
                     <constraint firstItem="NfF-7d-5Fu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="GLf-Xs-o9a"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="LjC-uL-Y4o" secondAttribute="trailing" constant="10" id="JeA-bT-lzQ"/>
+                    <constraint firstItem="1FG-Q3-jXN" firstAttribute="centerY" secondItem="g0d-kf-ovu" secondAttribute="centerY" id="OBD-Qg-FKs"/>
+                    <constraint firstItem="LjC-uL-Y4o" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="R0J-Qf-j7f"/>
+                    <constraint firstItem="1FG-Q3-jXN" firstAttribute="leading" secondItem="g0d-kf-ovu" secondAttribute="trailing" constant="8" id="Rup-Lw-Jby"/>
+                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="LjC-uL-Y4o" secondAttribute="bottom" constant="20" id="TcT-AR-e5V"/>
                     <constraint firstAttribute="trailingMargin" secondItem="NfF-7d-5Fu" secondAttribute="trailing" id="c3Q-KH-1cu"/>
                     <constraint firstItem="NfF-7d-5Fu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="hFc-qb-dgw"/>
-                    <constraint firstItem="Cok-ic-iAZ" firstAttribute="top" secondItem="NfF-7d-5Fu" secondAttribute="bottom" constant="30" id="l1j-ta-HxV"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Cok-ic-iAZ" secondAttribute="trailing" constant="30" id="pey-7N-add"/>
+                    <constraint firstItem="LjC-uL-Y4o" firstAttribute="leading" secondItem="g0d-kf-ovu" secondAttribute="leading" constant="-10" id="kNf-ia-rVv"/>
+                    <constraint firstItem="LjC-uL-Y4o" firstAttribute="centerY" secondItem="g0d-kf-ovu" secondAttribute="centerY" id="rd1-1w-jz7"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="searchButton" destination="LjC-uL-Y4o" id="ag4-6P-Wqu"/>
                 <outlet property="titleLabel" destination="NfF-7d-5Fu" id="TKG-OZ-thO"/>
             </connections>
             <point key="canvasLocation" x="137.59999999999999" y="204.64767616191907"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="SearchIcon" width="17" height="17"/>
+    </resources>
 </document>

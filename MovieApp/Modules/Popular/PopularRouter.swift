@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol PopularOutputRouterProtocol: class {
+    func transitionSearch(from: TabBarViewProtocol)
+}
+
 class PopularRouter: PopularRouterProtocol {
     
     static func createModule() -> UIViewController {
@@ -33,7 +37,7 @@ class PopularRouter: PopularRouterProtocol {
                 )
             )
         )
-        let router = PopularRouter()
+        let router: PopularRouterProtocol & PopularOutputRouterProtocol = PopularRouter()
         
         let presenter = PopularPresenter(
             view: view,
@@ -50,6 +54,21 @@ class PopularRouter: PopularRouterProtocol {
     
     func configuredViewController() -> UIViewController {
         return PopularRouter.createModule()
+    }
+    
+}
+
+extension PopularRouter: PopularOutputRouterProtocol {
+    
+    func transitionSearch(from: TabBarViewProtocol) {
+        guard let origin = from as? (UIViewController & TabBarViewProtocol) else {
+            return
+        }
+        
+        let view = SearchMovieRouter.createModule()
+        DispatchQueue.main.async {
+            origin.container?.present(destination: view)
+        }
     }
     
 }

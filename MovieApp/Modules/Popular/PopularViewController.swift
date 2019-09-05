@@ -89,6 +89,10 @@ class PopularViewController: BasePagerViewController {
         }
     }
     
+    func handleSearchTap() {
+        presenter?.searchTapTrigger.onNext(())
+    }
+    
     private func handleModuleEvent(module: PopularModule) {
         var indexPaths: [IndexPath] = []
         

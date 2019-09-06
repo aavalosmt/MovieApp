@@ -12,6 +12,7 @@ enum MovieListType: Int {
     case popular
     case topRated
     case upcoming
+    case search
 }
 
 protocol Movie {

@@ -18,6 +18,13 @@ protocol SearchMoviePresenterProtocol: class {
     var view: SearchMovieViewProtocol? { get }
     var interactor: SearchMovieInputInteractorProtocol { get }
     var router: SearchMovieRouterProtocol { get }
+    
+    var searchMovieTrigger: PublishSubject<String> { get }
+    var imageNeededTrigger: PublishSubject<(Int, String)> { get }
+
+    var moviesChanged: Signal<[Movie]> { get }
+    var imageChanged: Signal<(Int, UIImage?)> { get }
+    var error: Signal<Error> { get }
 }
 
 protocol SearchMovieInputInteractorProtocol: class {

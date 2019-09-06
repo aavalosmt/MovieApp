@@ -15,7 +15,7 @@ protocol SearchMovieService {
 class SearchMovieWebService: BaseService<MovieListResponse>, SearchMovieService {
     
     func searchMovies(withKeyword keyword: String, completion: @escaping ServiceResponseClosure) {
-        let url = endpointProvider.url(forEndpoint: .Search)
+        let url = endpointProvider.url(forEndpoint: .MovieList(type: .search))
         
         super.request(baseUrl: url,
                       method: .get,

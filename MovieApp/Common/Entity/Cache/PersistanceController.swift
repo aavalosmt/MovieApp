@@ -17,5 +17,5 @@ protocol PersistanceController {
     func fetch() -> [Any]?
     func search(key: Any) -> Any?
     func fetch(predicate: String) -> [Any]?
-    
+    func searchEntities(keyword: String) -> [Any]?
 }

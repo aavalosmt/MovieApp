@@ -12,7 +12,6 @@ enum Endpoint {
     case MovieList(type: MovieListType)
     case Image(path: String)
     case Genres
-    case Search
     
     var path: String {
         switch self {
@@ -22,8 +21,6 @@ enum Endpoint {
             return path
         case .Genres:
             return "/3/genre/movie/list"
-        case .Search:
-            return "/3/search/movie"
         }
     }
     
@@ -35,6 +32,8 @@ enum Endpoint {
             return "/3/movie/upcoming"
         case .popular:
             return "/3/movie/popular"
+        case .search:
+            return "/3/search/movie"
         }
     }
 }

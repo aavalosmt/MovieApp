@@ -17,10 +17,12 @@ class GetMovieListImpl: UseCaseImpl, GetMovieList {
     
     private let apiState: ApiState
     private let type: MovieListType
+    private let reachability: ReachabilityProtocol
     
-    init(service: Service?, repository: Repository?, type: MovieListType) {
+    init(service: Service?, repository: Repository?, type: MovieListType, reachability: ReachabilityProtocol = Reachability.shared) {
         self.apiState = ApiState(page: 0)
         self.type = type
+        self.reachability = reachability
         super.init(service: service, repository: repository)
     }
     

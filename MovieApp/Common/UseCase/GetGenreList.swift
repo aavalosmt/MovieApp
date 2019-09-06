@@ -14,6 +14,13 @@ protocol GetGenreList {
 
 class GetGenreListImpl: UseCaseImpl, GetGenreList {
     
+    private let reachability: ReachabilityProtocol
+    
+    init(service: Service?, repository: Repository?, reachability: ReachabilityProtocol = Reachability.shared) {
+        self.reachability = reachability
+        super.init(service: service, repository: repository)
+    }
+    
     func execute(completion: @escaping UseCaseResponseClosure) {
         
         guard let repository = repository as? GenreRepository, repository.count > 0 else {

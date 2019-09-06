@@ -80,4 +80,8 @@ class GenreDataController: PersistanceController {
         return genres
     }
     
+    func searchEntities(keyword: String) -> [Any]? {
+        return nil
+    }
+    
 }

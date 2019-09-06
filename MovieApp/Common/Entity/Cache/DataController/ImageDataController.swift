@@ -71,4 +71,8 @@ class ImageDataController: PersistanceController {
         return nil
     }
     
+    func searchEntities(keyword: String) -> [Any]? {
+        return nil
+    }
+    
 }

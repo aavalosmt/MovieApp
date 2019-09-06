@@ -17,6 +17,7 @@ protocol MovieRepository: Repository {
     func saveMovies(movies: [MovieEntity])
     func fetchMovieList(type: MovieListType) -> [MovieEntity]?
     func fetchMovieList(forPage page: Int, type: MovieListType) -> [MovieEntity]?
+    func searchMovies(keyword: String) -> [MovieEntity]?
 }
 
 class MovieRepositoryImpl: MovieRepository {
@@ -57,6 +58,14 @@ class MovieRepositoryImpl: MovieRepository {
         }) else {
             return nil
         }
+        return movies
+    }
+    
+    func searchMovies(keyword: String) -> [MovieEntity]? {
+        guard let movies = persistanceController.searchEntities(keyword: keyword) as? [MovieEntity] else {
+            return nil
+        }
+        
         return movies
     }
     

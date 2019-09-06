@@ -25,6 +25,8 @@ class SearchMoviePresenter: SearchMoviePresenterProtocol {
     let imageNeededTrigger: PublishSubject<(Int, String)> = PublishSubject<(Int, String)> ()
     let selectRowTrigger: PublishSubject<(Movie, TransitionDependencies)> = PublishSubject<(Movie, TransitionDependencies)>()
     
+    let searchMovieTrigger: PublishSubject<String> = PublishSubject<String>()
+    
     // MARK: - Aux Relays
     
     private let errorChangeRelay: PublishRelay<Error> = PublishRelay<Error>()
@@ -51,9 +53,24 @@ class SearchMoviePresenter: SearchMoviePresenterProtocol {
         
         viewDidLoadTrigger
             .asSignal(onErrorJustReturn: ())
-            .emit(onNext: { [weak self] text in
+            .emit(onNext: { [weak self] _ in
                 guard let self = self else { return }
                 self.getGenres()
+            }).disposed(by: disposeBag)
+        
+        searchMovieTrigger
+            .asSignal(onErrorJustReturn: "")
+            .emit(onNext: { [weak self] text in
+                guard !text.isEmpty else { return }
+                guard let self = self else { return }
+                self.searchMovies(keyword: text)
+            }).disposed(by: disposeBag)
+        
+        imageNeededTrigger
+            .asSignal(onErrorJustReturn: (-1, ""))
+            .emit(onNext: { [weak self] (index, path) in
+                guard let self = self else { return }
+                self.getImage(forPath: path, index: index, size: .thumbnail)
             }).disposed(by: disposeBag)
     }
     

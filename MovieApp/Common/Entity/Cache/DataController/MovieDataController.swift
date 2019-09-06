@@ -154,4 +154,9 @@ class MovieDataController: PersistanceController {
         return (movies?.isEmpty ?? true) ? nil : movies
     }
     
+    func searchEntities(keyword: String) -> [Any]? {
+        let predicate = String(format: "title CONTAINS [c]%@", keyword)
+        return fetch(predicate: predicate)
+    }
+    
 }

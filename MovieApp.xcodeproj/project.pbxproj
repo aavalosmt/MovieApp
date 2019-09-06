@@ -53,6 +53,7 @@
 		BE63D11D2321206900E7ED7F /* SearchMovieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE63D1172321206900E7ED7F /* SearchMovieViewController.xib */; };
 		BE63D11F2321302E00E7ED7F /* SearchMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE63D11E2321302E00E7ED7F /* SearchMovie.swift */; };
 		BE63D121232135AF00E7ED7F /* SearchMovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE63D120232135AF00E7ED7F /* SearchMovieService.swift */; };
+		BE63D1232322DEE700E7ED7F /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE63D1222322DEE700E7ED7F /* Reachability.swift */; };
 		BE822A7E231E0E3400965001 /* TabbedHomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE822A78231E0E3400965001 /* TabbedHomePresenter.swift */; };
 		BE822A7F231E0E3400965001 /* TabbedHomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE822A79231E0E3400965001 /* TabbedHomeRouter.swift */; };
 		BE822A80231E0E3400965001 /* TabbedHomeContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE822A7A231E0E3400965001 /* TabbedHomeContracts.swift */; };
@@ -223,6 +224,7 @@
 		BE63D1172321206900E7ED7F /* SearchMovieViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchMovieViewController.xib; sourceTree = "<group>"; };
 		BE63D11E2321302E00E7ED7F /* SearchMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovie.swift; sourceTree = "<group>"; };
 		BE63D120232135AF00E7ED7F /* SearchMovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieService.swift; sourceTree = "<group>"; };
+		BE63D1222322DEE700E7ED7F /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		BE822A78231E0E3400965001 /* TabbedHomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbedHomePresenter.swift; sourceTree = "<group>"; };
 		BE822A79231E0E3400965001 /* TabbedHomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbedHomeRouter.swift; sourceTree = "<group>"; };
 		BE822A7A231E0E3400965001 /* TabbedHomeContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbedHomeContracts.swift; sourceTree = "<group>"; };
@@ -867,6 +869,7 @@
 				BEC2327D231C8D3500C7054C /* RxHelpers.swift */,
 				BE822A93231E104D00965001 /* TabBarViewProtocol.swift */,
 				BE822ABA231E22BA00965001 /* FontName.swift */,
+				BE63D1222322DEE700E7ED7F /* Reachability.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1194,6 +1197,7 @@
 				BE822AAA231E1FBC00965001 /* TopRatedInteractor.swift in Sources */,
 				BECEECA023166B5B00C89786 /* MovieListRouter.swift in Sources */,
 				BE63D1192321206900E7ED7F /* SearchMovieRouter.swift in Sources */,
+				BE63D1232322DEE700E7ED7F /* Reachability.swift in Sources */,
 				BECEECBA2316719D00C89786 /* ServiceConstants.swift in Sources */,
 				BECEECA623166BB500C89786 /* RouterAppDelegate.swift in Sources */,
 				BECEED0223174C8300C89786 /* UITableViewCell.swift in Sources */,
@@ -1444,15 +1448,18 @@
 			baseConfigurationReference = F034BAAD8979BD4CA1FD3EB3 /* Pods-MovieApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2RB6P5XQBG;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MovieApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = mx.aavalosmt.MovieApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1463,15 +1470,18 @@
 			baseConfigurationReference = 7DA22C15BB5DC2F03E7270B1 /* Pods-MovieApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2RB6P5XQBG;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MovieApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = mx.aavalosmt.MovieApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

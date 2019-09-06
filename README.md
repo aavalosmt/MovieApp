@@ -54,3 +54,7 @@ Having loosed coupled layers and conforming to SOLID principles helps to obtain 
 
 * Timely: A unit test should not take a disproportionally long time to write compared to the code being test
 
+### Notes:
+---------
+
+Some things couldn't be fully implemented due to time: Loaders when requesting data, cleaning return Viper references (aka "weak" references between components) because are replaced with Observable binds, correct use of access modifiers in all code, marks and other code comments.

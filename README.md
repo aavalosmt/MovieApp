@@ -56,5 +56,5 @@ Having loosed coupled layers and conforming to SOLID principles helps to obtain 
 
 ### Notes:
 ---------
-
-Some things couldn't be fully implemented due to time: Loaders when requesting data, cleaning return Viper references (aka "weak" references between components) because are replaced with Observable binds, correct use of access modifiers in all code, marks and other code comments.
+* MovieDetail is only implemented from the Upcoming tab
+* Some things couldn't be fully implemented due to time: Loaders when requesting data, cleaning return Viper references (aka "weak" references between components) because are replaced with Observable binds, correct use of access modifiers in all code, marks and other code comments.

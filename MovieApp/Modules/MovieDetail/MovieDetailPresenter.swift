@@ -15,7 +15,7 @@ class MovieDetailPresenter: MovieDetailPresenterProtocol {
     // Outputs
     
     let imageChanged: Signal<(Int, UIImage?)>
-    let module: Signal<MovieDetailModule>
+    let module: Signal<MovieDetailModuleProtocol>
 
     // Inputs
     
@@ -25,7 +25,7 @@ class MovieDetailPresenter: MovieDetailPresenterProtocol {
     // Aux relay
     
     private let imageChangeRelay: PublishRelay<(Int, UIImage?)> = PublishRelay<(Int, UIImage?)>()
-    private let moduleChangeRelay: PublishRelay<MovieDetailModule> = PublishRelay<MovieDetailModule>()
+    private let moduleChangeRelay: PublishRelay<MovieDetailModuleProtocol> = PublishRelay<MovieDetailModuleProtocol>()
     
     weak var view: MovieDetailViewProtocol?
     var interactor: MovieDetailInputInteractorProtocol

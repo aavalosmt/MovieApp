@@ -14,6 +14,7 @@
                 <outlet property="searchButton" destination="cky-X0-Hhy" id="3Ki-nW-Y1b"/>
                 <outlet property="searchTextfield" destination="ml3-yd-KiA" id="C66-bB-mzb"/>
                 <outlet property="tableView" destination="HSe-n7-Cjy" id="WTf-QI-cry"/>
+                <outlet property="titleLabel" destination="hfK-wn-cis" id="geN-1j-fRv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -64,10 +65,18 @@
                         <action selector="didTapSearch:" destination="-1" eventType="touchUpInside" id="qOh-8k-iet"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfK-wn-cis" customClass="AppTitleLabel" customModule="MovieApp" customModuleProvider="target">
+                    <rect key="frame" x="166.5" y="35" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="hfK-wn-cis" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="3jy-7T-fKY"/>
                 <constraint firstAttribute="bottom" secondItem="HSe-n7-Cjy" secondAttribute="bottom" id="6fk-VP-d7Z"/>
+                <constraint firstItem="hfK-wn-cis" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="35" id="Cmq-fh-mTJ"/>
                 <constraint firstAttribute="trailing" secondItem="OTo-6E-QHq" secondAttribute="trailing" constant="16" id="Dwx-x4-FsB"/>
                 <constraint firstItem="ml3-yd-KiA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" constant="10" id="J86-FH-hue"/>
                 <constraint firstItem="HSe-n7-Cjy" firstAttribute="top" secondItem="ml3-yd-KiA" secondAttribute="bottom" constant="15" id="K63-lJ-SyK"/>

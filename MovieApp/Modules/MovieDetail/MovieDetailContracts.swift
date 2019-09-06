@@ -25,7 +25,7 @@ protocol MovieDetailPresenterProtocol: class {
     var imageNeededTrigger: PublishSubject<(Int, String, ImageSize)> { get }
     
     var imageChanged: Signal<(Int, UIImage?)> { get }
-    var module: Signal<MovieDetailModule> { get }
+    var module: Signal<MovieDetailModuleProtocol> { get }
 }
 
 protocol MovieDetailInputInteractorProtocol: class {

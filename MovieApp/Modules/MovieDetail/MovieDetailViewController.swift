@@ -20,7 +20,7 @@ class MovieDetailViewController: BaseViewController {
     var headerView: UIImageView?
     weak var snapshotImage: UIImage?
     
-    private var modules: [MovieDetailModule] = []
+    private var modules: [MovieDetailModuleProtocol] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +70,7 @@ class MovieDetailViewController: BaseViewController {
         presenter?.viewDidLoadTrigger.onNext(())
     }
     
-    private func handleModule(module: MovieDetailModule) {
+    private func handleModule(module: MovieDetailModuleProtocol) {
         switch module.type {
         case .poster(let path):
             presenter?.imageNeededTrigger.onNext((-1, path, .full))
@@ -107,19 +107,22 @@ extension MovieDetailViewController: UITableViewDelegate, UITableViewDataSource 
         }
         
         switch module.type {
-        case .overview(let description):
-            return overviewCell(tableView, overview: description)
+        case .overview:
+            if let module = module as? MovieDetailOverviewModule {
+                return overviewCell(tableView, module: module)
+            }
         default: break
         }
         
         return UITableViewCell()
     }
     
-    private func overviewCell(_ tableView: UITableView, overview: String) -> UITableViewCell {
+    private func overviewCell(_ tableView: UITableView, module: MovieDetailOverviewModule) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: OverviewTableViewCell.identifier) as? OverviewTableViewCell else {
             return UITableViewCell()
         }
-        cell.configure(overview: overview)
+        cell.configure(module: module)
         return cell
     }
     

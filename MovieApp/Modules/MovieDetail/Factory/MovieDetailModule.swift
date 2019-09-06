@@ -11,11 +11,23 @@ import Foundation
 enum MovieDetailModuleType {
     case poster(path: String)
     case rating(rating: Double)
-    case overview(description: String)
+    case overview
 }
 
-struct MovieDetailModule {
+protocol MovieDetailModuleProtocol {
+    var type: MovieDetailModuleType { get }
+}
+
+struct MovieDetailModule: MovieDetailModuleProtocol {
+    var type: MovieDetailModuleType
+}
+
+struct MovieDetailOverviewModule: MovieDetailModuleProtocol {
     var type: MovieDetailModuleType
     
-    
+    var title: String
+    var description: String
+    var rating: Double
+    var releaseDate: String
+    var genres: [String]
 }

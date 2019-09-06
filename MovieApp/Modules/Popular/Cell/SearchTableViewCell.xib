@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -53,7 +54,7 @@
                     <constraint firstItem="1FG-Q3-jXN" firstAttribute="centerY" secondItem="g0d-kf-ovu" secondAttribute="centerY" id="OBD-Qg-FKs"/>
                     <constraint firstItem="LjC-uL-Y4o" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="R0J-Qf-j7f"/>
                     <constraint firstItem="1FG-Q3-jXN" firstAttribute="leading" secondItem="g0d-kf-ovu" secondAttribute="trailing" constant="8" id="Rup-Lw-Jby"/>
-                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="LjC-uL-Y4o" secondAttribute="bottom" constant="20" id="TcT-AR-e5V"/>
+                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="LjC-uL-Y4o" secondAttribute="bottom" constant="15" id="TcT-AR-e5V"/>
                     <constraint firstAttribute="trailingMargin" secondItem="NfF-7d-5Fu" secondAttribute="trailing" id="c3Q-KH-1cu"/>
                     <constraint firstItem="NfF-7d-5Fu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="hFc-qb-dgw"/>
                     <constraint firstItem="LjC-uL-Y4o" firstAttribute="leading" secondItem="g0d-kf-ovu" secondAttribute="leading" constant="-10" id="kNf-ia-rVv"/>
@@ -70,6 +71,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="SearchIcon" width="17" height="17"/>
+        <image name="SearchIcon" width="33" height="33"/>
     </resources>
 </document>

@@ -155,8 +155,8 @@ class MovieDataController: PersistanceController {
     }
     
     func searchEntities(keyword: String) -> [Any]? {
-        let predicate = String(format: "title CONTAINS [c]%@", keyword)
-        return fetch(predicate: predicate)
+        let movies = (fetch() as? [Movie])?.filter({ $0.title?.contains(keyword) ?? false })
+        return movies
     }
     
 }

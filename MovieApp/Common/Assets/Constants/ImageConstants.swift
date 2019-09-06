@@ -14,4 +14,13 @@ struct ImageConstants {
         static let filmPlaceholder: String = "FilmPlaceholder"
     }
     
+    struct StarRating {
+        static let full = "StarRatingFive"
+        static let one = "StarRatingOne"
+        static let two = "StarRatingTwo"
+        static let three = "StarRatingThree"
+        static let four = "StarRatingFour"
+        static let empty = ""
+    }
+    
 }

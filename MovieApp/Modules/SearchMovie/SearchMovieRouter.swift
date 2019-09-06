@@ -15,7 +15,10 @@ class SearchMovieRouter: SearchMovieRouterProtocol {
         
         let interactor = SearchMovieInteractor(
             searchMovieUseCase: SearchMovieImpl(
-                service: SearchMovieWebService()
+                service: SearchMovieWebService(),
+                repository: MovieRepositoryImpl(
+                    persistanceController: MovieDataController()
+                )
             ),
             getGenreListUseCase: GetGenreListImpl(
                 service: GenreListWebService(),

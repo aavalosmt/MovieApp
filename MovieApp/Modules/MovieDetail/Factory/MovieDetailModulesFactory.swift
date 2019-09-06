@@ -12,7 +12,7 @@ import RxCocoa
 
 class MovieDetailModulesFactory {
     
-    let moduleCreated: PublishSubject<MovieDetailModule> = PublishSubject<MovieDetailModule>()
+    let moduleCreated: PublishSubject<MovieDetailModuleProtocol> = PublishSubject<MovieDetailModuleProtocol>()
     
     func getModules(for movie: Movie) {
         
@@ -32,10 +32,15 @@ class MovieDetailModulesFactory {
             )
         }
         
-        if let overView = movie.overView, !overView.isEmpty {
+        if let overView = movie.overView, !overView.isEmpty, let rating = movie.voteAverage, let releaseDate = movie.releaseDate, let title = movie.title  {
             moduleCreated.onNext(
-                MovieDetailModule(
-                    type: .overview(description: overView)
+                MovieDetailOverviewModule(
+                    type: .overview,
+                    title: title,
+                    description: overView,
+                    rating: rating,
+                    releaseDate: releaseDate,
+                    genres: movie.genres
                 )
             )
         }

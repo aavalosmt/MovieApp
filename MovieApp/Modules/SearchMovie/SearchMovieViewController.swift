@@ -14,6 +14,7 @@ protocol SearchMovieViewProtocol: class {
 
 class SearchMovieViewController: BaseViewController {
     
+    @IBOutlet weak var titleLabel: AppTitleLabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextfield: UITextField!
     @IBOutlet weak var searchButton: AppFilledButton!
@@ -30,6 +31,7 @@ class SearchMovieViewController: BaseViewController {
     }
     
     private func configureUI() {
+       titleLabel.text = "SEARCH".localized
         searchTextfield.layer.cornerRadius = 15.0
         searchTextfield.clipsToBounds = true
         

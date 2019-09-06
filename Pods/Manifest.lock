@@ -1,4 +1,17 @@
 PODS:
+  - OHHTTPStubs/Core (8.0.0)
+  - OHHTTPStubs/Default (8.0.0):
+    - OHHTTPStubs/Core
+    - OHHTTPStubs/JSON
+    - OHHTTPStubs/NSURLSession
+    - OHHTTPStubs/OHPathHelpers
+  - OHHTTPStubs/JSON (8.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/NSURLSession (8.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/OHPathHelpers (8.0.0)
+  - OHHTTPStubs/Swift (8.0.0):
+    - OHHTTPStubs/Default
   - Realm (3.17.1):
     - Realm/Headers (= 3.17.1)
   - Realm/Headers (3.17.1)
@@ -10,18 +23,20 @@ PODS:
   - XLPagerTabStrip (8.1.1)
 
 DEPENDENCIES:
+  - OHHTTPStubs/Swift
   - RealmSwift
   - RxCocoa (~> 4.5)
   - RxSwift (~> 4.5)
   - XLPagerTabStrip (~> 8.1.1)
 
 SPEC CHECKSUMS:
+  OHHTTPStubs: 9cbce6364bec557cc3439aa6bb7514670d780881
   Realm: c204f1a890f07dea43b14132a6aad118c054b8f2
   RealmSwift: 4d3c9233544b9cd08a8913e0872b9038eb99b054
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   XLPagerTabStrip: 63166e21c9844fa30f2d95d30f335e73be5caf22
 
-PODFILE CHECKSUM: ff0b92326a8da03079be10521fb92ef5829db4b9
+PODFILE CHECKSUM: 05b83820dd9cbaaaa1520b5dd2a1ad8fdba34841
 
 COCOAPODS: 1.4.0
